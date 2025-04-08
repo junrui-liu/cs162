@@ -1,0 +1,21 @@
+# Lecture 4: Semantics 🧠
+
+- Big step operational semantics
+  - Nat
+    - Add subtraction
+    - (exercise) Add multiplication
+    - Add booleans: true, false, if-then-else
+  -  Add && (syntactic sugar)
+     - (exercise) Add || and not
+     - (exercise) Add less-than
+     - (exercise) Add equality (either as a primitive or as a syntactic sugar)
+     - (exercise) Add non-determinism via coin flips
+- Small step operational semantics
+  - Motivation: observing intermediate steps, especially for non-terminating programs
+    - Example: signalgate
+    - Example: stepping a program line-by-line in a debugger
+  - Motivate the need for two kinds of rules: contextual and evaluation
+  - Discuss transitivity
+  - Show rules for addition (and similarly for subtraction and multiplication)
+  - (exercise) Design rules for less-than
+  - (exercise) Design rules for if-then-else

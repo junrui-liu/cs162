@@ -1,0 +1,21 @@
+# Lecture 2: Python 🐍
+
+- Quick intro to algebraic data types
+  - T is either X or Y
+  - T has both X and Y
+  - Lots of examples:
+    - TBD
+- Encoding of ADTs in Python
+  - Sum types T = X | Y becomes abstract class T, and subclasses X and Y
+  - Product types T = X * Y becomes class T with fields x and y
+- Make vs use
+  - Product types: make = constructor with all fields, use = field accessors
+  - Sum types: make = calling constructor, use = pattern matching
+  - Lots of examples:
+    - TBD
+- Crash course on syntaxes:
+  - Concrete vs abstract syntax, role of the parser
+  - ASTs
+  - How to represent and manipulate ASTs in Python
+  - Exercises:
+    - TBD
