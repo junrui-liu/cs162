@@ -58,7 +58,13 @@ TBD
 
 ## Schedule
 
+
+
 ## Difference with previous years
+
+<details>
+<summary>Click to expand</summary>
+
 - Why not reuse existing materials?
   - I've TA'ed this course (which has recycled basically the same materials) for 4 years from 2022 to 2025. I have noticed that there remain a *lot* of things that could be improved to (1) make existing topics more accessible, (2) delete topics that are too theoretical and (3) reorient the course to be more relevant even after you graduate, no matter whether you become a programmer or a PL researcher. My overarching objective is to teach you the "PL way of thinking" that you still remember after 5 years.
   - Specially, I will try to teach the class in a way that I wish I had been taught when I first learned programming languages. I love PL deeply, and I want to share the beauty of the subject with you.
@@ -75,3 +81,4 @@ TBD
   - Early introduction of procedures, and late introduction of lambda calculus.
     - Lambda calculus is a generalization of procedures anyway, so it's good to get lots of practice with procedures first.
   - Entirely skip capture-avoiding substitution. Variable captures had been a non-issue IMO (we didn't do dependent types so all programs are closed), and they felt like a topic forced onto the students which they were gonna forget immediately after the exam.
+</details>
