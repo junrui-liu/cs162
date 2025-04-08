@@ -57,3 +57,21 @@ TBD
   - Feel free to come by and just chat about anything related to the course. There are absolutely no stupid questions. From my experience as a TA, I learn something new from every question asked and every student I talk to. Questions reveal not just gaps in understanding, but also gaps in my communication of the material, e.g., I was going too fast, or I was explaining something in a way that didn't make sense to the student.
 
 ## Schedule
+
+## Difference with previous years
+- Why not reuse existing materials?
+  - I've TA'ed this course (which have recycled basically the same materials) for 4 years (2022-2025, which was after the infamous reddit post that led to the existing course design in the first place). Even though the reddit post led to a lot of positive changes, I have noticed that there remain a *lot* of things that could be improved to (1) make existing topics more accessible, (2) delete topics that are too theoretical and (3) reorient the course to be more relevant even after you graduate, no matter whether you become a programmer or a PL researcher. My overarching objective is to teach you the "PL way of thinking" that you still remember after 5 years.
+  - Specially, I will try to teach the class in a way that I wish I had been taught when I first learned programming languages. I love PL deeply, and I want to share the beauty of the subject with you.
+- The course is redesigned to be entirely **incremental**. The whole course culminates in your building a really powerful and elegant programming language step by step. Each lecture introduces a new feature into the language, and each assignment builds on the previous one. Previously, CS162 just gave you a fully complete language, and each assignment implements different aspects of the *full* language.
+- Emphasis on the three roles of PL design process: motivating use case (client) -> relational design (designer) -> algorithmic implementation (implementer). Previously, CS162 just gave you a fully designed language and asked you to decipher a "god-given" design and write code to implement it. There weren't even use cases to motivate the design. This time, you will get a taste of all three roles of a language designer, and most importantly, you get to experiment with the design of the language yourself! How cool is that?
+- Instead of a single final that's worth 50%, we have 3 quizzes spread out over the quarter (more immediate feedback), and you get 50% points back for corrections (it's ok to make mistakes; what matters is to learn from your own mistakes!).
+- Programming assignments now use Python instead of OCaml
+  - As much I love OCaml (it's my favorite language & I use it on most programming projects), to be able to use it for CS162, we need to spend at least 1.5 weeks, and in the past students didn't get comfortable until several weeks in. Cramming it into a 6-week summer session course is just too much.
+  - Hopefully, Python is easy enough to pick up (it's also used in CS8/9 and couple of other upper-div courses). Technically, Python will be a lot more "useful" once you get a real job.
+  - But my secret agenda to convert all of you to functional programming aficionados is not dead yet. The object language is a functional language in disguise.
+- We are now able to cover a lot more super cool topics (codata/objects, bidirectional typing, subtyping, type constructors, effects), since we completely removed the OCaml module (and moved the higher-order functions to the object language).
+- Finer points:
+  - Early introduction of typing.
+  - Early introduction of procedures, and late introduction of lambda calculus.
+    - Lambda calculus is a generalization of procedures anyway, so it's good to get lots of practice with procedures first.
+  - Entirely skip capture-avoiding substitution. Variable captures had been a non-issue IMO (we didn't do dependent types so all programs are closed), and they felt like a topic forced onto the students which they were gonna forget immediately after the exam.
