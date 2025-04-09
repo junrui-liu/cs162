@@ -1,4 +1,4 @@
-# Lecture 2: Python 🐍
+# Python 🐍
 
 - Quick intro to algebraic data types
   - T is either X or Y

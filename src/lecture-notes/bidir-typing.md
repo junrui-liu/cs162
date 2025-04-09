@@ -1,4 +1,4 @@
-# Lecture 8: Mutualism 🤝
+# Mutualism 🤝
 
 - Typing for sums isn't algorithmic: when checking introduction form, needs the type to be an input
 - Motivates a new form of typing judgment (type checking). Old judgment is synthesis.

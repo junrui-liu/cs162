@@ -1,4 +1,4 @@
-# Lecture 4: Semantics 🧠
+# Semantics 🧠
 
 - Big step operational semantics
   - Nat

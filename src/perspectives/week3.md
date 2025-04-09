@@ -1,4 +1,4 @@
-# Week 3: Feminism in PL
+# Feminism in PL
 
 
 Please click on the image to view the video on YouTube.

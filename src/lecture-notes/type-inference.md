@@ -1,4 +1,4 @@
-# Lecture 15: Unicorns 🦄
+# Unicorns 🦄
 
 
 Hindley-Milner unification

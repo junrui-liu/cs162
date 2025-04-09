@@ -1,4 +1,4 @@
-# Lecture 12: Church ⛪️
+# Church ⛪️
 
 Bonus lecture on:
 - Scott encodings

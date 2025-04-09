@@ -1,3 +1,6 @@
-# Lecture 14: Trinity 🔺
+# Trinity 🔺
 
-Curry-Howrd, propositions as types
+Bonus lecture on:
+- Curry-Howrd, propositions as types
+- Formal verification
+- Interactive theorem provers

@@ -1,4 +1,4 @@
-# Lecture 11: Curry 🍛
+# Curry 🍛
 
 Lambda calculus
 - Use: abstracting code (map, filter, fold)

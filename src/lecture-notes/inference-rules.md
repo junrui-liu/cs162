@@ -1,8 +1,8 @@
-# Lecture 3: Russian Dolls 🪆
+# Russian Dolls 🪆
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eVBzfB5vHzs?si=2V82Q71sOsoq_scC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-Inference rules:
+Crash course on inference rules:
 - Google sheets as an analogy
 - Example 0: minecraft recipes
 - (membership) Example 1: is X a Russian doll?

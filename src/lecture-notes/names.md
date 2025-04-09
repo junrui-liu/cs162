@@ -1,8 +1,10 @@
-# Lecture 5: Names 🏷️
+# Names 🏷️
 
 - Use second-class procedures to motivate names and bindings
 - Introduce local variables
   - https://github.com/fredfeng/CS162/blob/winter-2024/sections/sec03/README.md
+- Transition from substitution to environment:
+  - Class activity and discussion: what's the right data structure to represent the environment
 - Represent generic binder interface in Python
 - Binder operations as visitor pattern or match?
 - Operational semantics for `let` and procedures.
@@ -13,4 +15,4 @@
     - Scoping for procedures
       - Mutually recursive?
     - Variable scoping in procedures: 
-      - Start with clean environment when evaluating a procedure?
+      - Class exercise: design the environment semantics for procedures

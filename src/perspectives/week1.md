@@ -1,4 +1,4 @@
-# Week 1: Software Correctness & AI
+# Software Correctness & AI
 
 
 Pick one video to watch (or both if you have time):

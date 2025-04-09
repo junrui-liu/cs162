@@ -1,4 +1,4 @@
-# Lecture 6: Types 🔒
+# Types 🔒
 
 - The need to predict program behaviors ahead of time
 - Halting problem and Rice's theorem

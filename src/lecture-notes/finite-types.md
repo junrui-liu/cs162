@@ -1,4 +1,4 @@
-# Lecture 7: Multiply and Add ✖️➕
+# Multiply and Add ✖️➕
 
 
 ## Product types

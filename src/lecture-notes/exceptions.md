@@ -1,4 +1,4 @@
-# Lecture 17: Exceptionalism 🇺🇸
+# Exceptionalism 🇺🇸
 
 Exceptions
 - Syntax:

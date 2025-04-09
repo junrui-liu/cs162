@@ -1,4 +1,4 @@
-# Lecture 18: Time Travel 🚀
+# Time Travel 🚀
 
 > *"Anything you do could have serious repercussions on future events."*
 
