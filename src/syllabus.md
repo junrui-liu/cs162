@@ -17,11 +17,6 @@ TBD
 ## Goals
 TBD
 
-## Textbooks and other references (optional)
-- [Programming Languages: Application and Interpretation (2nd Ed)](https://cs.brown.edu/courses/cs173/2012/book/) by Shriram Krishnamurthi
-- [Types and Programming Languages](https://github.com/MPRI/M2-4-2/blob/master/Types%20and%20Programming%20Languages.pdf) by Benjamin C. Pierce
-- [Practical Foundations for Programming Languages (2nd Ed)](https://web.archive.org/web/20221109205432/http://www.cs.cmu.edu/~rwh/pfpl/2nded.pdf) by Robert Harper
-- Frank Pfenning's [lecture notes for 15-814](https://www.cs.cmu.edu/~fp/courses/15814-f21/schedule.html) at CMU
   
 ## Struture
 - 6 programming assignments, 50%
@@ -49,6 +44,39 @@ TBD
   - LLM policy:
     - Do not use LLMs for these reflections. Think for yourself.
 
+
+## Tentaive Schedule and Topics
+
+
+|   Date | Topic                                     | Out  | Due  |
+| -----: | ----------------------------------------- | ---- | ---- |
+| Week 1 | **How to design a programming language?** |      |      |
+|  06/24 | Why study programming languages?          |      |      |
+|  06/25 | Python review                             |      |      |
+|  06/26 | Inference rules                           | HW 1 |      |
+| Week 2 | **What makes a programming language?**    |      |      |
+|  07/01 | Semantics                                 |      |      |
+|  07/02 | Names and bindings                        |      |      |
+|  07/03 | Types                                     | HW 2 | HW 1 |
+| Week 3 | **How to design *data*?**                 |      |      |
+|  07/08 | Finite types: Products                    |      |      |
+|  07/09 | Finite types: Sums                        |      |      |
+|  07/10 | Recursive and generic types               | HW 3 | HW 2 |
+| Week 4 | **How to design *programs*?**             |      |      |
+|  07/15 | Higher-order functions                    |      |      |
+|  07/16 | Lambda calculus                           |      |      |
+|  07/17 | Parametric polymorphism                   | HW 4 | HW 3 |
+| Week 5 | **How to change the world?**              |      |      |
+|  07/22 | Mutable states, garbage collection        |      |      |
+|  07/23 | Exceptions, abstract machines             |      |      |
+|  07/24 | Effect handlers                           | HW 5 | HW 4 |
+| Week 6 | **Bonus topics**                          |      |      |
+|  07/29 | Curry-Howard correspondence               |      |      |
+|  07/30 | Codata, objects, infinity, and ducks      |      |      |
+|  07/31 | It's lambda calculus all the way down!    |      |      |
+|  08/02 | (End of summer session A)                 |      | HW 5 |
+
+
 ## Pedagoy
 - **Growth mindset**: ok to fail, but learn from it (that's why you'll get credit back if you turn in corrections). If you put in the work, you will get the grade you want.
 - **Community, not competition** -> no curve to force a certain distribution of grades. Help each other out. Form study groups, come to office hours, ask lots of questions.
@@ -56,8 +84,11 @@ TBD
   - Extra credit or other incentives for attending office hours?
   - Feel free to come by and just chat about anything related to the course. There are absolutely no stupid questions. From my experience as a TA, I learn something new from every question asked and every student I talk to. Questions reveal not just gaps in understanding, but also gaps in my communication of the material, e.g., I was going too fast, or I was explaining something in a way that didn't make sense to the student.
 
-## Schedule
-
+## Textbooks and other references (optional)
+- [Programming Languages: Application and Interpretation (2nd Ed)](https://cs.brown.edu/courses/cs173/2012/book/) by Shriram Krishnamurthi
+- [Types and Programming Languages](https://github.com/MPRI/M2-4-2/blob/master/Types%20and%20Programming%20Languages.pdf) by Benjamin C. Pierce
+- Frank Pfenning's [lecture notes for 15-814](https://www.cs.cmu.edu/~fp/courses/15814-f21/schedule.html) at CMU
+- [Practical Foundations for Programming Languages (2nd Ed)](https://web.archive.org/web/20221109205432/http://www.cs.cmu.edu/~rwh/pfpl/2nded.pdf) by Robert Harper
 
 
 ## Difference with previous years
