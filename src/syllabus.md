@@ -58,11 +58,11 @@ TBD
 |  07/01 | Semantics                                   |      |      |
 |  07/02 | Names and bindings                          |      |      |
 |  07/03 | Types                                       | HW 2 | HW 1 |
-| Week 3 | **How to design *data*?**                   |      |      |
+| Week 3 | **How to abstract *data*?**                 |      |      |
 |  07/08 | Finite types (products)                     |      |      |
 |  07/09 | Finite types (sums), bidirectional typing   |      |      |
 |  07/10 | Recursive and generic types                 | HW 3 | HW 2 |
-| Week 4 | **How to design *programs*?**               |      |      |
+| Week 4 | **How to abstract *programs*?**             |      |      |
 |  07/15 | Higher-order functions                      |      |      |
 |  07/16 | Lambda calculus                             |      |      |
 |  07/17 | Parametric polymorphism                     | HW 4 | HW 3 |
