@@ -10,7 +10,7 @@ This course will expand how you think about programming by showing *how language
 
 More deeply, you'll learn powerful tools used by language designers and theorists to ensure the *correctness* of languages and programs written in them. In a world increasingly flooded with AI-generated slop, this course will sharpen your ability to separate signal from noise and build *provably unhackable* software, making you irreplaceable in the "AI future".
 
-All this is grounded in hands-on projects. Throughout the quarter, you'll design and implement a simple but powerful language that unifies seemingly disjoint paradigms and previews next-generation language features.
+All this is grounded in hands-on projects. Throughout the session, you'll design and implement a simple but powerful language that unifies seemingly disjoint paradigms and previews next-generation language features.
 
 
 ## Learning outcomes
@@ -95,12 +95,12 @@ Your grade will be determined by the following components:
   - includes a mix of written exercises and programming tasks
 - 2 quizzes: 40%
   - held in class, no makeups except for formally documented emergencies
-  - no quiz will be held during the last week of the quarter
+  - no quiz will be held during the last week of the session
 - 2 reflections: 10%
   - more details in the [Reflections](#reflections) section below
 
 We will using the following scale to determine your final letter grade. Note that:
-- This is a tentative scale; the percentages may be *lowered* at the end of the quarter, but will not be raised, so you can always expect to get at least the letter grade corresponding to your percentage. 
+- This is a tentative scale; the percentages may be *lowered* at the end of the session, but will not be raised, so you can always expect to get at least the letter grade corresponding to your percentage. 
 - I have no incentive to enforce a normal, bell-shaped distribution of grades, so you can be assured that you will get the letter grade you deserve based on your *own* performance, not on how well your classmates do.
 
 | Percentage | Letter Grade |
@@ -183,7 +183,7 @@ Again, don't use LLMs. If you do, it'll defeat the purpose of reflections; I and
 - 3 quizzes, 45%
   - held in class, no makeups
   - closed book, closed notes, closed laptops, 15-30 minutes
-  - *turn in corrections for 50% credit back at the end of the quarter*
+  - *turn in corrections for 50% credit back at the end of the session*
 - "perspectives", 5%
   - LLM policy:
     - Do not use LLMs for these reflections. Think for yourself. -->
@@ -216,7 +216,7 @@ If you require any accommodations to fully participate in this course, please co
   - Specially, I will try to teach the class in a way that I wish I had been taught when I first learned programming languages. I love PL deeply, and I want to share the beauty of the subject with you.
 - The course is redesigned to be entirely **incremental**. The whole course culminates in your building a really powerful and elegant programming language step by step. Each lecture introduces a new feature into the language, and each assignment builds on the previous one. Previously, CS162 just gave you a fully complete language, and each assignment implements different aspects of the *full* language.
 - Emphasis on the three roles of PL design process: motivating use case (client) -> relational design (designer) -> algorithmic implementation (implementer). Previously, CS162 just gave you a fully designed language and asked you to decipher a "god-given" design and write code to implement it. There weren't even use cases to motivate the design. This time, you will get a taste of all three roles of a language designer, and most importantly, you get to experiment with the design of the language yourself! How cool is that?
-- Instead of a single final that's worth 50%, we have 3 quizzes spread out over the quarter (more immediate feedback), and you get 50% points back for corrections (it's ok to make mistakes; what matters is to learn from your own mistakes!).
+- Instead of a single final that's worth 50%, we have 3 quizzes spread out over the session (more immediate feedback), and you get 50% points back for corrections (it's ok to make mistakes; what matters is to learn from your own mistakes!).
 - Programming assignments now use Python instead of OCaml
   - As much I love OCaml (it's my favorite language & I use it on most programming projects), to be able to use it for CS162, we need to spend at least 1.5 weeks, and in the past students didn't get comfortable until several weeks in. Cramming it into a 6-week summer session course is just too much.
   - Hopefully, Python is easy enough to pick up (it's also used in CS8/9 and couple of other upper-div courses). Technically, Python will be a lot more "useful" once you get a real job.

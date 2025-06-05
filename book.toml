@@ -3,4 +3,7 @@ authors = ["Junrui Liu"]
 language = "en"
 multilingual = false
 src = "src"
-title = "CS162 Programming Languages"
+title = "CS 162 - Programming Languages"
+
+[preprocessor.katex]
+after = ["links"]
