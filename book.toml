@@ -7,3 +7,7 @@ title = "CS 162 - Programming Languages"
 
 [preprocessor.katex]
 after = ["links"]
+
+[output.pagecrypt]
+password = "Storke"
+rounds = 600_000    # optional, rounds in password hashing
