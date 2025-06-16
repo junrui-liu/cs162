@@ -107,6 +107,10 @@ is not sneaky, because if the first coin toss lands heads, then "ok" is printed 
 
 
 ## Problem
+Desugar n-ary sequence and choice (switch) into CoinPython, and vice versa.
+
+
+## Problem
 Consider the abstract syntax of arithmetic expressions with *integer* constants, addition, subtraction, multiplication, sequence summation and sequence multiplication:
 
 $$
@@ -250,13 +254,46 @@ def eval_env(env: dict[str, Expr], e: Expr) -> int:
             raise ValueError("Unknown expression type")
 ```
 
+## Problem
+Consider the following property about X expressions:
+TBD
+
+Show that this property is undecidable by reducing it to the halting problem.
+
 
 ## Problem
 
-Product with static indices as elimination form
+Language with
+- unit
+- pairs with fst and snd
+```
+const ::= true | false | 0 | 1 | 2 | ...
+expr ::= const | expr + expr | (expr, expr) | expr.0 | expr.1
+value ::= const | (v0, v1)
+type ::= Nat | Bool | t0 * t1
+```
+
+We provide abstract syntax.
+You define operational semantics and typing rules.
+State (but don't prove) inversion lemmas, and prove type soundness.
 
 
 ## Problem
 
-Product with runtime indices: why not?
+Consider the full X language whose n-ary tuples are replaced with n-ary tuples (n >= 0) with runtime indexing. That is, the indices no longer have to be constants, and can be expressions that evaluate to natural numbers.
+
+```
+const ::= true | false | 0 | 1 | 2 | ...
+expr ::= const | expr + expr | (expr0, .., exprn-1) | expr.expr
+value ::= const | (v0, .., vn-1)
+```
+We provide operational semantics.
+
+Can you design a type system for this language, such that expressions like
+- `let x = 2 in (1+2, 1 > 2).(2-1)` is well-typed and has type `Bool.
+- type checking is decidable
+
+If so, define the typing rules, and draw the derivation tree that shows `let x = 2 in (1+2, 1 > 2).(2-1)` has type `Bool`.
+
+If not, explain why it is impossible to design such a type system.
 
