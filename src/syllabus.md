@@ -26,31 +26,34 @@ By the end of this course, you will be able to:
 
 ## Teaching Team
 
-> <br/><br/>
-> <img src="../res/junrui-profile.jpg" alt="junrui-profile" width="200"/>
+> <br>
+> <img src="../res/junrui-profile.jpg" alt="junrui-profile" width="150"/>
 > 
-> **Instructor:** Junrui Liu (pronounced "June-ray"), he/him
+> **Instructor:** Junrui Liu (pronounced "June-ray", he/him)
 > 
 > 
-> I'm a PhD student in Computer Science (just finished my 4th year). I research Programming Languages, so the stuff we cover in this class is very close to my heart. I've been TA'ing this course for 4 years in a row, and am super excited to teach it for the first time as an instructor!
+> I'm a PhD student in Computer Science (just finished my 4th year). I research Programming Languages, so the stuff we cover in CS 162 is very close to my heart. I've been TA'ing this course for 4 years in a row, and am super excited to teach it for the first time as an instructor!
 >
-> In my free time, I enjoy playing video games, watching owarai & anime, and playing [carillon](https://music.ucsb.edu/participate/ensembles/carillon) (you might catch me practicing on the Storke Tower on weekends this summer).
+> In my free time, I enjoy watching owarai, anime and competitive Valorant. I also like playing [carillon](https://music.ucsb.edu/participate/ensembles/carillon) (you might catch me practicing on the Storke Tower on weekends this summer).
 >
 > **Email**: [junrui@ucsb.edu](mailto:junrui@ucsb.edu)
 > 
-> **Office hours**: TBD
+> **Office hours**: Tue, Wed, Thur 2-3, place TBD
 
-> <br/><br/>
+> <br>
 > <img src="../res/jiaming-profile.jpg" alt="jiaming-profile" width="200"/>
 >
-> **TA:** Jiaming Shan
-> Bio TBD
+> **TA:** Jiaming Shan (he/him)
 > 
-> **Email**: jiamingshan@ucsb.edu
+> I'm a first year CS PhD student in UCSB, advised by Prof. Yu Feng. My current research topic is Programming Language and Formal Verification. I'm currently working on projects on AI for math and smart contracts. I'm also interested in AI. In my leisure time, I play some digital card games and rhythm games.
 > 
-> **Office hours**: TBD
+> **Email**: [jiamingshan@ucsb.edu](mailto:jiamingshan@ucsb.edu)
+> 
+> **Office hours**: Mon 2-4pm @ [CSIL](https://ucsb-cs48.github.io/topics/csil/) (1st floor of Harold Frank Hall, south side)
 
 The faculty mentor for this course is Prof. Yu Feng (yufeng@cs.ucsb.edu).
+
+In the remainder of this syllabus, "I" refers to Junrui, the instructor, unless otherwise specified.
 
 ## Course Communication
 
@@ -58,10 +61,10 @@ We will use Discord for most communication, including announcements and Q&A. The
 
 ## Weekly Pattern
 
-|           | Mon         | Tue                                             | Wed                                             | Thu                                             | Fri                                             |
-| --------- | ----------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| **Class** | No class 🏖️😎 | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Section 🗣️ <br> (11am-12:20pm, <br> Phelps 1440) |
-| **OH**    | TBD         | TBD                                             | TBD                                             | TBD                                             | TBD                                             |
+|           | Mon                        | Tue                                             | Wed                                             | Thu                                             | Fri                                             |
+| --------- | -------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| **Class** | No class 🏖️😎                | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Section 🗣️ <br> (11am-12:20pm, <br> Phelps 1440) |
+| **OH**    | Jiaming <br> (2-4pm, CSIL) | Junrui <br> (2-3pm, place TBD)                  | Junrui <br> (2-3pm, place TBD)                  | Junrui <br> (2-3pm, place TBD)                  | My turn <br> 🏖️😎                                 |
 
 
 ## Grading Scale
@@ -82,22 +85,22 @@ We will use Discord for most communication, including announcements and Q&A. The
 | 0% - 59%   | F            |
 
 Note that:
-- The instructor reserves the right to curve the grades *to the student's advantage*. In other words, the percentage for each letter may be *lowered* at the end of the session, but will not be raised, so you can always expect to get *at least* the letter grade corresponding to the percentage listed above.
-- The instructor has no incentive to enforce a normal, bell-shaped distribution of grades, so you can be assured that you will get the letter grade you deserve based on your *own* performance, not on how well your classmates do.
+- I reserve the right to curve the grades *to the student's advantage*. In other words, the percentage for each letter may be *lowered* at the end of the session, but will not be raised, so you can always expect to get *at least* the letter grade corresponding to the percentage listed above.
+- I have no incentive to enforce a normal, bell-shaped distribution of grades, so you can be assured that you will get the letter grade you deserve based on your *own* performance, not on how well your classmates do.
 
 ## Grading Criteria
 
 - 5 homework assignments: 50%
-  - includes a mix of written exercises and programming tasks
+  - A mix of written exercises and programming tasks
 - 2 quizzes: 40%
-  - held in class, no makeups except for formally documented emergencies
-  - no quiz will be held during the last week of the session
+  - Held in class, closed-book, no makeups
+  - No quiz will be held during the last week of the session
 - 2 reflections: 10%
-  - more details in the [Reflection Assignments](#reflection-assignment) section below
+  - More details in the [Reflection Assignments](#reflection-assignments) section below
 
 
 
-## Textbooks and Readings
+## Readings
 The primary reference for this course is the lecture notes, which will be made available in the [Lecture Notes](./lecture-notes.md) section of this website. I will try to release the notes within 2-3 days after each lecture.
 
 For additional reference, here're some of my personal favorite textbooks on programming languages, all of which are freely available online:
@@ -110,7 +113,7 @@ For additional reference, here're some of my personal favorite textbooks on prog
 
 
 ### Attendance
-You are highly encouraged to attend both class and section. Although optional, attendance and participation will definitely influence your success level in this class -- not least because you can [earn tokens](#token-system) by participating in class!
+You are highly encouraged to attend both class and section. Although optional, attendance and participation will definitely influence your success level in this class -- not least because you can [earn tokens](#token-system) for active participating!
 
 
 
@@ -119,17 +122,33 @@ You are highly encouraged to attend both class and section. Although optional, a
 You will receive tokens of my appreciation 💖 for giving me feedback on my teaching -- directly so by filling out surveys, or indirectly so by actively participating in class and coming to my office hours. You can redeem these tokens for *corrections on quizzes*. Each token allows you correct 1 point you lost on a quiz. There is no upper limit on the number of tokens you can earn. 
 
 Below is a tentative and non-exhaustive list of ways to earn tokens:
-| Activity                                             | Tokens | Reset              |
-| ---------------------------------------------------- | ------ | ------------------ |
-| Filling out a survey                                 | 2 💖    | every survey       |
-| Attending a lecture                                  | 1 💖    | every lecture      |
-| Asking a question                                    | 1 💖    | every lecture half |
-| Coming to Junrui's office hours                      | 2 💖    | every week         |
-| Hidden events (explained when an event is triggered) | ??? 💖  | every event        |
+| Activity                                             | Tokens | Reset         |
+| ---------------------------------------------------- | ------ | ------------- |
+| Filling out a survey                                 | 2 💖    | every survey  |
+| Attending a lecture                                  | 1 💖    | every lecture |
+| Asking/answering a question in class                 | 2 💖    | every lecture |
+| Coming to Junrui's office hours                      | 2 💖    | every week    |
+| Hidden events (explained when an event is triggered) | ??? 💖  | every event   |
 
-The **Reset** column indicates how often the tokens can be earned. For example, you can earn 1 token for asking a question in class, but you can only earn that token once per lecture half (so you can earn up to 2 tokens per lecture by asking a question in each of the two lecture halves).
+The **Reset** column indicates how often the tokens can be earned. For example, you can earn 2 tokens for asking a question in class, but you can only earn that token once per lecture. In other words, the *first* time you ask a question in each lecture grants you 2 tokens. (The resets are intended to prevent hardcore min-maxers from DDoSing me with questions.)
 
 To redeem your tokens for quiz corrections, you will schedule an in-person meeting with Junrui toward the end of the course, during which you will go over your original and corrected answers. More details will be provided later in the course.
+
+<details>
+<summary>
+"What if I'm shy?"
+</summary>
+
+> Junrui: Same here. As an undergrad, I was *terrified* of speaking up in class, worried my question might sound “stupid” or my answer might be wrong. So if you're nervous, know it’s totally normal. And if you’re not comfortable talking in class, you can still earn tokens through office hours or surveys.  
+>  
+> That said, this system is meant to nudge you toward participating more than you normally would. Ultimately, the system is designed to collect *your* feedback on my teaching. I'd much rather know you're confused right away than have you think you're fine, only to realize you're lost during the homework. Honestly, I value questions that reveal misunderstandings as much as correct answers. Think of it like learning an instrument or a sport — it’s better if a coach spots your mistake early, before you practice it the wrong way for too long. I’m your coach for *learning* programming languages, and you're mine for *teaching* them — so the feedback goes both ways.  
+>  
+> One way to ease the nerves is to treat asking questions as a "min/max" strategy. You paid about [$1200 for this class](https://www.summer.ucsb.edu/cost-savings/cost-attendance) — you deserve the best grade you can earn (with academic integrity, of course). Questions help you earn correction tokens and boost your quiz scores. Even asking me to clarify something I just said counts. Staying quiet earns you 1 token; raising your hand earns you 3!
+>  
+> So I hope this takes some of the pressure off. There really are no stupid questions — only imagined ones.
+>
+> <a href="https://www.reddit.com/r/BocchiTheRock/comments/zfvb3w/hope_nobody_else_made_this_joke_yet/"><img src="https://preview.redd.it/hope-nobody-else-made-this-joke-yet-v0-6vj3vetq0p4a1.jpg?width=1080&crop=smart&auto=webp&s=10631d59dce8fb74101d58654de0cfc5b773c1c0" alt="hope nobody else made this joke yet" width="400"/></a>
+</details>
 
 
 ### Classroom Responsibility and Courtesy
@@ -145,27 +164,28 @@ Academic integrity is taken seriously. If you copy someone else's work (or LLM's
 Unless otherwise specified, use of generative AI tools, including but not limited to chatbots (e.g., ChatGPT), coding assistants (e.g., Copilot), and coding agents (e.g., Cursor), is **not allowed** in this course.
 
 <details>
-<summary>Why not?</summary>
+<summary>"Why not?"</summary>
 
-- I want *you* to learn and think deeply about the materials.
-   1. So that you become irreplaceable by AIs -- not training yet anthoer model for tech billionaires to replace the workers.
-   2. The only way to gain muscle is to use that muscle. The only way to get good at an instrument is to practice. The only way to learn to speak a new language is to actually speak it. No learning occurs if the work doesn't happen *within you*.
-- I respect your work, and I'd appreciate if you respect mine as well.
-   1. I do not use AI to grade your work at all. If your work is AI generated, it's often easy to tell -- because a lot of the materials in this class are novel -- and I will be very sad to read something not from you. 
-   2. I spent a lot of time designing and crafting this course. Although the materials may not be perfect, I'd greatly appreciate it if you respect my work by not feeding it as training data to some LLM. If something is not clear, please let me know, and I will do my best to make it better.
-- Using those tools would be a [violation of UCSB's academic integrity policy](https://studentconduct.sa.ucsb.edu/academic-integrity). I do not want to report anyone -- it will make everyone sad, not just me, but if that happens, I will have no choice but to follow the policy.
-- On a more cheerful note, you won't ever need them, hopefully.
-  1. You do not need to write any boilerplate code for this class. Every line of code you write matters, and is designed to check your understanding -- think of Gradescope autograder as a personalized TA vetted by me. The entirety of the interpreter + type checker you'll write for the entire class is fewer than 500 lines of code (at least in my own implementation). Spread over 5 assignments, that's about 100-200 LOC per week, which I hope is manageable.
-  2. LLMs are ok with program syntax, and bad with program semantics, because they can't escape the Halting Problem! This course, however, is all about semantics and wreslting with the "undecidable". Even if you only use chatbots as "personalized tutors", they will likely give you non-sensical answers for questions related to language semantics (don't ask how I know this). So if you have questions, I'd highly encourage you to ask me, the TA, or your classmates instead. I and the TA will do our absolute best to help you understand everything taught in this class + get 100% on all assignments, if you're willing to put in the work. Come to office hours, ask questions in class and in Discord, and form study groups.
-
-> **TL;DR.** I want you to learn and succeed. I'm here for exactly that and only that reason.
+> On the surface, using those tools would be a [violation of UCSB's academic integrity policy](https://studentconduct.sa.ucsb.edu/academic-integrity). I do not want to report anyone -- it will make everyone sad, not just me, but if that happens, I will have no choice but to follow the policy.
+> 
+> Fundamentally, I want *you* to learn and think deeply about the materials, so that you become irreplaceable by AIs -- not training yet anthoer model for tech billionaires to replace the workers. The only way to gain muscle is to use that muscle. The only way to get good at an instrument is to practice. The only way to learn to speak a new language is to actually speak it. No learning occurs if the work doesn't happen *within you*.
+> 
+> Also, I respect your work, and I'd appreciate if you respect mine as well. I do not use AI to grade your work at all. If your work is AI generated, it's often easy to tell -- because a lot of the materials in this class are novel -- and I will be very sad to read something not from you. Also, I spent a lot of time designing and crafting this course. Although the materials may not be perfect, I'd greatly appreciate it if you respect my work by not feeding it as training data to some LLM. If something is not clear, please let me know, and I will do my best to make it better.
+> 
+> On a more cheerful note, you won't ever need them, hopefully.
+>    1. You do not need to write any boilerplate code for this class. Every line of code you write matters, and is designed to check your understanding -- think of Gradescope autograder as a personalized TA vetted by me. The entirety of the interpreter + type checker you'll write for the entire class is fewer than 500 lines of code (at least in my own implementation). Spread over 5 assignments, that's about 100-200 LOC per week, which I hope is manageable.
+>    2. LLMs are ok with program syntax, and bad with program semantics, because they can't escape the Halting Problem! This course, however, is all about semantics and wreslting with the "undecidable". Even if you only use chatbots as "personalized tutors", they will likely give you non-sensical answers for questions related to language semantics (don't ask how I know this). So if you have questions, I'd highly encourage you to ask me, the TA, or your classmates instead. I and the TA will do our absolute best to help you understand everything taught in this class + get 100% on all assignments, if you're willing to put in the work. Come to office hours, ask questions in class and in Discord, and form study groups.
+> 
+> **TL;DR.** I want you to learn and succeed. Don't be like this guy:
+>
+> <a href="https://www.reddit.com/r/ProgrammerHumor/comments/1je2exb/aicode/"><img src="https://preview.redd.it/jgzvvjxokfpe1.jpeg?width=320&crop=smart&auto=webp&s=0c56b120a7076f274067e4f5544678d8539ca239" alt="Don't be like this guy" width="300"/></a>
 
 </details>
 
 
 ### Late Days
 
-You have a total of 5 late days to use throughout the course for *programming assignments*. You can spend up to 2 late days for each programming assignment, and you can use them in any combination you like (e.g., 2 days for HW1, 1 day for HW2, and no late days for HW3). Once you run out of late days, no more late submissions will be accepted, and you will receive a score of 0 for the assignment.
+You have a total of **5 late days** to use throughout the course for *programming assignments*. You can spend **no more than 2 late days** on each programming assignment, and you can use them in any combination you like (e.g., 1 days for HW1, 2 day for HW2, no late days for HW3, etc.). Once you run out of late days, no more late submissions will be accepted, and you will receive a score of 0 for late assignments.
 
 You cannot use late days on the written part of the assignments, since we may discuss the answers in class the next day. 
 
@@ -178,10 +198,10 @@ No makeups will be given for quizzes except for formally documented emergencies.
 ## University Policies
 
 ### Copyright and Course Recording
-All course materials (class lectures and discussions, handouts, examinations, web materials) and the
+All course materials (class lectures and discussions, handouts, quizzes, web materials) and the
 intellectual content of the course itself are protected by United States Federal Copyright Law and the
-California Civil Code. UC Policy 102.23 expressly prohibits students (and all other persons) from recording
-lectures or discussions and from distributing or selling course materials without my prior written permission. (See http://policy.ucop.edu/doc/2710530/PACAOS-100). Students are permitted to make notes solely for their own private educational use. Exceptions to accommodate students with disabilities may be granted with appropriate documentation.
+California Civil Code. [UC Policy 102.23](http://policy.ucop.edu/doc/2710530/PACAOS-100) expressly prohibits students (and all other persons) from recording
+lectures or discussions and from distributing or selling course materials without my prior written permission. Students are permitted to make notes solely for their own private educational use. Exceptions to accommodate students with disabilities may be granted with appropriate documentation.
 
 > **TL;DR.** Don't share or sell material from this class with people outside of the course!
 
@@ -200,12 +220,12 @@ For exam accommodations, please submit requests at least 1 week before the quiz 
 
 
 #### Wellbeing and Mental Health
-Personal concerns such as stress, anxiety, relationships, depression, cultural differences, can interfere with your ability to succeed and thrive. If you are experiencing any difficulties meeting class requirements, or any difficulties in your personal life, please contact UCSB Counseling and Psychological Services. For information, please call (805-893-4411) or visit their [web site](https://caps.sa.ucsb.edu/). In addition, UCSB has [tons of resources](https://wellbeing.ucsb.edu/) to help you gain the information, skills, and support systems you need to thrive and succeed academically.
+Personal concerns such as stress, anxiety, relationships, depression, cultural differences, can interfere with your ability to succeed and thrive. If you are experiencing any difficulties meeting class requirements, or any difficulties in your personal life, please contact UCSB Counseling and Psychological Services. For information, please call <a href="tel:805-893-4411">(805) 893-4411</a> or visit [their web site](https://caps.sa.ucsb.edu/). In addition, UCSB has [tons of resources](https://wellbeing.ucsb.edu/) to help you gain the information, skills, and support systems you need to thrive and succeed academically.
 
 
-#### Food Security and Calfresh
-If you are facing any challenges securing food, and believe this may affect your performance in the class, you are urged to meet with a Food Security and Calfresh Advocate, who is aware of the broad variety of resources that UCSB has to offer. You are also urged to contact the instructor or teaching assistant if you are comfortable doing so. Please visit [basicneeds.ucsb.edu](https://basicneeds.ucsb.edu/) for additional resources including [Calfresh](https://basicneeds.ucsb.edu/resources/food/calfresh), the [AS Food Bank](https://foodbank.as.ucsb.edu/), and more.
+#### Basic Needs
 
+If you are facing any challenges securing food or finding housing, you are urged to meet with a [Calfresh Advocate and Basic Needs Peer Advisor](https://basicneeds.ucsb.edu/resources/basic-needs-peer-advising), who is aware of the broad variety of resources that UCSB has to offer. You are also urged to contact me or the TA if you are comfortable doing so. Please visit [basicneeds.ucsb.edu](https://basicneeds.ucsb.edu/) for additional resources including [Calfresh](https://basicneeds.ucsb.edu/resources/food/calfresh), the [AS Food Bank](https://foodbank.as.ucsb.edu/), and more.
 
 
 
@@ -222,7 +242,7 @@ Again, don't use LLMs. If you do, it'll defeat the purpose of reflections; I and
 
 
 
-## Schedule (Tentative)
+## Calendar (Tentative)
 
 
 |       Date | Topic                                            | Out  | Due  |
@@ -244,8 +264,8 @@ Again, don't use LLMs. If you do, it'll defeat the purpose of reflections; I and
 |      07/16 | Polymorphism, type inference                     |      | HW 3 |
 |      07/17 | Defunctionalization, continuation-passing        |      |      |
 | **Week 5** | **How to change the world?**                     |      |      |
-|      07/22 | Exceptions, abstract machines, effects           | HW 5 |      |
-|      07/23 | Mutable states                                   |      | HW 4 |
+|      07/22 | Mutable states                                   | HW 5 |      |
+|      07/23 | Effect handlers                                  |      | HW 4 |
 |      07/24 | *Quiz 2 (tentative)*                             |      |      |
 | **Week 6** | **What is the future of programming like?**      |      |      |
 |      07/29 | TBD                                              |      |      |
