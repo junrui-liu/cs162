@@ -1,6 +1,7 @@
 # Summary
 
 - [Syllabus 📝](./syllabus.md)
+- [Calendar 📅](./calendar.md)
 - [Lecture Notes 🧑‍🏫](./lecture-notes.md)
   - [Intro 👋](./lecture-notes/intro.md)
   - [Russian Dolls 🪆](./lecture-notes/inference-rules.md)
