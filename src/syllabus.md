@@ -27,7 +27,7 @@ By the end of this course, you will be able to:
 ## Teaching Team
 
 > <br>
-> <img src="../res/junrui-profile.jpg" alt="junrui-profile" width="150"/>
+> <img src="./res/junrui-profile.jpg" alt="junrui-profile" width="150"/>
 > 
 > **Instructor:** Junrui Liu (pronounced "June-ray", he/him)
 > 
@@ -38,14 +38,14 @@ By the end of this course, you will be able to:
 >
 > **Email**: [junrui@ucsb.edu](mailto:junrui@ucsb.edu)
 > 
-> **Office hours**: Tue, Wed, Thur 2-3, place TBD
+> **Office hours**: Tue, Wed, Thur, 2-3pm, Phelps 2510
 
 > <br>
-> <img src="../res/jiaming-profile.jpg" alt="jiaming-profile" width="200"/>
+> <img src="./res/jiaming-profile.jpg" alt="jiaming-profile" width="200"/>
 >
 > **TA:** Jiaming Shan (he/him)
 > 
-> I'm a first year CS PhD student in UCSB, advised by Prof. Yu Feng. My current research topic is Programming Language and Formal Verification. I'm currently working on projects on AI for math and smart contracts. I'm also interested in AI. In my leisure time, I play some digital card games and rhythm games.
+> I'm a first-year CS PhD student in UCSB, advised by Prof. Yu Feng. My current research topic is Programming Language and Formal Verification. I'm currently working on projects on AI for math and smart contracts. I'm also interested in AI. In my leisure time, I play some digital card games and rhythm games.
 > 
 > **Email**: [jiamingshan@ucsb.edu](mailto:jiamingshan@ucsb.edu)
 > 
@@ -64,7 +64,7 @@ We will use Discord for most communication, including announcements and Q&A. The
 |           | Mon                        | Tue                                             | Wed                                             | Thu                                             | Fri                                             |
 | --------- | -------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
 | **Class** | No class 🏖️😎                | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Section 🗣️ <br> (11am-12:20pm, <br> Phelps 1440) |
-| **OH**    | Jiaming <br> (2-4pm, CSIL) | Junrui <br> (2-3pm, place TBD)                  | Junrui <br> (2-3pm, place TBD)                  | Junrui <br> (2-3pm, place TBD)                  | My turn <br> 🏖️😎                                 |
+| **OH**    | Jiaming <br> (2-4pm, CSIL) | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (2-3pm, Phelps 2510)                | My turn <br> 🏖️😎                                 |
 
 
 ## Grading Scale
@@ -185,7 +185,7 @@ Unless otherwise specified, use of generative AI tools, including but not limite
 
 ### Late Days
 
-You have a total of **5 late days** to use throughout the course for *programming assignments*. You can spend **no more than 2 late days** on each programming assignment, and you can use them in any combination you like (e.g., 1 days for HW1, 2 day for HW2, no late days for HW3, etc.). Once you run out of late days, no more late submissions will be accepted, and you will receive a score of 0 for late assignments.
+You have a total of **5 late days** to use throughout the course for *programming assignments*. You can spend **no more than 2 late days** on each programming assignment, and you can use them in any combination you like (e.g., 1 day for HW1, 2 days for HW2, 2 days for HW5, etc.). Once you run out of late days, no more late submissions will be accepted, and you will receive a score of 0 for late assignments.
 
 You cannot use late days on the written part of the assignments, since we may discuss the answers in class the next day. 
 
@@ -268,9 +268,9 @@ Again, don't use LLMs. If you do, it'll defeat the purpose of reflections; I and
 |      07/23 | Effect handlers                                  |      | HW 4 |
 |      07/24 | *Quiz 2 (tentative)*                             |      |      |
 | **Week 6** | **What is the future of programming like?**      |      |      |
-|      07/29 | TBD                                              |      |      |
-|      07/30 | TBD                                              |      |      |
-|      07/31 | TBD                                              |      |      |
+|      07/29 | Advanced topic, TBD                              |      |      |
+|      07/30 | Advanced topic, TBD                              |      |      |
+|      07/31 | Advanced topic, TBD                              |      |      |
 |  **08/02** | **(End of summer session A)**                    |      | HW 5 |
 
 <!-- |      07/29 | Curry-Howard correspondence                 |      |      |
