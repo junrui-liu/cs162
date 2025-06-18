@@ -1,5 +1,6 @@
 # Summary
 
+- [Calendar 📅](./calendar.md)
 - [Syllabus 📝](./syllabus.md)
 - [Lecture Notes 🧑‍🏫](./lecture-notes.md)
   <!-- - [Introduction 👋](./lecture-notes/intro.md) -->
@@ -28,7 +29,7 @@
   <!-- - [HW4 🍛](./assignments/hw4.md) -->
   <!-- - [HW5 🌎](./assignments/hw5.md) -->
   <!-- - [HW6 💎](./assignments/hw6.md) -->
-- [Perspectives 👀](./perspectives.md)
+- [Reflections 💭](./reflections.md)
   <!-- - [Software Correctness & AI](./perspectives/week1.md) -->
   <!-- - [Static Typing](./perspectives/week2.md) -->
   <!-- - [Feminism in PL](./perspectives/week3.md) -->
