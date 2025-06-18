@@ -1,25 +1,21 @@
-# Syllabus for CS 162 - Programming Languages (Summer 2025)
-
-<!-- > Everything here is work in progress, and is subject to change. -->
-
 ## Course Description
 
 Languages shape how we think.
 
-This course will expand how you think about programming by showing *how languages are built*. We'll demystify so-called "paradigms" -- imperative, object-oriented, and functional -- by distilling them into their core building blocks. You'll come to see familiar languages in a new light, no longer bound to one "paradigm". You'll be able to see through surface-level syntax, and choose the right abstractions for the right problems.
+This course will expand how you think about programming by showing *how languages are built*. We'll demystify so-called "paradigms" -- imperative, object-oriented, and functional -- by distilling them into their core building blocks. You'll come to see familiar languages in a new light, see through surface-level syntax, and choose the right abstractions for the right problems.
 
-More deeply, you'll learn powerful tools used by language designers and theorists to ensure the *correctness* of languages and programs written in them. In a world increasingly flooded with AI-generated slop, this course will sharpen your ability to separate signal from noise and build *provably unhackable* software, making you irreplaceable in the "AI future".
+More deeply, you'll learn powerful tools used by language designers and theorists to ensure the *correctness* of languages and programs written in them. In a world increasingly flooded with AI-generated slop, this course will sharpen your ability to separate signal from noise and build provably unhackable software, making you irreplaceable in the "AI future".
 
 All this is grounded in hands-on projects. Throughout the session, you'll design and implement a simple but powerful language that unifies seemingly disjoint paradigms and previews next-generation language features.
 
 
 ## Learning Outcomes
 By the end of this course, you will be able to:
-1. *Formalize* the syntax and semantics of programming languages from informal description.
-2. *Visualize and reason about* languages and programs written in them using formal models.
-3. *Implement* interpreters and type checkers from formal specifications.
-4. *Analyze* widely held misconceptions about language features and "paradigms", and *desugar* surface-level features into their essential components.
-5. *Apply* typed functional programming and computational effects to model and solve problems.
+1. Formalize the syntax and semantics of programming languages from informal description.
+2. Visualize and reason about languages and programs written in them using formal models.
+3. Implement interpreters and type checkers from formal specifications.
+4. Analyze widely held misconceptions about language features and "paradigms", and desugar surface-level features into their essential components.
+5. Apply typed functional programming and computational effects to solve problems.
    <!-- 1. Model the data domain with algebraic data types.
    1. Carry out structural recursion (induction) to solve the problem over algebraically defined data.
    2. Identify recurring computational patterns in the solution, and abstract them into higher-order and/or polymorphic functions. -->
@@ -85,7 +81,7 @@ We will use Discord for most communication, including announcements and Q&A. The
 | 0% - 59%   | F            |
 
 Note that:
-- I reserve the right to curve the grades *to the student's advantage*. In other words, the percentage for each letter may be *lowered* at the end of the session, but will not be raised, so you can always expect to get *at least* the letter grade corresponding to the percentage listed above.
+- I reserve the right to curve the grades to the student's advantage. In other words, the percentage for each letter may be *lowered* at the end of the session, but will not be raised, so you can always expect to get *at least* the letter grade corresponding to the percentage listed above.
 - I have no incentive to enforce a normal, bell-shaped distribution of grades, so you can be assured that you will get the letter grade you deserve based on your *own* performance, not on how well your classmates do.
 
 ## Grading Criteria
@@ -119,7 +115,7 @@ You are highly encouraged to attend both class and section. Although optional, a
 
 ### Token System
 
-You will receive tokens of my appreciation 💖 for giving me feedback on my teaching -- directly so by filling out surveys, or indirectly so by actively participating in class and coming to my office hours. You can redeem these tokens for *corrections on quizzes*. Each token allows you correct 1 point you lost on a quiz. There is no upper limit on the number of tokens you can earn. 
+You will receive tokens of my appreciation 💖 for giving me feedback on my teaching -- directly so by filling out surveys, or indirectly so by actively participating in class and coming to my office hours. You can redeem these tokens for **corrections on quizzes**. Each token allows you correct 1 point you lost on a quiz. There is no upper limit on the number of tokens you can earn. 
 
 Below is a tentative and non-exhaustive list of ways to earn tokens:
 | Activity                                             | Tokens | Reset         |
@@ -139,7 +135,7 @@ To redeem your tokens for quiz corrections, you will schedule an in-person meeti
 "What if I'm shy?"
 </summary>
 
-> Junrui: Same here. As an undergrad, I was *terrified* of speaking up in class, worried my question might sound “stupid” or my answer might be wrong. So if you're nervous, know it’s totally normal. And if you’re not comfortable talking in class, you can still earn tokens through office hours or surveys.  
+> Junrui: Same here. As an undergrad, I was terrified of speaking up in class, worried my question might sound “stupid” or my answer might be wrong. So if you're nervous, know it’s totally normal. And if you’re not comfortable talking in class, you can still earn tokens through office hours or surveys.  
 >  
 > That said, this system is meant to nudge you toward participating more than you normally would. Ultimately, the system is designed to collect *your* feedback on my teaching. I'd much rather know you're confused right away than have you think you're fine, only to realize you're lost during the homework. Honestly, I value questions that reveal misunderstandings as much as correct answers. Think of it like learning an instrument or a sport — it’s better if a coach spots your mistake early, before you practice it the wrong way for too long. I’m your coach for *learning* programming languages, and you're mine for *teaching* them — so the feedback goes both ways.  
 >  
