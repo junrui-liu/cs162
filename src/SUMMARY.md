@@ -2,8 +2,8 @@
 
 - [Calendar 📅](./calendar.md)
 - [Syllabus 📝](./syllabus.md)
-- [Lecture Notes 🧑‍🏫]()
-  <!-- - [Introduction 👋](./lecture-notes/intro.md) -->
+- [Lecture Notes 🧑‍🏫](./lecture-notes.md)
+  - [Intro, Syntax](./lecture-notes/0624.md)
   <!-- - [Python 🐍](./lecture-notes/python.md) -->
   <!-- - [Russian Dolls 🪆](./lecture-notes/inference-rules.md) -->
   <!-- - [Semantics 🧠](./lecture-notes/semantics.md) -->
