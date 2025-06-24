@@ -2,7 +2,7 @@
 
 - [Calendar 📅](./calendar.md)
 - [Syllabus 📝](./syllabus.md)
-- [Lecture Notes 🧑‍🏫](./lecture-notes.md)
+- [Lecture Notes 🧑‍🏫]()
   <!-- - [Introduction 👋](./lecture-notes/intro.md) -->
   <!-- - [Python 🐍](./lecture-notes/python.md) -->
   <!-- - [Russian Dolls 🪆](./lecture-notes/inference-rules.md) -->
@@ -22,18 +22,18 @@
   <!-- - [Ducks 🦆](./lecture-notes/subtyping.md) -->
   <!-- - [Church ⛪️](./lecture-notes/encodings.md) -->
 
-- [Homework Assignments 📚](./assignments.md)
+- [Homework Assignments 📚]()
   <!-- - [HW1 🐍](./assignments/hw1.md) -->
   <!-- - [HW2 🧮](./assignments/hw2.md) -->
   <!-- - [HW3 🎨](./assignments/hw3.md) -->
   <!-- - [HW4 🍛](./assignments/hw4.md) -->
   <!-- - [HW5 🌎](./assignments/hw5.md) -->
   <!-- - [HW6 💎](./assignments/hw6.md) -->
-- [Reflections 💭](./reflections.md)
+- [Reflections 💭]()
   <!-- - [Software Correctness & AI](./perspectives/week1.md) -->
   <!-- - [Static Typing](./perspectives/week2.md) -->
   <!-- - [Feminism in PL](./perspectives/week3.md) -->
   <!-- - [Economics of PL](./perspectives/week4.md) -->
   <!-- - [Future of PL](./perspectives/week5.md) -->
   <!-- - [Propositions as Types](./perspectives/week6.md) -->
-- [Discussion Sections 🗣️](./sections.md)
+- [Discussion Sections 🗣️]()
