@@ -3,7 +3,7 @@
 - [Syllabus 📝](./syllabus.md)
 - [Calendar 📅](./calendar.md)
 - [Lecture Notes 🧑‍🏫](./lecture-notes.md)
-  - [Intro 👋](./lecture-notes/intro.md)
+  - [Intro, Syntax](./lecture-notes/0624.md)
   - [Russian Dolls 🪆](./lecture-notes/inference-rules.md)
   - [Semantics 🧠](./lecture-notes/semantics.md)
   - [Names 🏷️](./lecture-notes/names.md)
