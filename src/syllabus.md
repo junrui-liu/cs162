@@ -34,7 +34,9 @@ By the end of this course, you will be able to:
 >
 > **Email**: [junrui@ucsb.edu](mailto:junrui@ucsb.edu)
 > 
-> **Office hours**: Tue, Wed, Thur, 2-3pm, Phelps 2510
+> **Office hours**:
+> - Tue, Wed, Thur, 2-3pm, Phelps 2510
+> - Fri, 3:15-4:15pm, [Building 936 aka "TA trailer"](https://ucsb-cs8.github.io/w20/info/mentorPhotos/trailer-map.png) (next to the Phelps)
 
 > <br>
 > <img src="./res/jiaming-profile.jpg" alt="jiaming-profile" width="200"/>
@@ -57,11 +59,10 @@ We will use Discord for most communication, including announcements and Q&A. The
 
 ## Weekly Pattern
 
-|           | Mon                        | Tue                                             | Wed                                             | Thu                                             | Fri                                             |
-| --------- | -------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| **Class** | No class 🏖️😎                | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Section 🗣️ <br> (11am-12:20pm, <br> Phelps 1440) |
-| **OH**    | Jiaming <br> (2-4pm, CSIL) | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (2-3pm, Phelps 2510)                | My turn <br> 🏖️😎                                 |
-
+|           | Mon                        | Tue                                             | Wed                                             | Thu                                             | Fri                                                                                                                            |
+| --------- | -------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| **Class** | No class 🏖️😎                | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Section 🗣️ <br> (11am-12:20pm, <br> Phelps 1440)                                                                                |
+| **OH**    | Jiaming <br> (2-4pm, CSIL) | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (3:15pm-4:15pm, [Building 936 aka "TA trailer"](https://ucsb-cs8.github.io/w20/info/mentorPhotos/trailer-map.png)) |
 
 ## Grading Scale
 
