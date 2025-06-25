@@ -59,8 +59,11 @@ class ProbablisticInterpreter:
             case Print(msg=msg):
                 return msg
             case Seq(s1, s2):
+                pass
                 # your code here
             case If(s1, s2):
+                pass
                 # your code here
             case While(s):
+                pass
                 # your code here

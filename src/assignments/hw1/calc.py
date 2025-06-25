@@ -43,14 +43,30 @@ class X(Expr):
 def eval(x: int, e: Expr) -> int:
     match e:
         case Num(value):
+            pass
             # your code here
         case Add(e1, e2):
+            pass
             # your code here
         case Sub(e1, e2):
+            pass
             # your code here
         case Mul(e1, e2):
+            pass
             # your code here
         case Compose(e1, e2):
+            pass
             # your code here
         case X():
+            pass
             # your code here
+
+
+def remove_compose(e: Expr) -> Expr:
+    pass
+    # your code here
+
+
+def simplify(e: Expr) -> Expr:
+    pass
+    # your code here
