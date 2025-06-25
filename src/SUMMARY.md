@@ -22,8 +22,8 @@
   <!-- - [Ducks 🦆](./lecture-notes/subtyping.md) -->
   <!-- - [Church ⛪️](./lecture-notes/encodings.md) -->
 
-- [Homework Assignments 📚]()
-  <!-- - [HW1 🐍](./assignments/hw1.md) -->
+- [Homework Assignments 📚](./assignments.md)
+  - [HW1](./assignments/hw1/README.md)
   <!-- - [HW2 🧮](./assignments/hw2.md) -->
   <!-- - [HW3 🎨](./assignments/hw3.md) -->
   <!-- - [HW4 🍛](./assignments/hw4.md) -->
