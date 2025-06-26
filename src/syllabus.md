@@ -34,7 +34,9 @@ By the end of this course, you will be able to:
 >
 > **Email**: [junrui@ucsb.edu](mailto:junrui@ucsb.edu)
 > 
-> **Office hours**: Tue, Wed, Thur, 2-3pm, Phelps 2510
+> **Office hours**:
+> - Tue, Wed, Thur, 2-3pm, Phelps 2510
+> - Fri, 1-2pm, [Building 936 aka "TA trailer"](https://ucsb-cs8.github.io/w20/info/mentorPhotos/trailer-map.png)
 
 > <br>
 > <img src="./res/jiaming-profile.jpg" alt="jiaming-profile" width="200"/>

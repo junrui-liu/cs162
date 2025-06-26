@@ -6,7 +6,7 @@
 | ---------: | -------------------------------------------------------------------- | ------------------------- | ---- |
 | **Week 1** | **How to design a programming language?**                            |                           |      |
 |      06/24 | [Why study programming languages? + Syntax](./lecture-notes/0624.md) |                           |      |
-|      06/25 | Syntax                                                               | [HW 1](./assignments/hw1) |      |
+|      06/25 | [Syntax, Dataclass, Inference Rules](./lecture-notes/0625.md)        | [HW 1](./assignments/hw1) |      |
 |      06/26 | Inference rules                                                      |                           |      |
 |      06/27 | Section                                                              |                           |      |
 | **Week 2** | **What makes a programming language?**                               |                           |      |
@@ -35,10 +35,10 @@
 
 ## Weekly Pattern
 
-|           | Mon                        | Tue                                             | Wed                                             | Thu                                             | Fri                                                                                                                            |
-| --------- | -------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| **Class** | No class 🏖️😎                | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Section 🗣️ <br> (11am-12:20pm, <br> Phelps 1440)                                                                                |
-| **OH**    | Jiaming <br> (2-4pm, CSIL) | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (3:15pm-4:15pm, [Building 936 aka "TA trailer"](https://ucsb-cs8.github.io/w20/info/mentorPhotos/trailer-map.png)) |
+|           | Mon                        | Tue                                             | Wed                                             | Thu                                             | Fri                                                                                                                    |
+| --------- | -------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **Class** | No class 🏖️😎                | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Section 🗣️ <br> (11am-12:20pm, <br> Phelps 1440)                                                                        |
+| **OH**    | Jiaming <br> (2-4pm, CSIL) | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (1-2pm, [Building 936 aka "TA trailer"](https://ucsb-cs8.github.io/w20/info/mentorPhotos/trailer-map.png)) |
 
 
 <!-- |      07/29 | Curry-Howard correspondence                 |      |      |

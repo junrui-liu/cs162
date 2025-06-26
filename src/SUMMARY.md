@@ -30,11 +30,11 @@
   <!-- - [HW4 🍛](./assignments/hw4.md) -->
   <!-- - [HW5 🌎](./assignments/hw5.md) -->
   <!-- - [HW6 💎](./assignments/hw6.md) -->
-- [Reflections 💭]()
-  <!-- - [Software Correctness & AI](./perspectives/week1.md) -->
-  <!-- - [Static Typing](./perspectives/week2.md) -->
-  <!-- - [Feminism in PL](./perspectives/week3.md) -->
-  <!-- - [Economics of PL](./perspectives/week4.md) -->
-  <!-- - [Future of PL](./perspectives/week5.md) -->
-  <!-- - [Propositions as Types](./perspectives/week6.md) -->
+- [Reflections 💭](./reflections.md)
+  - [Software Correctness](./reflections/week1.md)
+  <!-- - [Static Typing](./reflections/week2.md) -->
+  <!-- - [Feminism in PL](./reflections/week3.md) -->
+  <!-- - [Economics of PL](./reflections/week4.md) -->
+  <!-- - [Future of PL](./reflections/week5.md) -->
+  <!-- - [Propositions as Types](./reflections/week6.md) -->
 - [Discussion Sections 🗣️]()
