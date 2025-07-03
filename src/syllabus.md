@@ -117,10 +117,6 @@ You are highly encouraged to attend both class and section. Although optional, a
 
 ### Token System
 
-<details>
-<summary>
-
-</summary>
 
 You will receive tokens of my appreciation 💖 for giving me feedback on my teaching -- directly so by filling out surveys, or indirectly so by actively participating in class and coming to my office hours. You can redeem these tokens for **corrections on quizzes**. Each token allows you correct 1 point you lost on a quiz. There is no upper limit on the number of tokens you can earn. 
 
@@ -153,7 +149,6 @@ To redeem your tokens for quiz corrections, you will schedule an in-person meeti
 > <a href="https://www.reddit.com/r/BocchiTheRock/comments/zfvb3w/hope_nobody_else_made_this_joke_yet/"><img src="https://preview.redd.it/hope-nobody-else-made-this-joke-yet-v0-6vj3vetq0p4a1.jpg?width=1080&crop=smart&auto=webp&s=10631d59dce8fb74101d58654de0cfc5b773c1c0" alt="hope nobody else made this joke yet" width="400"/></a>
 </details>
 
-</details>
 
 
 ### Classroom Responsibility and Courtesy

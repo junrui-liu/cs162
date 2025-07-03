@@ -1,8 +1,8 @@
 # CS 162 - Homework 1
 
-> Written problems due: **Thursday, June 26, 2025, 12:30pm (before class)**
+> Written problems due: **Thursday, July 3, 2025, 12:30pm (before class)**
 > 
-> Coding problems due: **Thursday, June 26, 2025, 11:59pm PDT** on Gradescope
+> Coding problems due: **Thursday, July 3, 2025, 11:59pm PDT** on Gradescope
 
 ## Instructions
 There are be 2 types of problems:
@@ -372,11 +372,11 @@ prop ::= True | False
 ```
 where `<op>` is any operator of your choice. The operator doesn't have to be one that's already in the surface syntax -- you can come up with a brand new operator. The operator can be unary, binary, or ternary. As a (non-)example, here's a possible core syntax:
 ```
-prop ::= T (true) | F (false)
-       | x (variable)
+prop ::= True | False
+       | Var
        | prop /\ prop
 ```
-although this is not a good choice, since `/\` doesn't have enough expressiveness to represent all propositions in the surface syntax.
+although this is not a good choice, since `/\` doesn't have enough expressive power to represent all propositions in the surface syntax.
 
 Once you designed your operator, choose a sensible notation for it, and include the full grammar of the core syntax in your PDF. Then, intuitively describe the meaning of the operator you designed using 1-2 sentences.
 <!-- 
@@ -467,7 +467,7 @@ Would you consider the composition operator `|>` from Problem 1-B to be a syntac
 
 ## Problem 4
 
-Recall the abstract syntax for the CoinPython language (we will have seen this either on Thursday or next Tuesday).
+Recall the abstract syntax for the CoinPython language (we will have seen this by either Thursday or next Tuesday).
 
 ```
 p ::= pass

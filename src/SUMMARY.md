@@ -3,8 +3,12 @@
 - [Calendar 📅](./calendar.md)
 - [Syllabus 📝](./syllabus.md)
 - [Lecture Notes 🧑‍🏫](./lecture-notes.md)
-  - [Intro, Syntax](./lecture-notes/0624.md)
-  - [Syntax, Dataclass, Inference Rules](./lecture-notes/0625.md)
+  - [Intro, Syntax I](./lecture-notes/0624.md)
+  - [Syntax II, Inference Rules](./lecture-notes/0625.md)
+  - [Operational Semantics](./lecture-notes/0626.md)
+  - [Operational Semantics Practicum](./lecture-notes/0701.md)
+  - [Variables](./lecture-notes/0702.md)
+  - [Lambda Calculus](./lecture-notes/0703.md)
   <!-- - [Python 🐍](./lecture-notes/python.md) -->
   <!-- - [Russian Dolls 🪆](./lecture-notes/inference-rules.md) -->
   <!-- - [Semantics 🧠](./lecture-notes/semantics.md) -->
