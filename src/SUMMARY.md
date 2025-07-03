@@ -36,6 +36,7 @@
   <!-- - [HW6 💎](./assignments/hw6.md) -->
 - [Reflections 💭](./reflections.md)
   - [Software Correctness](./reflections/week1.md)
+  - [Language Adoption](./reflections/week2.md)
   <!-- - [Static Typing](./reflections/week2.md) -->
   <!-- - [Feminism in PL](./reflections/week3.md) -->
   <!-- - [Economics of PL](./reflections/week4.md) -->
