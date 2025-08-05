@@ -1,0 +1,49 @@
+?start: prog
+
+prog: _decl* main
+
+main: "main" "=" expr
+
+_separated{item, sep}:
+    | item (sep item)*
+    | item (sep item)* sep
+
+_decl: defn
+
+defn: "def" GLOBAL  "=" expr
+
+?expr: "\\" LOCAL "." expr -> lam
+    | "expr" LOCAL "=" expr "in" expr -> let
+    | "if" expr "then" expr "else" expr -> ite
+    | arith "==" arith -> eq
+    | arith
+?arith:
+    | arith "+" term -> add
+    | arith "-" term -> sub
+    | term
+?term: term "*" app -> mul
+    | app
+?app: app atom -> app
+    | atom
+?atom: NAT -> nat
+    | "True" -> true
+    | "False" -> false
+    | LOCAL -> expr_var
+    | GLOBAL -> expr_abbrev
+    | "(" expr ")" -> paren
+
+%import common.LCASE_LETTER
+%import common.UCASE_LETTER
+%import common.LETTER
+%import common.DIGIT
+%import common.WS
+
+WORD_LETTER: "_" | LETTER | DIGIT
+LOCAL: "_" | (LCASE_LETTER WORD_LETTER*)
+GLOBAL: UCASE_LETTER WORD_LETTER*
+NAT: DIGIT+
+
+%ignore WS
+
+COMMENT: "#" /[^\n]/*
+%ignore COMMENT

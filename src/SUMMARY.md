@@ -9,6 +9,13 @@
   - [Operational Semantics Practicum](./lecture-notes/0701.md)
   - [Variables](./lecture-notes/0702.md)
   - [Lambda Calculus](./lecture-notes/0703.md)
+  - [Call-by](./lecture-notes/0708.md)
+  - [Rice's Theorem, Soundness & Completeness](./lecture-notes/0709.md)
+  - [Types](./lecture-notes/0710.md)
+  - [Type Soundness](./lecture-notes/0716.md)
+  - [Bidirectional Typing](./lecture-notes/0717.md)
+  - [Sum Types](./lecture-notes/0722.md)
+  - [Pattern Matching](./lecture-notes/0723.md)
   <!-- - [Python 🐍](./lecture-notes/python.md) -->
   <!-- - [Russian Dolls 🪆](./lecture-notes/inference-rules.md) -->
   <!-- - [Semantics 🧠](./lecture-notes/semantics.md) -->
@@ -30,6 +37,8 @@
 - [Homework Assignments 📚](./assignments.md)
   - [HW1](./assignments/hw1/README.md)
   - [HW2](./assignments/hw2/README.md)
+  - [HW3](./assignments/hw3/README.md)
+  - [HW4](./assignments/hw4/README.md)
   <!-- - [HW2 🧮](./assignments/hw2.md) -->
   <!-- - [HW3 🎨](./assignments/hw3.md) -->
   <!-- - [HW4 🍛](./assignments/hw4.md) -->
@@ -38,6 +47,10 @@
 - [Reflections 💭](./reflections.md)
   - [Software Correctness](./reflections/week1.md)
   - [Language Adoption](./reflections/week2.md)
+  - [Static Typing](./reflections/week3.md)
+  - [Feminism in PL](./reflections/week4.md)
+  - [Propositions as Types](./reflections/week5.md)
+  - [Future of PL](./reflections/week6.md)
   <!-- - [Static Typing](./reflections/week2.md) -->
   <!-- - [Feminism in PL](./reflections/week3.md) -->
   <!-- - [Economics of PL](./reflections/week4.md) -->

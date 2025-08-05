@@ -1,0 +1,4 @@
+colored==2.3.0
+lark==1.2.2
+PrettyPrintTree==2.0.1
+wadler_lindig==0.1.7

@@ -78,11 +78,11 @@ Luckily, the first two components are already implemented for you, so you can fo
     - You should ignore all the `__repr__` and `__pdoc__` methods, since they're just for pretty-printing the AST.
   - `grammar.lark` contains the CFG for the concrete syntax of lamp.
     - You do not need to understand anything in this file.
-  - `parser.py` implements the parser for lamp.
+  - `parse.py` implements the parser for lamp.
     - You do not need to understand anything in this file.
     - However, I wrote some code to print out lamp expressions as strings or as ASTs. If you run the parser independently on an lamp file, it will print out the string & the AST for every definition and for the main expression. To do this, run this command:
       ```bash
-      python3 -m frontend.parser < examples/fib.lp
+      python3 -m frontend.parse < examples/fib.lp
       ```
       You should see the output like this:
         <img src="./ast.jpg" width="400px" alt="AST for fib.lp">
