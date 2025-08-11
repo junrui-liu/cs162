@@ -56,4 +56,4 @@
   <!-- - [Economics of PL](./reflections/week4.md) -->
   <!-- - [Future of PL](./reflections/week5.md) -->
   <!-- - [Propositions as Types](./reflections/week6.md) -->
-- [Discussion Sections 🗣️]()
+- [Snack Lottery 🎰](./lottery.md)
