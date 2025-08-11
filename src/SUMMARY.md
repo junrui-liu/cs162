@@ -1,12 +1,12 @@
 # Summary
 
-- [Calendar 📅](./calendar.md)
 - [Syllabus 📝](./syllabus.md)
-- [Lecture Notes 🧑‍🏫](./lecture-notes.md)
+- [Calendar 📅](./calendar.md)
+- [Lectures 🧑‍🏫](./lectures.md)
   - [Intro, Syntax I](./lecture-notes/0624.md)
   - [Syntax II, Inference Rules](./lecture-notes/0625.md)
   - [Operational Semantics](./lecture-notes/0626.md)
-  - [Operational Semantics Practicum](./lecture-notes/0701.md)
+  - [Inference Rules Workshop](./lecture-notes/0701.md)
   - [Variables](./lecture-notes/0702.md)
   - [Lambda Calculus](./lecture-notes/0703.md)
   - [Call-by](./lecture-notes/0708.md)
@@ -33,7 +33,7 @@
   <!-- - [Trinity 🔺](./lecture-notes/curry-howard.md) -->
   <!-- - [Ducks 🦆](./lecture-notes/subtyping.md) -->
   <!-- - [Church ⛪️](./lecture-notes/encodings.md) -->
-- [Lamp Reference Manual](./lamp.md)
+<!-- - [Lamp Reference Manual](./lamp.md) -->
 - [Homework Assignments 📚](./assignments.md)
   - [HW1](./assignments/hw1/README.md)
   - [HW2](./assignments/hw2/README.md)

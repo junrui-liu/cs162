@@ -2,6 +2,16 @@
 
 
 
+## Weekly Pattern
+
+|           | Mon                        | Tue                                             | Wed                                             | Thu                                             | Fri                                                                                                                    |
+| --------- | -------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **Class** | No class 🏖️😎                | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Section 🗣️ <br> (11am-12:20pm, <br> Phelps 1440)                                                                        |
+| **OH**    | Jiaming <br> (2-4pm, CSIL) | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (1-2pm, [Building 936 aka "TA trailer"](https://ucsb-cs8.github.io/w20/info/mentorPhotos/trailer-map.png)) |
+
+
+## Schedule
+
 |       Date | Topic                                                               | Out                       | Due            |
 | ---------: | ------------------------------------------------------------------- | ------------------------- | -------------- |
 | **Week 1** | **How to design a programming language?**                           |                           |                |
@@ -33,14 +43,6 @@
 |      07/30 | (1-1 quiz correction appointments)                                  |                           |                |
 |      07/31 | (1-1 quiz correction appointments)                                  |                           |                |
 |  **08/03** | **(End of summer session A)**                                       |                           | HW 4           |
-
-
-## Weekly Pattern
-
-|           | Mon                        | Tue                                             | Wed                                             | Thu                                             | Fri                                                                                                                    |
-| --------- | -------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **Class** | No class 🏖️😎                | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514) | Section 🗣️ <br> (11am-12:20pm, <br> Phelps 1440)                                                                        |
-| **OH**    | Jiaming <br> (2-4pm, CSIL) | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (2-3pm, Phelps 2510)                | Junrui <br> (1-2pm, [Building 936 aka "TA trailer"](https://ucsb-cs8.github.io/w20/info/mentorPhotos/trailer-map.png)) |
 
 
 <!-- |      07/29 | Curry-Howard correspondence                 |      |      |

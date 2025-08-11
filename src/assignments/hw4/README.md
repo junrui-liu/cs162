@@ -1,4 +1,4 @@
-# CS 162 - Homework 4
+# Homework 4
  
 > Due: **Sunday, Aug 3rd, 2025, 11:59pm PDT** on Gradescope
 
@@ -46,7 +46,7 @@ Other important notes:
 Download the starter code from [here](./hw4-starter.zip).
 
 
-Carefully read the updated [Lamp Reference Manual](../lamp.md). Again, a reference implementation of Lamp is available on CSIL as `~junrui/lamp` (for evaluation) and `~junrui/lamp-ty` (for typing). Please use them to test your Lamp programs.
+Carefully read the updated [Lamp Reference Manual](../../assignments.md). Again, a reference implementation of Lamp is available on CSIL as `~junrui/lamp` (for evaluation) and `~junrui/lamp-ty` (for typing). Please use them to test your Lamp programs.
 
 Before you jump into coding, let us explain some new shiny concrete syntax added to Lamp:
 
@@ -250,7 +250,7 @@ Finally, to run your interpreter, you can do `python -m backend.eval < [path to 
 
 ### Problem 2 (🧑‍💻 coding, 50 pts)
 
-Implement the bidirectional type system for Lamp. The system is specified using inference rules in the [Lamp Reference Manual](../lamp.md). Your task is to finish the implementation of 
+Implement the bidirectional type system for Lamp. The system is specified using inference rules in the [Lamp Reference Manual](../../assignments.md). Your task is to finish the implementation of 
 
 - the `synth` function, which implements the type synthesis judgment
 - the `check` function, which implements the type checking judgment.

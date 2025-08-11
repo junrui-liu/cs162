@@ -1,4 +1,4 @@
-# CS 162 - Homework 2
+# Homework 2
 
 > Written problems due: **Thursday, July 10, 2025, 12:30pm (before class)**
 > 
@@ -47,7 +47,7 @@ Other important notes:
 This is where the fun begins in CS 162! We'll start designing and implementing a language called lamp (short for "**lam**bda calculus **p**lus a bunch of other stuff"). 
 
 
-In this HW, lamp will have simple features like arithmetic, booleans, let-bindings, and lambda calculus. The manual for lamp can be found [here](../../lamp.md).
+In this HW, lamp will have simple features like arithmetic, booleans, let-bindings, and lambda calculus. The manual for lamp can be found [here](../../assignments.md).
 
 You should read the manual carefully before proceeding with the assignment, since it contains important information about the syntax (both concrete and abstract) and the operational semantics of the language. Most of the manual should be familiar to you from the lectures, but we did add some new features (to make it slightly more exciting), so please read the manual carefully.
 

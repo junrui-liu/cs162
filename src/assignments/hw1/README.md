@@ -1,4 +1,4 @@
-# CS 162 - Homework 1
+# Homework 1
 
 > Written problems due: **Thursday, July 3, 2025, 12:30pm (before class)**
 > 
