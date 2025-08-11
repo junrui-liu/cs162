@@ -1,0 +1,412 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Syllabus 📝 - CS 162 - Programming Languages</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CS 162 - Programming Languages</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h2 id="course-description"><a class="header" href="#course-description">Course Description</a></h2>
+<p>Languages shape how we think.</p>
+<p>This course will expand how you think about programming by showing <em>how languages are built</em>. We'll demystify so-called "paradigms" -- imperative, object-oriented, and functional -- by distilling them into their core building blocks. You'll come to see familiar languages in a new light, see through surface-level syntax, and choose the right abstractions for the right problems.</p>
+<p>More deeply, you'll learn powerful tools used by language designers and theorists to ensure the <em>correctness</em> of languages and programs written in them. In a world increasingly flooded with AI-generated slop, this course will sharpen your ability to separate signal from noise and build provably unhackable software, making you irreplaceable in the "AI future".</p>
+<p>All this is grounded in hands-on projects. Throughout the session, you'll design and implement a simple but powerful language that unifies seemingly disjoint paradigms and previews next-generation language features.</p>
+<h2 id="learning-outcomes"><a class="header" href="#learning-outcomes">Learning Outcomes</a></h2>
+<p>By the end of this course, you will be able to:</p>
+<ol>
+<li>Formalize the syntax and semantics of programming languages from informal description.</li>
+<li>Visualize and reason about languages and programs written in them using formal models.</li>
+<li>Implement interpreters and type checkers from formal specifications.</li>
+<li>Analyze widely held misconceptions about language features and "paradigms", and desugar surface-level features into their essential components.</li>
+<li>Apply typed functional programming and computational effects to solve problems.<!-- 1. Model the data domain with algebraic data types.
+1. Carry out structural recursion (induction) to solve the problem over algebraically defined data.
+2. Identify recurring computational patterns in the solution, and abstract them into higher-order and/or polymorphic functions. -->
+</li>
+</ol>
+<h2 id="teaching-team"><a class="header" href="#teaching-team">Teaching Team</a></h2>
+<blockquote>
+<br>
+<img src="./res/junrui-profile.jpg" alt="junrui-profile" width="150"/>
+<p><strong>Instructor:</strong> Junrui Liu (pronounced "June-ray", he/him)</p>
+<p>I'm a PhD student in Computer Science (just finished my 4th year). I research Programming Languages, so the stuff we cover in CS 162 is very close to my heart. I've been TA'ing this course for 4 years in a row, and am super excited to teach it for the first time as an instructor!</p>
+<p>In my free time, I enjoy watching owarai, anime and competitive Valorant. I also like playing <a href="https://music.ucsb.edu/participate/ensembles/carillon">carillon</a> (you might catch me practicing on the Storke Tower on weekends this summer).</p>
+<p><strong>Email</strong>: <a href="mailto:junrui@ucsb.edu">junrui@ucsb.edu</a></p>
+<p><strong>Office hours</strong>:</p>
+<ul>
+<li>Tue, Wed, Thur, 2-3pm, Phelps 2510</li>
+<li>Fri, 1-2pm, <a href="https://ucsb-cs8.github.io/w20/info/mentorPhotos/trailer-map.png">Building 936 aka "TA trailer"</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<br>
+<img src="./res/jiaming-profile.jpg" alt="jiaming-profile" width="200"/>
+<p><strong>TA:</strong> Jiaming Shan (he/him)</p>
+<p>I'm a first-year CS PhD student in UCSB, advised by Prof. Yu Feng. My current research topic is Programming Language and Formal Verification. I'm currently working on projects on AI for math and smart contracts. I'm also interested in AI. In my leisure time, I play some digital card games and rhythm games.</p>
+<p><strong>Email</strong>: <a href="mailto:jiamingshan@ucsb.edu">jiamingshan@ucsb.edu</a></p>
+<p><strong>Office hours</strong>: Mon 2-4pm @ <a href="https://ucsb-cs48.github.io/topics/csil/">CSIL</a> (1st floor of Harold Frank Hall, south side)</p>
+</blockquote>
+<p>The faculty mentor for this course is Prof. Yu Feng (yufeng@cs.ucsb.edu).</p>
+<p>In the remainder of this syllabus, "I" refers to Junrui, the instructor, unless otherwise specified.</p>
+<h2 id="course-communication"><a class="header" href="#course-communication">Course Communication</a></h2>
+<p>We will use Discord for most communication, including announcements and Q&amp;A. The invitation link will be posted on Canvas. Sensitive information will be communicated via email (e.g., if you want to privately inquire about your grade).</p>
+<h2 id="weekly-pattern"><a class="header" href="#weekly-pattern">Weekly Pattern</a></h2>
+<div class="table-wrapper"><table><thead><tr><th></th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr></thead><tbody>
+<tr><td><strong>Class</strong></td><td>No class 🏖️😎</td><td>Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514)</td><td>Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514)</td><td>Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514)</td><td>Section 🗣️ <br> (11am-12:20pm, <br> Phelps 1440)</td></tr>
+<tr><td><strong>OH</strong></td><td>Jiaming <br> (2-4pm, CSIL)</td><td>Junrui <br> (2-3pm, Phelps 2510)</td><td>Junrui <br> (2-3pm, Phelps 2510)</td><td>Junrui <br> (2-3pm, Phelps 2510)</td><td>My turn <br> 🏖️😎</td></tr>
+</tbody></table>
+</div>
+<h2 id="grading-scale"><a class="header" href="#grading-scale">Grading Scale</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Percentage</th><th>Letter Grade</th></tr></thead><tbody>
+<tr><td>93% - 100%</td><td>A</td></tr>
+<tr><td>90% - 92%</td><td>A-</td></tr>
+<tr><td>87% - 89%</td><td>B+</td></tr>
+<tr><td>83% - 86%</td><td>B</td></tr>
+<tr><td>80% - 82%</td><td>B-</td></tr>
+<tr><td>77% - 79%</td><td>C+</td></tr>
+<tr><td>73% - 76%</td><td>C</td></tr>
+<tr><td>70% - 72%</td><td>C-</td></tr>
+<tr><td>67% - 69%</td><td>D+</td></tr>
+<tr><td>63% - 66%</td><td>D</td></tr>
+<tr><td>60% - 62%</td><td>D-</td></tr>
+<tr><td>0% - 59%</td><td>F</td></tr>
+</tbody></table>
+</div>
+<p>Note that:</p>
+<ul>
+<li>I reserve the right to curve the grades to the student's advantage. In other words, the percentage for each letter may be <em>lowered</em> at the end of the session, but will not be raised, so you can always expect to get <em>at least</em> the letter grade corresponding to the percentage listed above.</li>
+<li>I have no incentive to enforce a normal, bell-shaped distribution of grades, so you can be assured that you will get the letter grade you deserve based on your <em>own</em> performance, not on how well your classmates do.</li>
+</ul>
+<h2 id="grading-criteria"><a class="header" href="#grading-criteria">Grading Criteria</a></h2>
+<ul>
+<li>5 homework assignments: 50%
+<ul>
+<li>A mix of written exercises and programming tasks</li>
+</ul>
+</li>
+<li>2 quizzes: 40%
+<ul>
+<li>Held in class, closed-book, no makeups</li>
+<li>No quiz will be held during the last week of the session</li>
+</ul>
+</li>
+<li>2 reflections: 10%
+<ul>
+<li>More details in the <a href="#reflection-assignments">Reflection Assignments</a> section below</li>
+</ul>
+</li>
+</ul>
+<h2 id="readings"><a class="header" href="#readings">Readings</a></h2>
+<p>The primary reference for this course is the lecture notes, which will be made available in the <a href="./lecture-notes.html">Lecture Notes</a> section of this website. I will try to release the notes within 2-3 days after each lecture.</p>
+<p>For additional reference, here're some of my personal favorite textbooks on programming languages, all of which are freely available online:</p>
+<ul>
+<li><a href="https://github.com/MPRI/M2-4-2/blob/master/Types%20and%20Programming%20Languages.pdf">Types and Programming Languages</a> by Benjamin C. Pierce</li>
+<li><a href="https://web.archive.org/web/20221109205432/http://www.cs.cmu.edu/~rwh/pfpl/2nded.pdf">Practical Foundations for Programming Languages (2nd Ed)</a> by Robert Harper</li>
+<li><a href="https://cs.brown.edu/courses/cs173/2012/book/">Programming Languages: Application and Interpretation (2nd Ed)</a> by Shriram Krishnamurthi</li>
+</ul>
+<!-- - Frank Pfenning's [lecture notes for 15-814](https://www.cs.cmu.edu/~fp/courses/15814-f21/schedule.html) at CMU -->
+<h2 id="course-policies"><a class="header" href="#course-policies">Course Policies</a></h2>
+<h3 id="attendance"><a class="header" href="#attendance">Attendance</a></h3>
+<p>You are highly encouraged to attend both class and section. Although optional, attendance and participation will definitely influence your success level in this class -- not least because you can <a href="#token-system">earn tokens</a> for active participating!</p>
+<h3 id="token-system"><a class="header" href="#token-system">Token System</a></h3>
+<p>You will receive tokens of my appreciation 💖 for giving me feedback on my teaching -- directly so by filling out surveys, or indirectly so by actively participating in class and coming to my office hours. You can redeem these tokens for <strong>corrections on quizzes</strong>. Each token allows you correct 1 point you lost on a quiz. There is no upper limit on the number of tokens you can earn.</p>
+<p>Below is a tentative and non-exhaustive list of ways to earn tokens:</p>
+<div class="table-wrapper"><table><thead><tr><th>Activity</th><th>Tokens</th><th>Reset</th></tr></thead><tbody>
+<tr><td>Filling out a survey</td><td>2 💖</td><td>every survey</td></tr>
+<tr><td>Attending a lecture</td><td>1 💖</td><td>every lecture</td></tr>
+<tr><td>Asking/answering a question in class</td><td>2 💖</td><td>every lecture</td></tr>
+<tr><td>Coming to Junrui's office hours</td><td>2 💖</td><td>every week</td></tr>
+<tr><td>Hidden events (explained when an event is triggered)</td><td>??? 💖</td><td>every event</td></tr>
+</tbody></table>
+</div>
+<p>The <strong>Reset</strong> column indicates how often the tokens can be earned. For example, you can earn 2 tokens for asking a question in class, but you can only earn that token once per lecture. In other words, the <em>first</em> time you ask a question in each lecture grants you 2 tokens. (The resets are intended to prevent hardcore min-maxers from DDoSing me with questions.)</p>
+<p>To redeem your tokens for quiz corrections, you will schedule an in-person meeting with Junrui toward the end of the course, during which you will go over your original and corrected answers. More details will be provided later in the course.</p>
+<details>
+<summary>
+"What if I'm shy?"
+</summary>
+<blockquote>
+<p>Junrui: Same here. As an undergrad, I was terrified of speaking up in class, worried my question might sound “stupid” or my answer might be wrong. So if you're nervous, know it’s totally normal. And if you’re not comfortable talking in class, you can still earn tokens through office hours or surveys.</p>
+<p>That said, this system is meant to nudge you toward participating more than you normally would. Ultimately, the system is designed to collect <em>your</em> feedback on my teaching. I'd much rather know you're confused right away than have you think you're fine, only to realize you're lost during the homework. Honestly, I value questions that reveal misunderstandings as much as correct answers. Think of it like learning an instrument or a sport — it’s better if a coach spots your mistake early, before you practice it the wrong way for too long. I’m your coach for <em>learning</em> programming languages, and you're mine for <em>teaching</em> them — so the feedback goes both ways.</p>
+<p>One way to ease the nerves is to treat asking questions as a "min/max" strategy. You paid about <a href="https://www.summer.ucsb.edu/cost-savings/cost-attendance">$1200 for this class</a> — you deserve the best grade you can earn (with academic integrity, of course). Questions help you earn correction tokens and boost your quiz scores. Even asking me to clarify something I just said counts. Staying quiet earns you 1 token; raising your hand earns you 3!</p>
+<p>So I hope this takes some of the pressure off. There really are no stupid questions — only imagined ones.</p>
+<p><a href="https://www.reddit.com/r/BocchiTheRock/comments/zfvb3w/hope_nobody_else_made_this_joke_yet/"><img src="https://preview.redd.it/hope-nobody-else-made-this-joke-yet-v0-6vj3vetq0p4a1.jpg?width=1080&crop=smart&auto=webp&s=10631d59dce8fb74101d58654de0cfc5b773c1c0" alt="hope nobody else made this joke yet" width="400"/></a></p>
+</blockquote>
+</details>
+<h3 id="classroom-responsibility-and-courtesy"><a class="header" href="#classroom-responsibility-and-courtesy">Classroom Responsibility and Courtesy</a></h3>
+<p>This is a course where lectures will often involve discussions, since language design is inherently a <em>human</em> endeavor, and good designs only come from tons of trial and error and cross-pollination from diverse ideas. You are welcome and encouraged to express your own opinions in or after class, but you should expresse them respectfully. Respect fellow students and the hard work of others: in other words, your work must be your work, plagiarism will not be tolerated.</p>
+<h3 id="collaboration-and-academic-integrity"><a class="header" href="#collaboration-and-academic-integrity">Collaboration and Academic Integrity</a></h3>
+<p>You are encouraged to work together on homework assignments, but you must write your own code and solutions, unless it's explicitly designed to be a group assignment.</p>
+<p>Academic integrity is taken seriously. If you copy someone else's work (or LLM's work, as detailed in the <a href="#genai-usage">GenAI Usage</a> section), you will be violating UCSB's <a href="https://studentconduct.sa.ucsb.edu/academic-integrity">academic integrity policy</a>, which will result in a failing grade for the course.</p>
+<h3 id="genai-usage"><a class="header" href="#genai-usage">GenAI Usage</a></h3>
+<p>Unless otherwise specified, use of generative AI tools, including but not limited to chatbots (e.g., ChatGPT), coding assistants (e.g., Copilot), and coding agents (e.g., Cursor), is <strong>not allowed</strong> in this course.</p>
+<details>
+<summary>"Why not?"</summary>
+<blockquote>
+<p>On the surface, using those tools would be a <a href="https://studentconduct.sa.ucsb.edu/academic-integrity">violation of UCSB's academic integrity policy</a>. I do not want to report anyone -- it will make everyone sad, not just me, but if that happens, I will have no choice but to follow the policy.</p>
+<p>Fundamentally, I want <em>you</em> to learn and think deeply about the materials, so that you become irreplaceable by AIs -- not training yet anthoer model for tech billionaires to replace the workers. The only way to gain muscle is to use that muscle. The only way to get good at an instrument is to practice. The only way to learn to speak a new language is to actually speak it. No learning occurs if the work doesn't happen <em>within you</em>.</p>
+<p>Also, I respect your work, and I'd appreciate if you respect mine as well. I do not use AI to grade your work at all. If your work is AI generated, it's often easy to tell -- because a lot of the materials in this class are novel -- and I will be very sad to read something not from you. Also, I spent a lot of time designing and crafting this course. Although the materials may not be perfect, I'd greatly appreciate it if you respect my work by not feeding it as training data to some LLM. If something is not clear, please let me know, and I will do my best to make it better.</p>
+<p>On a more cheerful note, you won't ever need them, hopefully.</p>
+<ol>
+<li>You do not need to write any boilerplate code for this class. Every line of code you write matters, and is designed to check your understanding -- think of Gradescope autograder as a personalized TA vetted by me. The entirety of the interpreter + type checker you'll write for the entire class is fewer than 500 lines of code (at least in my own implementation). Spread over 5 assignments, that's about 100-200 LOC per week, which I hope is manageable.</li>
+<li>LLMs are ok with program syntax, and bad with program semantics, because they can't escape the Halting Problem! This course, however, is all about semantics and wreslting with the "undecidable". Even if you only use chatbots as "personalized tutors", they will likely give you non-sensical answers for questions related to language semantics (don't ask how I know this). So if you have questions, I'd highly encourage you to ask me, the TA, or your classmates instead. I and the TA will do our absolute best to help you understand everything taught in this class + get 100% on all assignments, if you're willing to put in the work. Come to office hours, ask questions in class and in Discord, and form study groups.</li>
+</ol>
+<p><strong>TL;DR.</strong> I want you to learn and succeed. Don't be like this guy:</p>
+<p><a href="https://www.reddit.com/r/ProgrammerHumor/comments/1je2exb/aicode/"><img src="https://preview.redd.it/jgzvvjxokfpe1.jpeg?width=320&crop=smart&auto=webp&s=0c56b120a7076f274067e4f5544678d8539ca239" alt="Don't be like this guy" width="300"/></a></p>
+</blockquote>
+</details>
+<h3 id="late-days"><a class="header" href="#late-days">Late Days</a></h3>
+<p>You have a total of <strong>5 late days</strong> to use throughout the course for <em>programming assignments</em>. You can spend <strong>no more than 2 late days</strong> on each programming assignment, and you can use them in any combination you like (e.g., 1 day for HW1, 2 days for HW2, 2 days for HW5, etc.). Once you run out of late days, no more late submissions will be accepted, and you will receive a score of 0 for late assignments.</p>
+<p>You cannot use late days on the written part of the assignments, since we may discuss the answers in class the next day.</p>
+<h3 id="quiz-makeup"><a class="header" href="#quiz-makeup">Quiz Makeup</a></h3>
+<p>No makeups will be given for quizzes except for formally documented emergencies. If you miss a quiz, you will receive a score of 0 for that quiz.</p>
+<h2 id="university-policies"><a class="header" href="#university-policies">University Policies</a></h2>
+<h3 id="copyright-and-course-recording"><a class="header" href="#copyright-and-course-recording">Copyright and Course Recording</a></h3>
+<p>All course materials (class lectures and discussions, handouts, quizzes, web materials) and the
+intellectual content of the course itself are protected by United States Federal Copyright Law and the
+California Civil Code. <a href="http://policy.ucop.edu/doc/2710530/PACAOS-100">UC Policy 102.23</a> expressly prohibits students (and all other persons) from recording
+lectures or discussions and from distributing or selling course materials without my prior written permission. Students are permitted to make notes solely for their own private educational use. Exceptions to accommodate students with disabilities may be granted with appropriate documentation.</p>
+<blockquote>
+<p><strong>TL;DR.</strong> Don't share or sell material from this class with people outside of the course!</p>
+</blockquote>
+<h3 id="title-ix"><a class="header" href="#title-ix">Title IX</a></h3>
+<p>Under Title IX, university students are protected from harassment and discrimination based on gender and sex. If a student feels uncomfortable or in need of support at any time related to their gender, sex, and/or sexual orientation, please contact me or your TA immediately. If a student would like to disclose information related to pronouns, name changes, or identities, we encourage you to do so. UCSB's <a href="https://rcsgd.sa.ucsb.edu/">Resource Center for Sexual and Gender Diversity</a> on the 3rd floor of the Student Resource Building is also available to advocate and support to students</p>
+<h3 id="disability-accommodations"><a class="header" href="#disability-accommodations">Disability Accommodations</a></h3>
+<p>Students with disabilities may request academic accommodations by contacting the <a href="https://dsp.sa.ucsb.edu/">Disabled Students Program (DSP)</a>. DSP is located at 2120 Student Resource Building and serves as the campus liaison regarding issues and regulations related to students with disabilities.</p>
+<p>For exam accommodations, please submit requests at least 1 week before the quiz date, so that I can make the necessary arrangements.</p>
+<h3 id="other-resources"><a class="header" href="#other-resources">Other Resources</a></h3>
+<h4 id="wellbeing-and-mental-health"><a class="header" href="#wellbeing-and-mental-health">Wellbeing and Mental Health</a></h4>
+<p>Personal concerns such as stress, anxiety, relationships, depression, cultural differences, can interfere with your ability to succeed and thrive. If you are experiencing any difficulties meeting class requirements, or any difficulties in your personal life, please contact UCSB Counseling and Psychological Services. For information, please call <a href="tel:805-893-4411">(805) 893-4411</a> or visit <a href="https://caps.sa.ucsb.edu/">their web site</a>. In addition, UCSB has <a href="https://wellbeing.ucsb.edu/">tons of resources</a> to help you gain the information, skills, and support systems you need to thrive and succeed academically.</p>
+<h4 id="basic-needs"><a class="header" href="#basic-needs">Basic Needs</a></h4>
+<p>If you are facing any challenges securing food or finding housing, you are urged to meet with a <a href="https://basicneeds.ucsb.edu/resources/basic-needs-peer-advising">Calfresh Advocate and Basic Needs Peer Advisor</a>, who is aware of the broad variety of resources that UCSB has to offer. You are also urged to contact me or the TA if you are comfortable doing so. Please visit <a href="https://basicneeds.ucsb.edu/">basicneeds.ucsb.edu</a> for additional resources including <a href="https://basicneeds.ucsb.edu/resources/food/calfresh">Calfresh</a>, the <a href="https://foodbank.as.ucsb.edu/">AS Food Bank</a>, and more.</p>
+<h2 id="reflection-assignments"><a class="header" href="#reflection-assignments">Reflection Assignments</a></h2>
+<p>I will share a couple of Youtube videos each week on some aspect of programming languages -- either directly related to what we talked about that week, or some broader topic that might be interesting/important but unfortunately doesn't fit into the short time we have in class.</p>
+<p>Out of 6 weeks, you pick 2 weeks to watch the videos and write a short (2-3 paragraphs) reflection on what you learned from the video, what surprised you, what you agreed/disagreed with, how does it change the way you think about programming languages, how does it relate to your own experience, etc.</p>
+<p>Completion = full credit. No need to be a great writer. Just share your thoughts in a way that others can understand, be honest and be thoughtful. You're encouraged to share your reflections with the class and comment on other students' reflections, if you feel comfortable doing so.</p>
+<p>Again, don't use LLMs. If you do, it'll defeat the purpose of reflections; I and other students will also waste time reading and commenting on some random string of emotionless symbols that doesn't come from <em>you</em>. If you're tempted to use LLMs, that likely means the week's topic doesn't interest you. In that case, you can skip it and do it in another week when the topic <em>does</em> genuinely interest you, since you only need to choose 2 weeks out of 6 anyway.</p>
+<h2 id="calendar-tentative"><a class="header" href="#calendar-tentative">Calendar (Tentative)</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: right">Date</th><th>Topic</th><th>Out</th><th>Due</th></tr></thead><tbody>
+<tr><td style="text-align: right"><strong>Week 1</strong></td><td><strong>How to design a programming language?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">06/24</td><td>Why study programming languages? + Python review</td><td>HW 1</td><td></td></tr>
+<tr><td style="text-align: right">06/25</td><td>Syntax</td><td></td><td></td></tr>
+<tr><td style="text-align: right">06/26</td><td>Inference rules</td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 2</strong></td><td><strong>What makes a programming language?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/01</td><td>Semantics</td><td>HW 2</td><td></td></tr>
+<tr><td style="text-align: right">07/02</td><td>Names</td><td></td><td>HW 1</td></tr>
+<tr><td style="text-align: right">07/03</td><td>Types</td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 3</strong></td><td><strong>How to abstract <em>data</em>?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/08</td><td>Finite and recursive types</td><td>HW 3</td><td></td></tr>
+<tr><td style="text-align: right">07/09</td><td>Pattern-matching</td><td></td><td>HW 2</td></tr>
+<tr><td style="text-align: right">07/10</td><td><em>Quiz 1 (tentative)</em></td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 4</strong></td><td><strong>How to abstract <em>computation</em>?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/15</td><td>Lambda calculus</td><td>HW 4</td><td></td></tr>
+<tr><td style="text-align: right">07/16</td><td>Polymorphism, type inference</td><td></td><td>HW 3</td></tr>
+<tr><td style="text-align: right">07/17</td><td>Defunctionalization, continuation-passing</td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 5</strong></td><td><strong>How to change the world?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/22</td><td>Mutable states</td><td>HW 5</td><td></td></tr>
+<tr><td style="text-align: right">07/23</td><td>Effect handlers</td><td></td><td>HW 4</td></tr>
+<tr><td style="text-align: right">07/24</td><td><em>Quiz 2 (tentative)</em></td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 6</strong></td><td><strong>What is the future of programming like?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/29</td><td>Advanced topic, TBD</td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/30</td><td>Advanced topic, TBD</td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/31</td><td>Advanced topic, TBD</td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>08/02</strong></td><td><strong>(End of summer session A)</strong></td><td></td><td>HW 5</td></tr>
+</tbody></table>
+</div><!-- |      07/29 | Curry-Howard correspondence                 |      |      |
+|      07/30 | Codata, objects, subtyping, infinity        |      |      |
+|      07/31 | It's lambda calculus all the way down!      |      |      | -->
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                            <a rel="next prefetch" href="calendar.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+                    <a rel="next prefetch" href="calendar.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

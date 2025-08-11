@@ -1,0 +1,499 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>HW2 - CS 162 - Programming Languages</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CS 162 - Programming Languages</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="homework-2"><a class="header" href="#homework-2">Homework 2</a></h1>
+<blockquote>
+<p>Written problems due: <strong>Thursday, July 10, 2025, 12:30pm (before class)</strong></p>
+<p>Coding problems due: <strong>Thursday, July 10, 2025, 11:59pm PDT</strong> on Gradescope</p>
+</blockquote>
+<h2 id="instructions"><a class="header" href="#instructions">Instructions</a></h2>
+<p>There are be 2 types of problems:</p>
+<ol>
+<li>
+<p><strong>Written problems</strong> are marked with ✍️.</p>
+<ul>
+<li>Must be done <strong>individually</strong>.</li>
+<li>Please turn in a <strong>stapled, physical copy</strong> of your solutions before the lecture start time on the due date.</li>
+<li>For each sub-problem, please provide a self-grade out of 2 points: 2 for a fully solved problem with a correct solution, 1 for a partially correct attempt with all work shown, and 0 for no attempt. If you're unsure whether your solution is correct, you can leave it as <code>?</code>, and I will grade it for you.</li>
+<li>On the first page of your solutions, please include your name (on Canvas/Gradescope), student ID, and a table containing the self-grades for each sub-problem, like this:</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Problem</th><th>Sub-problem</th><th>Self-grade (0/1/2/?)</th></tr></thead><tbody>
+<tr><td>1</td><td>A</td><td>2</td></tr>
+<tr><td>1</td><td>B</td><td>2</td></tr>
+<tr><td>1</td><td>C</td><td>1</td></tr>
+<tr><td>1</td><td>D</td><td>?</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>If you handwrite your solutions, please write clearly and legibly.</li>
+</ul>
+</li>
+<li>
+<p><strong>Coding problems</strong> are marked with 🧑‍💻.</p>
+<ul>
+<li>Must be done <strong>individually</strong>.</li>
+<li>Coding problems are autograded on Gradescope.</li>
+<li>You can submit as many times as you want.</li>
+<li>Note that you can use a maximum of 2 late days for each HW's coding problems, but not for the written problems.</li>
+</ul>
+</li>
+</ol>
+<p>Other important notes:</p>
+<ul>
+<li>
+<p>Problems (written or coding) marked with ⭐️ are extra credit problems. You can do them for fun and for extra credit, but they are completely optional.</p>
+</li>
+<li>
+<p>You're encouraged to talk about the problems with the instructor, the TA, and your classmates, but your group must write up your own solutions for the written problems, and you must individually write code for the coding problems.</p>
+</li>
+<li>
+<p>Note you won't be able to turn in corrections to homework problems, unlike quizzes.</p>
+</li>
+<li>
+<p>Use of generative AI tools and coding assistants is not allowed for this assignment. You will be able to use them for future assignments (maybe), but not for this one. If you're new to Python, it's ok ask LLMs to answer some concept questions, but please write your own code (since LLMs won't be able to help you anymore in future assignments which are harder + not in their training data).</p>
+</li>
+<li>
+<p>If you have any questions about the assignment, please post them in the <code>#hw2</code> Discord channel, or come to the office hours.</p>
+</li>
+</ul>
+<h2 id="part-1---implementing-the-lamp-interpreter"><a class="header" href="#part-1---implementing-the-lamp-interpreter">Part 1 - Implementing the Lamp Interpreter</a></h2>
+<p>This is where the fun begins in CS 162! We'll start designing and implementing a language called lamp (short for "<strong>lam</strong>bda calculus <strong>p</strong>lus a bunch of other stuff").</p>
+<p>In this HW, lamp will have simple features like arithmetic, booleans, let-bindings, and lambda calculus. The manual for lamp can be found <a href="../../assignments.html">here</a>.</p>
+<p>You should read the manual carefully before proceeding with the assignment, since it contains important information about the syntax (both concrete and abstract) and the operational semantics of the language. Most of the manual should be familiar to you from the lectures, but we did add some new features (to make it slightly more exciting), so please read the manual carefully.</p>
+<hr />
+<p>Assuming you have read the manual, let's break down the code for implementing lamp.</p>
+<p>To fully implement a language, we need a lot of components, including:</p>
+<ol>
+<li>A representation of the ASTs in the meta language (Python).</li>
+<li>A parser frontend that takes a text file containing lamp code, and produces an AST.</li>
+<li>An interpreter backend that takes the AST and evaluates it, producing a value or an error.</li>
+<li>And more (to be added in future assignments).</li>
+</ol>
+<p>Luckily, the first two components are already implemented for you, so you can focus on the interpreter backend. You can download the starter code using <a href="./hw2-starter.zip">this link</a>. The structure of the starter code is as follows:</p>
+<details>
+<summary>examples/</summary>
+<ul>
+<li><code>fib.lp</code> is an example lamp program that computes the Fibonacci numbers.</li>
+</ul>
+</details>
+<details>
+<summary>frontend/</summary>
+<ul>
+<li>
+<p><code>lang.py</code> contains the abstract syntax tree (AST) for lamp. The representation is the same as what we discussed in class (using Python's <code>dataclass</code>).</p>
+<ul>
+<li>Please read through the docstrings of the classes to understand the structure of the AST.</li>
+<li>If a class deserves additional explanation, you can find it in the docstring of the class.</li>
+<li>You should ignore all the <code>__repr__</code> and <code>__pdoc__</code> methods, since they're just for pretty-printing the AST.</li>
+</ul>
+</li>
+<li>
+<p><code>grammar.lark</code> contains the CFG for the concrete syntax of lamp.</p>
+<ul>
+<li>You do not need to understand anything in this file.</li>
+</ul>
+</li>
+<li>
+<p><code>parse.py</code> implements the parser for lamp.</p>
+<ul>
+<li>You do not need to understand anything in this file.</li>
+<li>However, I wrote some code to print out lamp expressions as strings or as ASTs. If you run the parser independently on an lamp file, it will print out the string &amp; the AST for every definition and for the main expression. To do this, run this command:
+<pre><code class="language-bash">python3 -m frontend.parse &lt; examples/fib.lp
+</code></pre>
+You should see the output like this:
+<img src="./ast.jpg" width="400px" alt="AST for fib.lp"></li>
+</ul>
+</li>
+<li>
+<p><code>pretty_ast.py</code> is a pretty-printer for lamp ASTs.</p>
+<ul>
+<li>You do not need to understand anything in this file.</li>
+<li>However, you might find it helpful to pretty-print the ASTs when you're debugging your interpreter. The function <code>pp_ast(e)</code> takes an expression <code>e</code>, and returns a (large) string that shows the AST of <code>e</code> in a human-readable format.</li>
+</ul>
+</li>
+</ul>
+</details>
+<details>
+<summary>backend/</summary>
+<ul>
+<li><code>subst.py</code> contains a skeleton of the substitution function.
+<ul>
+<li><strong>Your task</strong> will be to fill in places marked with <code># your code here</code>.</li>
+</ul>
+</li>
+<li><code>eval.py</code> contains a skeleton of the interpreter.
+<ul>
+<li><strong>Your task</strong> will be to fill in places marked with <code># your code here</code>.</li>
+<li>Since an interpreter needs to evaluate expressions into <em>values</em>, we need to represent values in Python. The representation of values is very similar to that of <code>Expr</code>: we have an empty dataclass <code>Val</code>, and subclasses <code>VNat</code>, <code>VBool</code>, and <code>VLambda</code> for natural numbers, booleans, and lambda functions, respectively. If you read the operational semantics section of the lamp manual, you will see a grammar for values, which directly maps to the following Python code:
+<pre><code class="language-python">@dataclass
+class Val:
+    pass
+
+@dataclass
+class VNat(Val):
+    n: int
+
+@dataclass
+class VBool(Val):
+    b: bool
+
+@dataclass
+class VLambda(Val):
+    b: Binder[Expr]
+</code></pre>
+</li>
+<li>The interpreter is implemented as an <code>Interpreter</code> class that has a field <code>prog</code> that contains the lamp program to be evaluated (recall that a lamp program has a list of abbreviations and a main expression).</li>
+<li>The <code>run</code> method of the <code>Interpreter</code> class evaluates the main expression of the program, which in turn runs <code>eval</code> on the main expression.</li>
+<li>The <code>eval</code> function is where you will translate the operational semantics of lamp into Python code.</li>
+</ul>
+</li>
+</ul>
+</details>
+<p>To run the interpreter, you can run the following command:</p>
+<pre><code class="language-bash">python3 -m backend.eval &lt; examples/fib.lp
+</code></pre>
+<p>You should see the output like this:</p>
+<pre><code>def Fib = \n.
+  if n == 0 then 0
+  else if n == 1 then 1
+  else Fib (n-1) + Fib (n-2)
+
+main = Fib 10
+Result: VNat(n=55)
+</code></pre>
+<h3 id="problem-0"><a class="header" href="#problem-0">Problem 0</a></h3>
+<p>Let's first set up the Python environment for this assignment.</p>
+<ol>
+<li>If you used <code>conda</code> to set up the Python environment for this class, you should do <code>conda activate cs162</code> to activate the environment.</li>
+<li>Then, run <code>python3 -m pip3 install requirements.txt</code> to install the required packages.</li>
+</ol>
+<p>Once step 2 is done, include a screenshot of the terminal output in your PDF submission, showing that the packages were installed successfully.</p>
+<p>If you have trouble installing the packages, please ask for help in the <code>#tech-support</code> channel on Discord.</p>
+<h3 id="problem-1"><a class="header" href="#problem-1">Problem 1</a></h3>
+<p>Before you put on the language implementer hat, let's have you be the programmer who uses the lamp language. For each of the following sub-problems, define a lamp abbreviation (<code>def AbbrevName = &lt;expr&gt;</code>). You can create a file called <code>stdlib.lp</code>, and put all of your definitions there. Once you're done, make sure to copy and paste the content of <code>stdlib.lp</code> into your written solutions.</p>
+<p>To validate your answers, I uploaded a reference interpreter for lamp to CSIL (TODO for Junrui: upload this by Friday). If you log into CSIL, you can access it via</p>
+<pre><code class="language-bash">~junrui/lamp &lt; FILENAME
+</code></pre>
+<p>Each item in the following list is worth 2 points as usual.</p>
+<ol>
+<li>Define an abbreviation <code>def Not = \b. &lt;your code here&gt;</code> that takes a boolean value and returns its negation. Hint: use <code>if b then .. else ..</code>.</li>
+<li>Define an abbreviation <code>def And = &lt;your code here&gt;</code> that takes two booleans and returns their conjunction.</li>
+<li>Define an abbreviation <code>def Or = &lt;your code here&gt;</code> that takes two booleans and returns their disjunction.</li>
+<li>Define an abbreviation <code>def Leq = &lt;your code here&gt;</code> that takes two natural numbers and returns whether the first number is less than or equal to the second number. Hint: use <code>if</code>, <code>==</code> and recursion.</li>
+<li>Define an abbreviation <code>def Lt = &lt;your code here&gt;</code> that takes two natural numbers and returns whether the first number is less than the second number. Use <code>Not</code> and <code>Leq</code>.</li>
+<li>Define an abbreviation <code>def Div = \m. \n. &lt;your code here&gt;</code> that takes two natural numbers and returns the result of dividing <code>m</code> by <code>n</code>. If <code>n</code> is zero, you can simply crash the program using something like <code>1+True</code>. (We'll learn how to design proper error handling next week.)</li>
+<li>Define an abbreviation <code>def Mod = \m. \n. &lt;your code here&gt;</code> that takes two natural numbers and returns the result of <code>m</code> modulo <code>n</code>. Hint: use <code>Div</code> and <code>*</code>.</li>
+<li>Define an abbreviation <code>def CollatzStep = \n. &lt;your code here&gt;</code> that takes a natural number <code>n</code> and returns the next step in the Collatz conjecture sequence. If <code>n</code> is even, return <code>Div n 2</code>, otherwise return <code>3 * n + 1</code>.</li>
+<li>Define an abbreviation <code>def Collatz = \n. &lt;your code here&gt;</code> that takes a natural number <code>n</code> and counts the number of steps it takes for the sequence starting at <code>n</code> to reach <code>1</code>. If <code>n</code> is <code>1</code> or <code>0</code>, simply return <code>0</code>.</li>
+</ol>
+<blockquote>
+<p>Hopefully, the last sub-problem can convince you that lamp is basically Turing-complete (woo-hoo), since the Collatz conjecture (that every sequence terminates in finite amount of steps) is an open problem.</p>
+<p>This is just to show you that we've already got a really powerful yet conceptually simple language to work with this early in the course! Can you imagine what exciting features we're gonna add in future HW? Stay tuned!</p>
+</blockquote>
+<h3 id="problem-2"><a class="header" href="#problem-2">Problem 2</a></h3>
+<p>I claimed in class that lambda calculus is all you need -- you don't need booleans, nat, or recursion. In this exercise, I'm going to show you some mystery lambda functions that substantiate my claims.</p>
+<h4 id="problem-2-a--written-2-pts"><a class="header" href="#problem-2-a--written-2-pts">Problem 2-A (✍️ written, 2 pts)</a></h4>
+<p>We will encode a boolean as a lambda function that takes two arguments, and returns one of them:</p>
+<pre><code>def T = \x. \y. x
+def F = \x. \y. y
+</code></pre>
+<p>That is, <code>T</code> is a function that takes two arguments and returns the first one, while <code>F</code> is a function that takes two arguments and returns the second one.</p>
+<pre><code>def MysteryIf = \cond. \thn. \els. cond thn els
+</code></pre>
+<p>I claim that <code>MysteryIf</code> implements if-then-else using pure lambda calculus: the function takes three arguments: a condition (which is an <em>encoding</em> of booleans, not a native boolean), and two arbitrary expressions, and returns one of the two expressions based on whether the condition encodes true or false.</p>
+<p>Your task is to define</p>
+<pre><code>def MysteryAnd = \b1. \b2. &lt;your code here&gt;
+def MysteryOr = \b1. \b2. &lt;your code here&gt;
+</code></pre>
+<p>which <em>encodes</em> conjunction and disjunction. You should only call <code>MysteryIf</code>, <code>T</code> and <code>F</code> in your code (don't use native booleans or native if-then-else).</p>
+<p>Once you're done, it's time to check that our encodings are correct. To do so, we define functions that</p>
+<ol>
+<li>take a native boolean and return the corresponding encoding</li>
+<li>take an encoding and return the corresponding native boolean.</li>
+</ol>
+<pre><code>def EncodeBool = \b. if b then T else F
+def DecodeBool = \enc. enc True False
+</code></pre>
+<p>Now, you should check that <code>DecodeBool (MysteryAnd (EncodeBool b1) (EncodeBool b2))</code> gives the expected answer for any choice of native booleans <code>b1</code> and <code>b2</code>. Similarly, check that <code>DecodeBool (MysteryOr (EncodeBool b1) (EncodeBool b2))</code> gives the expected answer for any choice of native booleans <code>b1</code> and <code>b2</code>. You can change the <code>main</code> expression to test one case at a time.</p>
+<p>In your PDF, include the output of <code>DecodeBool (MysteryAnd (EncodeBool b1) (EncodeBool b2))</code> and <code>DecodeBool (MysteryOr (EncodeBool b1) (EncodeBool b2))</code> for all combinations of <code>b1</code> and <code>b2</code> being <code>True</code> or <code>False</code>.</p>
+<blockquote>
+<p>This exercise shows you that any combinatorial logic circuit can be encoded in pure lambda calculus.</p>
+</blockquote>
+<h4 id="problem-2-b--written-2-pts"><a class="header" href="#problem-2-b--written-2-pts">Problem 2-B (✍️ written, 2 pts)</a></h4>
+<p>Now, let's encode natural numbers. You do not need to write any code. Simply copy and paste the following code into a test file:</p>
+<pre><code>def Z = \b. \i. b
+def S = \n. \b. \i. i n (n b i)
+def MysteryAdd = \m. m (\n. n) (\_. \r. \n. S (r n))
+def MysteryMul = \m. m (\_. Z) (\_. \r. \n. MysteryAdd n (r n))
+def EncodeNat = \n. if n == 0 then Z else S (EncodeNat (n-1))
+def DecodeNat = \n. n 0 (\_. \r. r + 1)
+</code></pre>
+<p>Then, run <code>DecodeNat (Mystery Add (EncodeNat 10) (EncodeNat 20))</code> and <code>DecodeNat (Mystery Mul (EncodeNat 10) (EncodeNat 20))</code>. You should see the expected results of <code>30</code> and <code>200</code>, respectively. In your PDF, simply include the output of evaluating these two expressions.</p>
+<blockquote>
+<p>Magic, isn't it? We'll learn how these encodings work very soon. Stay tuned!</p>
+<p>Hopefully, Problem 2-A and 2-B convinced you that all you really need is just lambda calculus.</p>
+<img src="https://i.ytimg.com/vi/m32kbFXBRR0/sddefault.jpg" width="500px" alt="magic gif">
+</blockquote>
+<h3 id="problem-3--coding-10-pts"><a class="header" href="#problem-3--coding-10-pts">Problem 3 (🧑‍💻 coding, 10 pts)</a></h3>
+<p>Finish the substitution function in <code>subst.py</code>.</p>
+<h3 id="problem-4--coding-20-pts"><a class="header" href="#problem-4--coding-20-pts">Problem 4 (🧑‍💻 coding, 20 pts)</a></h3>
+<p>Finish the interpreter in <code>eval.py</code>.</p>
+<h2 id="part-2---conceptual-questions"><a class="header" href="#part-2---conceptual-questions">Part 2 - Conceptual Questions</a></h2>
+<h3 id="problem-1--written-2-pts"><a class="header" href="#problem-1--written-2-pts">Problem 1 (✍️ written, 2 pts)</a></h3>
+<p>Draw the abstract binding tree (ABT) for the lamp expression <code>\n. \b. \i. i n (n b i)</code>.</p>
+<h3 id="problem-2--written-2-pts"><a class="header" href="#problem-2--written-2-pts">Problem 2 (✍️ written, 2 pts)</a></h3>
+<p>Draw the derivation tree for the evaluation of lamp expression <code>let x = (let x=1 in x+1) in let x = x+1 in x+1</code>. If the tree is too large, you can divide it into several parts and connect them with arrows.</p>
+<h3 id="problem-3--written-2-pts"><a class="header" href="#problem-3--written-2-pts">Problem 3 (✍️ written, 2 pts)</a></h3>
+<p>In class, I said the correct rule for application should be:</p>
+<pre><code>e1 =&gt; \x. e
+e2 =&gt; v
+( [v/x]e = e' )
+e' =&gt; v'
+---------------
+e1 e2 =&gt; v'
+</code></pre>
+<p>An alternative rule is to require <code>e1</code> to <em>be</em> a lambda function, instead of evaluating it <em>to</em> a lambda function:</p>
+<pre><code>e1 = \x. e
+e2 =&gt; v
+( [v/x]e = e' )
+e' =&gt; v'
+---------------
+e1 e2 =&gt; v'
+</code></pre>
+<p>Construct a lamp expression that evaluates successfully using the first rule, but fails to evaluate using the second rule.</p>
+<details>
+<summary>Hint</summary>
+Try using a "multi-argument" function.
+</details>
+<h3 id="problem-4--written-2-pts"><a class="header" href="#problem-4--written-2-pts">Problem 4 (✍️ written, 2 pts)</a></h3>
+<p>Design the call-by-name (CBN) version of the rule for evaluating applications. Construct the following lamb expressions (if you think no such expression exists, please explain why):</p>
+<ul>
+<li>an expression such that using the CBN rule evaluates it to a value, but the call-by-value (CBV) rule does not</li>
+<li>an expression such that using the CBV rule evaluates it to a value, but the CBN rule does not</li>
+<li>an expression such that using the CBN and the CBV rule evaluates it to different values</li>
+<li>an expression such that using either the CBN or the CBV rule evaluates it to the same value, but the CBV rule results in a smaller derivation tree (i.e., fewer total number of rules used) than the CBN rule</li>
+<li>an expression such that using either the CBN or the CBV rule evaluates it to the same value, but the CBN rule results in a smaller derivation tree than the CBV rule.</li>
+</ul>
+<h3 id="problem-5--written-2-pts"><a class="header" href="#problem-5--written-2-pts">Problem 5 (✍️ written, 2 pts)</a></h3>
+<p>We say a program is well-scoped if it has no free variables. Show that determining whether a lamp expression is well-scoped is decidable.</p>
+<details>
+<summary>Hint</summary>
+<p>Define a recursive function called <code>free_vars</code> that takes a lamp expression and returns the set of all free variables in the expression. Once you collected all free variables, check if the set is empty.</p>
+</details>
+<h3 id="problem-6--written-extra-credit-2-pts"><a class="header" href="#problem-6--written-extra-credit-2-pts">Problem 6 (✍️ written, ⭐️extra credit⭐️, 2 pts)</a></h3>
+<p>Function parameters in Python are lexically scoped. However, variables are weird. For example, consider the following Python code:</p>
+<pre><code class="language-python">if &lt;condition&gt;:
+    x = 1
+else:
+    pass
+print(x)
+</code></pre>
+<p>If the condition holds, the first branch is executed, and <code>1</code> will be printed. Otherwise, the second branch is executed, and the above code will raise <code>NameError: name 'x' is not defined</code>.</p>
+<p>We say a Python program is well-scoped if it will not raise a <code>NameError</code> when executed. Show that determining whether a Python program is well-scoped is undecidable by reducing the halting problem to it../</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../assignments/hw1/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../assignments/hw3/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../assignments/hw1/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../assignments/hw3/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

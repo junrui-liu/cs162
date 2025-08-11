@@ -1,0 +1,1978 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>CS 162 - Programming Languages</title>
+        <meta name="robots" content="noindex">
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CS 162 - Programming Languages</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h2 id="course-description"><a class="header" href="#course-description">Course Description</a></h2>
+<p>Languages shape how we think.</p>
+<p>This course will expand how you think about programming by showing <em>how languages are built</em>. We'll demystify so-called "paradigms" -- imperative, object-oriented, and functional -- by distilling them into their core building blocks. You'll come to see familiar languages in a new light, see through surface-level syntax, and choose the right abstractions for the right problems.</p>
+<p>More deeply, you'll learn powerful tools used by language designers and theorists to ensure the <em>correctness</em> of languages and programs written in them. In a world increasingly flooded with AI-generated slop, this course will sharpen your ability to separate signal from noise and build provably unhackable software, making you irreplaceable in the "AI future".</p>
+<p>All this is grounded in hands-on projects. Throughout the session, you'll design and implement a simple but powerful language that unifies seemingly disjoint paradigms and previews next-generation language features.</p>
+<h2 id="learning-outcomes"><a class="header" href="#learning-outcomes">Learning Outcomes</a></h2>
+<p>By the end of this course, you will be able to:</p>
+<ol>
+<li>Formalize the syntax and semantics of programming languages from informal description.</li>
+<li>Visualize and reason about languages and programs written in them using formal models.</li>
+<li>Implement interpreters and type checkers from formal specifications.</li>
+<li>Analyze widely held misconceptions about language features and "paradigms", and desugar surface-level features into their essential components.</li>
+<li>Apply typed functional programming and computational effects to solve problems.<!-- 1. Model the data domain with algebraic data types.
+1. Carry out structural recursion (induction) to solve the problem over algebraically defined data.
+2. Identify recurring computational patterns in the solution, and abstract them into higher-order and/or polymorphic functions. -->
+</li>
+</ol>
+<h2 id="teaching-team"><a class="header" href="#teaching-team">Teaching Team</a></h2>
+<blockquote>
+<br>
+<img src="./res/junrui-profile.jpg" alt="junrui-profile" width="150"/>
+<p><strong>Instructor:</strong> Junrui Liu (pronounced "June-ray", he/him)</p>
+<p>I'm a PhD student in Computer Science (just finished my 4th year). I research Programming Languages, so the stuff we cover in CS 162 is very close to my heart. I've been TA'ing this course for 4 years in a row, and am super excited to teach it for the first time as an instructor!</p>
+<p>In my free time, I enjoy watching owarai, anime and competitive Valorant. I also like playing <a href="https://music.ucsb.edu/participate/ensembles/carillon">carillon</a> (you might catch me practicing on the Storke Tower on weekends this summer).</p>
+<p><strong>Email</strong>: <a href="mailto:junrui@ucsb.edu">junrui@ucsb.edu</a></p>
+<p><strong>Office hours</strong>:</p>
+<ul>
+<li>Tue, Wed, Thur, 2-3pm, Phelps 2510</li>
+<li>Fri, 1-2pm, <a href="https://ucsb-cs8.github.io/w20/info/mentorPhotos/trailer-map.png">Building 936 aka "TA trailer"</a></li>
+</ul>
+</blockquote>
+<blockquote>
+<br>
+<img src="./res/jiaming-profile.jpg" alt="jiaming-profile" width="200"/>
+<p><strong>TA:</strong> Jiaming Shan (he/him)</p>
+<p>I'm a first-year CS PhD student in UCSB, advised by Prof. Yu Feng. My current research topic is Programming Language and Formal Verification. I'm currently working on projects on AI for math and smart contracts. I'm also interested in AI. In my leisure time, I play some digital card games and rhythm games.</p>
+<p><strong>Email</strong>: <a href="mailto:jiamingshan@ucsb.edu">jiamingshan@ucsb.edu</a></p>
+<p><strong>Office hours</strong>: Mon 2-4pm @ <a href="https://ucsb-cs48.github.io/topics/csil/">CSIL</a> (1st floor of Harold Frank Hall, south side)</p>
+</blockquote>
+<p>The faculty mentor for this course is Prof. Yu Feng (yufeng@cs.ucsb.edu).</p>
+<p>In the remainder of this syllabus, "I" refers to Junrui, the instructor, unless otherwise specified.</p>
+<h2 id="course-communication"><a class="header" href="#course-communication">Course Communication</a></h2>
+<p>We will use Discord for most communication, including announcements and Q&amp;A. The invitation link will be posted on Canvas. Sensitive information will be communicated via email (e.g., if you want to privately inquire about your grade).</p>
+<h2 id="weekly-pattern"><a class="header" href="#weekly-pattern">Weekly Pattern</a></h2>
+<div class="table-wrapper"><table><thead><tr><th></th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr></thead><tbody>
+<tr><td><strong>Class</strong></td><td>No class 🏖️😎</td><td>Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514)</td><td>Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514)</td><td>Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514)</td><td>Section 🗣️ <br> (11am-12:20pm, <br> Phelps 1440)</td></tr>
+<tr><td><strong>OH</strong></td><td>Jiaming <br> (2-4pm, CSIL)</td><td>Junrui <br> (2-3pm, Phelps 2510)</td><td>Junrui <br> (2-3pm, Phelps 2510)</td><td>Junrui <br> (2-3pm, Phelps 2510)</td><td>My turn <br> 🏖️😎</td></tr>
+</tbody></table>
+</div>
+<h2 id="grading-scale"><a class="header" href="#grading-scale">Grading Scale</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Percentage</th><th>Letter Grade</th></tr></thead><tbody>
+<tr><td>93% - 100%</td><td>A</td></tr>
+<tr><td>90% - 92%</td><td>A-</td></tr>
+<tr><td>87% - 89%</td><td>B+</td></tr>
+<tr><td>83% - 86%</td><td>B</td></tr>
+<tr><td>80% - 82%</td><td>B-</td></tr>
+<tr><td>77% - 79%</td><td>C+</td></tr>
+<tr><td>73% - 76%</td><td>C</td></tr>
+<tr><td>70% - 72%</td><td>C-</td></tr>
+<tr><td>67% - 69%</td><td>D+</td></tr>
+<tr><td>63% - 66%</td><td>D</td></tr>
+<tr><td>60% - 62%</td><td>D-</td></tr>
+<tr><td>0% - 59%</td><td>F</td></tr>
+</tbody></table>
+</div>
+<p>Note that:</p>
+<ul>
+<li>I reserve the right to curve the grades to the student's advantage. In other words, the percentage for each letter may be <em>lowered</em> at the end of the session, but will not be raised, so you can always expect to get <em>at least</em> the letter grade corresponding to the percentage listed above.</li>
+<li>I have no incentive to enforce a normal, bell-shaped distribution of grades, so you can be assured that you will get the letter grade you deserve based on your <em>own</em> performance, not on how well your classmates do.</li>
+</ul>
+<h2 id="grading-criteria"><a class="header" href="#grading-criteria">Grading Criteria</a></h2>
+<ul>
+<li>5 homework assignments: 50%
+<ul>
+<li>A mix of written exercises and programming tasks</li>
+</ul>
+</li>
+<li>2 quizzes: 40%
+<ul>
+<li>Held in class, closed-book, no makeups</li>
+<li>No quiz will be held during the last week of the session</li>
+</ul>
+</li>
+<li>2 reflections: 10%
+<ul>
+<li>More details in the <a href="syllabus.html#reflection-assignments">Reflection Assignments</a> section below</li>
+</ul>
+</li>
+</ul>
+<h2 id="readings"><a class="header" href="#readings">Readings</a></h2>
+<p>The primary reference for this course is the lecture notes, which will be made available in the <a href="./lecture-notes.html">Lecture Notes</a> section of this website. I will try to release the notes within 2-3 days after each lecture.</p>
+<p>For additional reference, here're some of my personal favorite textbooks on programming languages, all of which are freely available online:</p>
+<ul>
+<li><a href="https://github.com/MPRI/M2-4-2/blob/master/Types%20and%20Programming%20Languages.pdf">Types and Programming Languages</a> by Benjamin C. Pierce</li>
+<li><a href="https://web.archive.org/web/20221109205432/http://www.cs.cmu.edu/~rwh/pfpl/2nded.pdf">Practical Foundations for Programming Languages (2nd Ed)</a> by Robert Harper</li>
+<li><a href="https://cs.brown.edu/courses/cs173/2012/book/">Programming Languages: Application and Interpretation (2nd Ed)</a> by Shriram Krishnamurthi</li>
+</ul>
+<!-- - Frank Pfenning's [lecture notes for 15-814](https://www.cs.cmu.edu/~fp/courses/15814-f21/schedule.html) at CMU -->
+<h2 id="course-policies"><a class="header" href="#course-policies">Course Policies</a></h2>
+<h3 id="attendance"><a class="header" href="#attendance">Attendance</a></h3>
+<p>You are highly encouraged to attend both class and section. Although optional, attendance and participation will definitely influence your success level in this class -- not least because you can <a href="syllabus.html#token-system">earn tokens</a> for active participating!</p>
+<h3 id="token-system"><a class="header" href="#token-system">Token System</a></h3>
+<p>You will receive tokens of my appreciation 💖 for giving me feedback on my teaching -- directly so by filling out surveys, or indirectly so by actively participating in class and coming to my office hours. You can redeem these tokens for <strong>corrections on quizzes</strong>. Each token allows you correct 1 point you lost on a quiz. There is no upper limit on the number of tokens you can earn.</p>
+<p>Below is a tentative and non-exhaustive list of ways to earn tokens:</p>
+<div class="table-wrapper"><table><thead><tr><th>Activity</th><th>Tokens</th><th>Reset</th></tr></thead><tbody>
+<tr><td>Filling out a survey</td><td>2 💖</td><td>every survey</td></tr>
+<tr><td>Attending a lecture</td><td>1 💖</td><td>every lecture</td></tr>
+<tr><td>Asking/answering a question in class</td><td>2 💖</td><td>every lecture</td></tr>
+<tr><td>Coming to Junrui's office hours</td><td>2 💖</td><td>every week</td></tr>
+<tr><td>Hidden events (explained when an event is triggered)</td><td>??? 💖</td><td>every event</td></tr>
+</tbody></table>
+</div>
+<p>The <strong>Reset</strong> column indicates how often the tokens can be earned. For example, you can earn 2 tokens for asking a question in class, but you can only earn that token once per lecture. In other words, the <em>first</em> time you ask a question in each lecture grants you 2 tokens. (The resets are intended to prevent hardcore min-maxers from DDoSing me with questions.)</p>
+<p>To redeem your tokens for quiz corrections, you will schedule an in-person meeting with Junrui toward the end of the course, during which you will go over your original and corrected answers. More details will be provided later in the course.</p>
+<details>
+<summary>
+"What if I'm shy?"
+</summary>
+<blockquote>
+<p>Junrui: Same here. As an undergrad, I was terrified of speaking up in class, worried my question might sound “stupid” or my answer might be wrong. So if you're nervous, know it’s totally normal. And if you’re not comfortable talking in class, you can still earn tokens through office hours or surveys.</p>
+<p>That said, this system is meant to nudge you toward participating more than you normally would. Ultimately, the system is designed to collect <em>your</em> feedback on my teaching. I'd much rather know you're confused right away than have you think you're fine, only to realize you're lost during the homework. Honestly, I value questions that reveal misunderstandings as much as correct answers. Think of it like learning an instrument or a sport — it’s better if a coach spots your mistake early, before you practice it the wrong way for too long. I’m your coach for <em>learning</em> programming languages, and you're mine for <em>teaching</em> them — so the feedback goes both ways.</p>
+<p>One way to ease the nerves is to treat asking questions as a "min/max" strategy. You paid about <a href="https://www.summer.ucsb.edu/cost-savings/cost-attendance">$1200 for this class</a> — you deserve the best grade you can earn (with academic integrity, of course). Questions help you earn correction tokens and boost your quiz scores. Even asking me to clarify something I just said counts. Staying quiet earns you 1 token; raising your hand earns you 3!</p>
+<p>So I hope this takes some of the pressure off. There really are no stupid questions — only imagined ones.</p>
+<p><a href="https://www.reddit.com/r/BocchiTheRock/comments/zfvb3w/hope_nobody_else_made_this_joke_yet/"><img src="https://preview.redd.it/hope-nobody-else-made-this-joke-yet-v0-6vj3vetq0p4a1.jpg?width=1080&crop=smart&auto=webp&s=10631d59dce8fb74101d58654de0cfc5b773c1c0" alt="hope nobody else made this joke yet" width="400"/></a></p>
+</blockquote>
+</details>
+<h3 id="classroom-responsibility-and-courtesy"><a class="header" href="#classroom-responsibility-and-courtesy">Classroom Responsibility and Courtesy</a></h3>
+<p>This is a course where lectures will often involve discussions, since language design is inherently a <em>human</em> endeavor, and good designs only come from tons of trial and error and cross-pollination from diverse ideas. You are welcome and encouraged to express your own opinions in or after class, but you should expresse them respectfully. Respect fellow students and the hard work of others: in other words, your work must be your work, plagiarism will not be tolerated.</p>
+<h3 id="collaboration-and-academic-integrity"><a class="header" href="#collaboration-and-academic-integrity">Collaboration and Academic Integrity</a></h3>
+<p>You are encouraged to work together on homework assignments, but you must write your own code and solutions, unless it's explicitly designed to be a group assignment.</p>
+<p>Academic integrity is taken seriously. If you copy someone else's work (or LLM's work, as detailed in the <a href="syllabus.html#genai-usage">GenAI Usage</a> section), you will be violating UCSB's <a href="https://studentconduct.sa.ucsb.edu/academic-integrity">academic integrity policy</a>, which will result in a failing grade for the course.</p>
+<h3 id="genai-usage"><a class="header" href="#genai-usage">GenAI Usage</a></h3>
+<p>Unless otherwise specified, use of generative AI tools, including but not limited to chatbots (e.g., ChatGPT), coding assistants (e.g., Copilot), and coding agents (e.g., Cursor), is <strong>not allowed</strong> in this course.</p>
+<details>
+<summary>"Why not?"</summary>
+<blockquote>
+<p>On the surface, using those tools would be a <a href="https://studentconduct.sa.ucsb.edu/academic-integrity">violation of UCSB's academic integrity policy</a>. I do not want to report anyone -- it will make everyone sad, not just me, but if that happens, I will have no choice but to follow the policy.</p>
+<p>Fundamentally, I want <em>you</em> to learn and think deeply about the materials, so that you become irreplaceable by AIs -- not training yet anthoer model for tech billionaires to replace the workers. The only way to gain muscle is to use that muscle. The only way to get good at an instrument is to practice. The only way to learn to speak a new language is to actually speak it. No learning occurs if the work doesn't happen <em>within you</em>.</p>
+<p>Also, I respect your work, and I'd appreciate if you respect mine as well. I do not use AI to grade your work at all. If your work is AI generated, it's often easy to tell -- because a lot of the materials in this class are novel -- and I will be very sad to read something not from you. Also, I spent a lot of time designing and crafting this course. Although the materials may not be perfect, I'd greatly appreciate it if you respect my work by not feeding it as training data to some LLM. If something is not clear, please let me know, and I will do my best to make it better.</p>
+<p>On a more cheerful note, you won't ever need them, hopefully.</p>
+<ol>
+<li>You do not need to write any boilerplate code for this class. Every line of code you write matters, and is designed to check your understanding -- think of Gradescope autograder as a personalized TA vetted by me. The entirety of the interpreter + type checker you'll write for the entire class is fewer than 500 lines of code (at least in my own implementation). Spread over 5 assignments, that's about 100-200 LOC per week, which I hope is manageable.</li>
+<li>LLMs are ok with program syntax, and bad with program semantics, because they can't escape the Halting Problem! This course, however, is all about semantics and wreslting with the "undecidable". Even if you only use chatbots as "personalized tutors", they will likely give you non-sensical answers for questions related to language semantics (don't ask how I know this). So if you have questions, I'd highly encourage you to ask me, the TA, or your classmates instead. I and the TA will do our absolute best to help you understand everything taught in this class + get 100% on all assignments, if you're willing to put in the work. Come to office hours, ask questions in class and in Discord, and form study groups.</li>
+</ol>
+<p><strong>TL;DR.</strong> I want you to learn and succeed. Don't be like this guy:</p>
+<p><a href="https://www.reddit.com/r/ProgrammerHumor/comments/1je2exb/aicode/"><img src="https://preview.redd.it/jgzvvjxokfpe1.jpeg?width=320&crop=smart&auto=webp&s=0c56b120a7076f274067e4f5544678d8539ca239" alt="Don't be like this guy" width="300"/></a></p>
+</blockquote>
+</details>
+<h3 id="late-days"><a class="header" href="#late-days">Late Days</a></h3>
+<p>You have a total of <strong>5 late days</strong> to use throughout the course for <em>programming assignments</em>. You can spend <strong>no more than 2 late days</strong> on each programming assignment, and you can use them in any combination you like (e.g., 1 day for HW1, 2 days for HW2, 2 days for HW5, etc.). Once you run out of late days, no more late submissions will be accepted, and you will receive a score of 0 for late assignments.</p>
+<p>You cannot use late days on the written part of the assignments, since we may discuss the answers in class the next day.</p>
+<h3 id="quiz-makeup"><a class="header" href="#quiz-makeup">Quiz Makeup</a></h3>
+<p>No makeups will be given for quizzes except for formally documented emergencies. If you miss a quiz, you will receive a score of 0 for that quiz.</p>
+<h2 id="university-policies"><a class="header" href="#university-policies">University Policies</a></h2>
+<h3 id="copyright-and-course-recording"><a class="header" href="#copyright-and-course-recording">Copyright and Course Recording</a></h3>
+<p>All course materials (class lectures and discussions, handouts, quizzes, web materials) and the
+intellectual content of the course itself are protected by United States Federal Copyright Law and the
+California Civil Code. <a href="http://policy.ucop.edu/doc/2710530/PACAOS-100">UC Policy 102.23</a> expressly prohibits students (and all other persons) from recording
+lectures or discussions and from distributing or selling course materials without my prior written permission. Students are permitted to make notes solely for their own private educational use. Exceptions to accommodate students with disabilities may be granted with appropriate documentation.</p>
+<blockquote>
+<p><strong>TL;DR.</strong> Don't share or sell material from this class with people outside of the course!</p>
+</blockquote>
+<h3 id="title-ix"><a class="header" href="#title-ix">Title IX</a></h3>
+<p>Under Title IX, university students are protected from harassment and discrimination based on gender and sex. If a student feels uncomfortable or in need of support at any time related to their gender, sex, and/or sexual orientation, please contact me or your TA immediately. If a student would like to disclose information related to pronouns, name changes, or identities, we encourage you to do so. UCSB's <a href="https://rcsgd.sa.ucsb.edu/">Resource Center for Sexual and Gender Diversity</a> on the 3rd floor of the Student Resource Building is also available to advocate and support to students</p>
+<h3 id="disability-accommodations"><a class="header" href="#disability-accommodations">Disability Accommodations</a></h3>
+<p>Students with disabilities may request academic accommodations by contacting the <a href="https://dsp.sa.ucsb.edu/">Disabled Students Program (DSP)</a>. DSP is located at 2120 Student Resource Building and serves as the campus liaison regarding issues and regulations related to students with disabilities.</p>
+<p>For exam accommodations, please submit requests at least 1 week before the quiz date, so that I can make the necessary arrangements.</p>
+<h3 id="other-resources"><a class="header" href="#other-resources">Other Resources</a></h3>
+<h4 id="wellbeing-and-mental-health"><a class="header" href="#wellbeing-and-mental-health">Wellbeing and Mental Health</a></h4>
+<p>Personal concerns such as stress, anxiety, relationships, depression, cultural differences, can interfere with your ability to succeed and thrive. If you are experiencing any difficulties meeting class requirements, or any difficulties in your personal life, please contact UCSB Counseling and Psychological Services. For information, please call <a href="tel:805-893-4411">(805) 893-4411</a> or visit <a href="https://caps.sa.ucsb.edu/">their web site</a>. In addition, UCSB has <a href="https://wellbeing.ucsb.edu/">tons of resources</a> to help you gain the information, skills, and support systems you need to thrive and succeed academically.</p>
+<h4 id="basic-needs"><a class="header" href="#basic-needs">Basic Needs</a></h4>
+<p>If you are facing any challenges securing food or finding housing, you are urged to meet with a <a href="https://basicneeds.ucsb.edu/resources/basic-needs-peer-advising">Calfresh Advocate and Basic Needs Peer Advisor</a>, who is aware of the broad variety of resources that UCSB has to offer. You are also urged to contact me or the TA if you are comfortable doing so. Please visit <a href="https://basicneeds.ucsb.edu/">basicneeds.ucsb.edu</a> for additional resources including <a href="https://basicneeds.ucsb.edu/resources/food/calfresh">Calfresh</a>, the <a href="https://foodbank.as.ucsb.edu/">AS Food Bank</a>, and more.</p>
+<h2 id="reflection-assignments"><a class="header" href="#reflection-assignments">Reflection Assignments</a></h2>
+<p>I will share a couple of Youtube videos each week on some aspect of programming languages -- either directly related to what we talked about that week, or some broader topic that might be interesting/important but unfortunately doesn't fit into the short time we have in class.</p>
+<p>Out of 6 weeks, you pick 2 weeks to watch the videos and write a short (2-3 paragraphs) reflection on what you learned from the video, what surprised you, what you agreed/disagreed with, how does it change the way you think about programming languages, how does it relate to your own experience, etc.</p>
+<p>Completion = full credit. No need to be a great writer. Just share your thoughts in a way that others can understand, be honest and be thoughtful. You're encouraged to share your reflections with the class and comment on other students' reflections, if you feel comfortable doing so.</p>
+<p>Again, don't use LLMs. If you do, it'll defeat the purpose of reflections; I and other students will also waste time reading and commenting on some random string of emotionless symbols that doesn't come from <em>you</em>. If you're tempted to use LLMs, that likely means the week's topic doesn't interest you. In that case, you can skip it and do it in another week when the topic <em>does</em> genuinely interest you, since you only need to choose 2 weeks out of 6 anyway.</p>
+<h2 id="calendar-tentative"><a class="header" href="#calendar-tentative">Calendar (Tentative)</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: right">Date</th><th>Topic</th><th>Out</th><th>Due</th></tr></thead><tbody>
+<tr><td style="text-align: right"><strong>Week 1</strong></td><td><strong>How to design a programming language?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">06/24</td><td>Why study programming languages? + Python review</td><td>HW 1</td><td></td></tr>
+<tr><td style="text-align: right">06/25</td><td>Syntax</td><td></td><td></td></tr>
+<tr><td style="text-align: right">06/26</td><td>Inference rules</td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 2</strong></td><td><strong>What makes a programming language?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/01</td><td>Semantics</td><td>HW 2</td><td></td></tr>
+<tr><td style="text-align: right">07/02</td><td>Names</td><td></td><td>HW 1</td></tr>
+<tr><td style="text-align: right">07/03</td><td>Types</td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 3</strong></td><td><strong>How to abstract <em>data</em>?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/08</td><td>Finite and recursive types</td><td>HW 3</td><td></td></tr>
+<tr><td style="text-align: right">07/09</td><td>Pattern-matching</td><td></td><td>HW 2</td></tr>
+<tr><td style="text-align: right">07/10</td><td><em>Quiz 1 (tentative)</em></td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 4</strong></td><td><strong>How to abstract <em>computation</em>?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/15</td><td>Lambda calculus</td><td>HW 4</td><td></td></tr>
+<tr><td style="text-align: right">07/16</td><td>Polymorphism, type inference</td><td></td><td>HW 3</td></tr>
+<tr><td style="text-align: right">07/17</td><td>Defunctionalization, continuation-passing</td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 5</strong></td><td><strong>How to change the world?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/22</td><td>Mutable states</td><td>HW 5</td><td></td></tr>
+<tr><td style="text-align: right">07/23</td><td>Effect handlers</td><td></td><td>HW 4</td></tr>
+<tr><td style="text-align: right">07/24</td><td><em>Quiz 2 (tentative)</em></td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 6</strong></td><td><strong>What is the future of programming like?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/29</td><td>Advanced topic, TBD</td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/30</td><td>Advanced topic, TBD</td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/31</td><td>Advanced topic, TBD</td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>08/02</strong></td><td><strong>(End of summer session A)</strong></td><td></td><td>HW 5</td></tr>
+</tbody></table>
+</div><!-- |      07/29 | Curry-Howard correspondence                 |      |      |
+|      07/30 | Codata, objects, subtyping, infinity        |      |      |
+|      07/31 | It's lambda calculus all the way down!      |      |      | -->
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="calendar-"><a class="header" href="#calendar-">Calendar 📅</a></h1>
+<h2 id="weekly-pattern-1"><a class="header" href="#weekly-pattern-1">Weekly Pattern</a></h2>
+<div class="table-wrapper"><table><thead><tr><th></th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr></thead><tbody>
+<tr><td><strong>Class</strong></td><td>No class 🏖️😎</td><td>Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514)</td><td>Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514)</td><td>Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514)</td><td>Section 🗣️ <br> (11am-12:20pm, <br> Phelps 1440)</td></tr>
+<tr><td><strong>OH</strong></td><td>Jiaming <br> (2-4pm, CSIL)</td><td>Junrui <br> (2-3pm, Phelps 2510)</td><td>Junrui <br> (2-3pm, Phelps 2510)</td><td>Junrui <br> (2-3pm, Phelps 2510)</td><td>Junrui <br> (1-2pm, <a href="https://ucsb-cs8.github.io/w20/info/mentorPhotos/trailer-map.png">Building 936 aka "TA trailer"</a>)</td></tr>
+</tbody></table>
+</div>
+<h2 id="schedule"><a class="header" href="#schedule">Schedule</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: right">Date</th><th>Topic</th><th>Out</th><th>Due</th></tr></thead><tbody>
+<tr><td style="text-align: right"><strong>Week 1</strong></td><td><strong>How to design a programming language?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">06/24</td><td><a href="./lecture-notes/0624.html">Intro, Syntax I</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right">06/25</td><td><a href="./lecture-notes/0625.html">Syntax II, Inference Rules</a></td><td><a href="./assignments/hw1">HW 1</a></td><td></td></tr>
+<tr><td style="text-align: right">06/26</td><td><a href="./lecture-notes/0626.html">Operational Semantics</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right">06/27</td><td>Section: Python Tutorial</td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 2</strong></td><td><strong>What makes a programming language?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/01</td><td><a href="./lecture-notes/0701.html">Operational Semantics Practicum</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/02</td><td><a href="./lecture-notes/0702.html">Variables</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/03</td><td><a href="./lecture-notes/0703.html">Lambda Calculus</a></td><td><a href="./assignments/hw2">HW 2</a></td><td>HW 1</td></tr>
+<tr><td style="text-align: right">07/04</td><td><em>No class (Independence Day)</em></td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 3</strong></td><td><strong>How to abstract <em>data</em>?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/08</td><td><a href="./lecture-notes/0708.html">Call-by</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/09</td><td><a href="./lecture-notes/0709.html">Rice's Theorem, Soundness &amp; Completeness</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/10</td><td><a href="./lecture-notes/0710.html">Types</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 4</strong></td><td><strong>How to abstract <em>computation</em>?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/14</td><td>-</td><td></td><td>HW 2</td></tr>
+<tr><td style="text-align: right">07/15</td><td><em>Quiz 1</em></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/16</td><td><a href="./lecture-notes/0716.html">Type Soundness</a></td><td><a href="./assignments/hw3">HW 3</a></td><td></td></tr>
+<tr><td style="text-align: right">07/17</td><td><a href="./lecture-notes/0717.html">Bidirectional Typing</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 5</strong></td><td><strong>How to change the world?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/22</td><td><a href="./lecture-notes/0722.html">Sum Types</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/23</td><td><a href="./lecture-notes/0723.html">Pattern Matching</a></td><td></td><td>HW 3 (written)</td></tr>
+<tr><td style="text-align: right">07/24</td><td><em>Quiz 2</em></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/25</td><td>Section</td><td><a href="./assignments/hw4">HW 4</a></td><td>HW 3 (coding)</td></tr>
+<tr><td style="text-align: right"><strong>Week 6</strong></td><td><strong>What is the future of programming like?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/29</td><td>(1-1 quiz correction appointments)</td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/30</td><td>(1-1 quiz correction appointments)</td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/31</td><td>(1-1 quiz correction appointments)</td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>08/03</strong></td><td><strong>(End of summer session A)</strong></td><td></td><td>HW 4</td></tr>
+</tbody></table>
+</div><!-- |      07/29 | Curry-Howard correspondence                 |      |      |
+|      07/30 | Codata, objects, subtyping, infinity        |      |      |
+|      07/31 | It's lambda calculus all the way down!      |      |      | -->
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="lectures-"><a class="header" href="#lectures-">Lectures 🧑‍🏫</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="intro-syntax-i"><a class="header" href="#intro-syntax-i">Intro, Syntax I</a></h1>
+<blockquote>
+<p>No recording today, sorry!</p>
+</blockquote>
+<p><embed src="./Lecture 0 - Intro, Syntax I.pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="syntax-ii-inference-rules"><a class="header" href="#syntax-ii-inference-rules">Syntax II, Inference Rules</a></h1>
+<blockquote>
+<p><a href="https://gauchocast.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=911473ae-2f20-4cfd-a2cb-b336011bb371">Recording</a></p>
+</blockquote>
+<p><embed src="./Lecture 1 - Syntax II, Inference Rules.pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="operational-semantics"><a class="header" href="#operational-semantics">Operational Semantics</a></h1>
+<blockquote>
+<p><a href="https://gauchocast.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=5a7ceea7-b1a2-4f7f-afdd-b336011bb3db">Recording</a></p>
+</blockquote>
+<p><embed src="./Lecture 2 - Operational Semantics.pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="inference-rules-workshop"><a class="header" href="#inference-rules-workshop">Inference Rules Workshop</a></h1>
+<blockquote>
+<p><a href="https://gauchocast.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=0a4ece94-5487-4233-92c6-b336011bb34e">Recording</a></p>
+</blockquote>
+<h2 id="worksheet-clean"><a class="header" href="#worksheet-clean">Worksheet (Clean)</a></h2>
+<p><embed src="./Lecture 3 - Worksheet (clean).pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<h2 id="worksheet-solved"><a class="header" href="#worksheet-solved">Worksheet (Solved)</a></h2>
+<p><embed src="./Lecture 3 - Worksheet (solved).pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="variables"><a class="header" href="#variables">Variables</a></h1>
+<blockquote>
+<p><a href="https://gauchocast.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f3bd10c2-bf78-4748-985d-b336011bb3b1">Recording</a></p>
+</blockquote>
+<p><embed src="./Lecture 4 - Variables.pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="lambda-calculus"><a class="header" href="#lambda-calculus">Lambda Calculus</a></h1>
+<blockquote>
+<p><a href="https://gauchocast.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f1fa1208-b15f-496f-9253-b336011bbf6f">Recording</a></p>
+</blockquote>
+<p><embed src="./Lecture 5 - Lambda Calculus.pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="call-by"><a class="header" href="#call-by">Call-by</a></h1>
+<blockquote>
+<p><a href="https://gauchocast.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=bf2bbf3e-c47b-43a7-94b2-b336011bc98b">Recording</a></p>
+</blockquote>
+<p><embed src="./Lecture 6 - Call-by.pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="rices-theorem-soundness--completeness"><a class="header" href="#rices-theorem-soundness--completeness">Rice's Theorem, Soundness &amp; Completeness</a></h1>
+<blockquote>
+<p><a href="https://gauchocast.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=52226e23-cb6c-43f3-a393-b336011bd084">Recording</a></p>
+</blockquote>
+<p><embed src="./Lecture 7 - Rice's Theorem, Soundness & Completeness.pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="types"><a class="header" href="#types">Types</a></h1>
+<blockquote>
+<p><a href="https://gauchocast.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f70e5594-e7dc-4acb-94dc-b336011bd775">Recording</a> (Note: first 1/3 missing since I forgot to hit record)</p>
+</blockquote>
+<p><embed src="./Lecture 8 - Types.pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="type-soundness"><a class="header" href="#type-soundness">Type Soundness</a></h1>
+<blockquote>
+<p><a href="https://gauchocast.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=f2a1d2df-910a-48d3-9b2a-b336011be018">Recording</a></p>
+</blockquote>
+<p><embed src="./Lecture 9 - Type Soundness.pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="bidirectional-typing"><a class="header" href="#bidirectional-typing">Bidirectional Typing</a></h1>
+<blockquote>
+<p><a href="https://gauchocast.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=73b12fce-14f4-481d-9440-b336011be990">Recording</a></p>
+</blockquote>
+<p><embed src="./Lecture 10 - Bidirectional Typing.pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="sum-types"><a class="header" href="#sum-types">Sum Types</a></h1>
+<blockquote>
+<p><a href="https://gauchocast.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=eb130b25-2f3a-4e9a-b64a-b336011bf0b2">Recording</a></p>
+</blockquote>
+<p><embed src="./Lecture 11 - Sum Types.pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="pattern-matching"><a class="header" href="#pattern-matching">Pattern Matching</a></h1>
+<blockquote>
+<p><a href="https://gauchocast.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=713fae31-a203-49bc-bcff-b336011bf4f4">Recording</a></p>
+</blockquote>
+<p><embed src="./Lecture 12 - Pattern Matching.pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="homework-assignments"><a class="header" href="#homework-assignments">Homework Assignments</a></h1>
+<p>Let's design &amp; build a programming language together!</p>
+<h2 id="lamp-reference-manual"><a class="header" href="#lamp-reference-manual">Lamp Reference Manual</a></h2>
+<p><embed src="./lamp.pdf" width="800" height="800" 
+ type="application/pdf"></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="homework-1"><a class="header" href="#homework-1">Homework 1</a></h1>
+<blockquote>
+<p>Written problems due: <strong>Thursday, July 3, 2025, 12:30pm (before class)</strong></p>
+<p>Coding problems due: <strong>Thursday, July 3, 2025, 11:59pm PDT</strong> on Gradescope</p>
+</blockquote>
+<h2 id="instructions"><a class="header" href="#instructions">Instructions</a></h2>
+<p>There are be 2 types of problems:</p>
+<ol>
+<li>
+<p><strong>Written problems</strong> are marked with ✍️.</p>
+<ul>
+<li>Must be done <strong>individually</strong>.</li>
+<li>Please turn in a <strong>stapled, physical copy</strong> of your solutions before the lecture start time on the due date.</li>
+<li>For each sub-problem, please provide a self-grade out of 2 points: 2 for a fully solved problem with a correct solution, 1 for a partially correct attempt with all work shown, and 0 for no attempt. If you're unsure whether your solution is correct, you can leave it as <code>?</code>, and I will grade it for you.</li>
+<li>On the first page of your solutions, please include your name (on Canvas/Gradescope), student ID, and a table containing the self-grades for each sub-problem, like this:</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Problem</th><th>Sub-problem</th><th>Self-grade (0/1/2/?)</th></tr></thead><tbody>
+<tr><td>1</td><td>A</td><td>2</td></tr>
+<tr><td>1</td><td>B</td><td>2</td></tr>
+<tr><td>1</td><td>C</td><td>1</td></tr>
+<tr><td>1</td><td>D</td><td>?</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>If you handwrite your solutions, please write clearly and legibly.</li>
+</ul>
+</li>
+<li>
+<p><strong>Coding problems</strong> are marked with 🧑‍💻.</p>
+<ul>
+<li>Must be done <strong>individually</strong>.</li>
+<li>Coding problems are autograded on Gradescope.</li>
+<li>You can submit as many times as you want.</li>
+<li>Note that you can use a maximum of 2 late days for each HW's coding problems, but not for the written problems.</li>
+</ul>
+</li>
+</ol>
+<p>Other important notes:</p>
+<ul>
+<li>
+<p>Problems (written or coding) marked with ⭐️ are extra credit problems. You can do them for fun and for extra credit, but they are completely optional.</p>
+</li>
+<li>
+<p>You're encouraged to talk about the problems with the instructor, the TA, and your classmates, but your group must write up your own solutions for the written problems, and you must individually write code for the coding problems.</p>
+</li>
+<li>
+<p>Note you won't be able to turn in corrections to homework problems, unlike quizzes.</p>
+</li>
+<li>
+<p>Use of generative AI tools and coding assistants is not allowed for this assignment. You will be able to use them for future assignments (maybe), but not for this one. If you're new to Python, it's ok ask LLMs to answer some concept questions, but please write your own code (since LLMs won't be able to help you anymore in future assignments which are harder + not in their training data).</p>
+</li>
+<li>
+<p>If you have any questions about the assignment, please post them in the <code>#hw1</code> Discord channel, or come to the office hours.</p>
+</li>
+</ul>
+<h2 id="problem-0--written-2-pts"><a class="header" href="#problem-0--written-2-pts">Problem 0 (✍️ written, 2 pts)</a></h2>
+<p>Install Python 3.12 or later. You're highly encouraged to use <a href="https://www.anaconda.com/docs/getting-started/miniconda/main">Anaconda or Miniconda</a> to manage your Python environment.</p>
+<ul>
+<li>Once you have Anaconda, <code>conda</code> will be available in your terminal. You can create a new environment with the command <code>conda create -n cs162 python=3.12</code>.</li>
+<li>To activate the environment, run <code>conda activate cs162</code>. Note that you need to run this command every time you open a new terminal window.</li>
+<li>In your PDF, attach a screenshot/stdout of the welcome message that you receive after running <code>python3</code>. For example, you should see something like this:</li>
+</ul>
+<pre><code class="language-bash">» python3
+Python 3.9.12 (main, Jun  1 2022, 06:34:44)
+[Clang 12.0.0 ] :: Anaconda, Inc. on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+</code></pre>
+<p>If you use VSCode, please also attach a screenshot of the portion of the VScode window that shows Copilot is disabled (at least for Python). There's a copilot icon in the bottom right corner that you can click to disable Copilot. Thank you so much.</p>
+<p>Tips:</p>
+<ul>
+<li>If you're on Windows, we highly recommend you use the <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux (WSL)</a> as the development environment.</li>
+<li>All packages installed with <code>pip</code> for this class will stay in the <code>cs162</code> environment, so you don't have to worry about conflicts with your system Python installation.</li>
+<li>If you have trouble installing Python, please ask for help in the <code>#tech-support</code> channel on Discord.</li>
+</ul>
+<h2 id="problem-1"><a class="header" href="#problem-1">Problem 1</a></h2>
+<h3 id="problem-1-a--coding-5-points"><a class="header" href="#problem-1-a--coding-5-points">Problem 1-A (🧑‍💻 coding, 5 points)</a></h3>
+<p>Read about <a href="https://benhoyt.com/writings/python-pattern-matching/">pattern matching in Python</a>. Then, using pattern matching, define a recursive function <code>compress</code> that removes <em>consecutive</em> duplicate elements from a list:</p>
+<pre><code class="language-python">def compress(xs: list) -&gt; list:
+    match xs:
+        case []:
+            pass
+            # your code here
+        case [hd, *tl]:
+            pass
+            # your code here
+</code></pre>
+<p>Note that the pattern <code>[hd, *tl]</code> matches a list with at least one element, where <code>hd</code> is the first element and <code>tl</code> is the rest of the list. The <code>*</code> operator allows <code>tl</code> to match any number of elements, including zero.
+Define your function in <a href="assignments/hw1/./compress.py">compress.py</a>.</p>
+<details>
+<summary>Hint</summary>
+Use post-order traversal: first recursively compress the tail of the list, and then combine the head with the compressed tail using some post-processing logic.
+</details>
+<h3 id="problem-1-b--coding-5-pts"><a class="header" href="#problem-1-b--coding-5-pts">Problem 1-B (🧑‍💻 coding, 5 pts)</a></h3>
+<p>Consider the language of calculator expressions, augmented with the only variable <code>x</code>, and a composition operator <code>|&gt;</code>:</p>
+<pre><code>expr ::= number
+       | expr + expr
+       | expr - expr
+       | expr * expr
+       | expr |&gt; expr
+       | x
+</code></pre>
+<p>Intuitively, the only variable <code>x</code> stands for the "user input". The composition operator <code>|&gt;</code> takes the value of the left-hand side expression, and feeds it into the "user input" of the right-hand side expression.</p>
+<p>For example, the expression <code>1 + 2 * x |&gt; x + 5</code> means:</p>
+<ul>
+<li>Ask the user for a number <code>n</code> for <code>x</code>. Let's say the user inputs <code>3</code>.</li>
+<li>Evaluate the left-hand side expression <code>1 + 2 * x</code> with <code>x = 3</code>, which evaluates to <code>1 + 2 * 3 = 7</code>.</li>
+<li>Feed the value <code>7</code> as input to the right-hand side expression <code>x + 5</code>, which evaluates to <code>7 + 5 = 12</code>.</li>
+</ul>
+<p>The AST is defined in <a href="assignments/hw1/./calc.py">calc.py</a>. We use <code>@dataclass</code> to represent the AST:</p>
+<pre><code class="language-python">@dataclass(frozen=True)
+class Expr:
+    pass
+
+@dataclass(frozen=True)
+class Num(Expr):
+    value: int
+
+@dataclass(frozen=True)
+class Add(Expr):
+    e1: Expr
+    e2: Expr
+</code></pre>
+<p>Note that <code>@dataclass(frozen=True)</code> makes the class immutable, which is a good practice for ASTs, since we don't want to accidentally modify them after they are created.</p>
+<p>Your task is to implement the <code>eval</code> function (in <a href="assignments/hw1/./calc.py">calc.py</a>) that evaluates the input expression given an "user input" for <code>x</code>, using the following signature:</p>
+<pre><code class="language-python">def eval(x: int, e: Expr) -&gt; int:
+    match e:
+        case Num(value):
+            pass
+            # your code here
+        case Add(e1, e2):
+            pass
+            # your code here
+        case Sub(e1, e2):
+            pass
+            # your code here
+        case Mul(e1, e2):
+            pass
+            # your code here
+        case Compose(e1, e2):
+            pass
+            # your code here
+        case X():
+            pass
+            # your code here
+</code></pre>
+<p>Note that type annotations like <code>: int</code>, <code>: Expr</code>, and <code>-&gt; int</code> are completely optional in Python; they're just there to provide hints to the reader and to your VSCode Python plugin.</p>
+<h3 id="problem-1-c--coding-5-pts"><a class="header" href="#problem-1-c--coding-5-pts">Problem 1-C (🧑‍💻 coding, 5 pts)</a></h3>
+<p>In <a href="assignments/hw1/./calc.py">calc.py</a>, define a function <code>remove_compose</code> that takes an expression and returns an equivalent expression that does not use the composition operator <code>|&gt;</code>.</p>
+<pre><code class="language-python">def remove_compose(expr: Expr) -&gt; Expr:
+    # your code here
+</code></pre>
+<details>
+<summary>Hint</summary>
+1. Use pattern matching.
+2. Define a helper function that *substitutes* all `X()` with another expression. Call this helper function in the `Compose` case.
+</details>
+<h3 id="problem-1-d--coding-10-pts"><a class="header" href="#problem-1-d--coding-10-pts">Problem 1-D (🧑‍💻 coding, 10 pts)</a></h3>
+<p>Compilers routinely perform optimizations on programs to make them faster, smaller, etc. They do so before the program is run, so the optimizations need to be correct regardless of what the user inputs in the future.</p>
+<p>In <a href="assignments/hw1/./calc.py">calc.py</a>, implement the <code>simplify</code> function that will optimize arithmetic expressions. In particular:</p>
+<ul>
+<li>Operations on constant expressions should be simplified, e.g. <code>1 + (1 * 3)</code> is simplified to <code>4</code>.</li>
+<li>Addition and multiplication identities should be simplified, e.g. <code>1 * (x + 0 + (5 * 0))</code> is simplified to <code>x</code>. Specifically, you need to handle addition by 0, multiplication by 0, and multiplication by 1.</li>
+<li>All other combinations of addition and multiplication should be left as-is. For example, you do not need to distribute multiplication (e.g., you should leave <code>2 * (x + 1)</code> as-is), nor do you need to combine multiple additions of a term into scaling the term by a constant (e.g., you should leave expressions such as <code>x + (2 * x)</code> as-is).</li>
+<li>All simplifications should be applied <em>as much as possible</em>.</li>
+<li>You may assume that all composition operators have already been removed from the expression.</li>
+</ul>
+<details>
+<summary>Hint</summary>
+<p>Use simultaneous pattern matching and wildcard to make your code cleaner:</p>
+<pre><code class="language-python">match &lt;x&gt;, &lt;y&gt;:
+    case &lt;pattern1&gt;, &lt;pattern2&gt;:
+        # your code here
+    case ...:
+        # your code here
+    case _:
+        # _ is a wildcard that matches anything, so it's like a default "catch-all" case
+        # this branch is executed only if none of the preceding patterns match
+        
+        # your code here
+</code></pre>
+<p>For example, in the <code>Add</code> case, you might want to do something like this:</p>
+<pre><code class="language-python">...
+case Add(e1, e2):
+    match simplify(e1), simplify(e2):
+        case ...:
+            # your code here
+</code></pre>
+</details>
+<h2 id="problem-2"><a class="header" href="#problem-2">Problem 2</a></h2>
+<p>In this problem, you will be a language designer, and design the syntax and semantics of propositional logic, which you first learned in <a href="https://sites.cs.ucsb.edu/~cappello/lectures/logic/1.1.pptx">CS 40</a>.</p>
+<h3 id="problem-2-a--written-2-pts"><a class="header" href="#problem-2-a--written-2-pts">Problem 2-A (✍️ written, 2 pts)</a></h3>
+<p>Formalize the abstract syntax of propositional logic propositions using context-free grammar (CFG). Your grammar should support <code>-</code> (unary negation), <code>/\</code> (binary conjunction), <code>\/</code> (binary or), <code>-&gt;</code> (binary implication), <code>&lt;-&gt;</code> (iff), along with boolean constants (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">True</span></span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">False</span></span></span></span></span>) and propositional variables (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">Q</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span></span></span></span>).</p>
+<h3 id="problem-2-b--written-2-pts"><a class="header" href="#problem-2-b--written-2-pts">Problem 2-B (✍️ written, 2 pts)</a></h3>
+<p>Use Python's <code>dataclass</code> to represent the abstract syntax tree (AST) of propositions defined by your grammar. Name the abstract class <code>Prop</code>, and include the class definitions in your PDF:</p>
+<pre><code class="language-python">@dataclass(frozen=True)
+class Prop:
+    pass
+
+@dataclass(frozen=True)
+class &lt;Class1&gt;(Prop):
+    """Explanation of how you obtained Class1 from a CFG production rule."""
+    # fields
+
+@dataclass(frozen=True)
+class &lt;Class2&gt;(Prop):
+    """Explanation of how you obtained Class2 from a CFG production rule."""
+    # fields
+
+...
+</code></pre>
+<p>For each class, informally explain how you translated the CFG production rule into that class definition using 1 sentence in the docstring (enclosed in <code>"""</code>).</p>
+<h3 id="problem-2-c--written-2-pts"><a class="header" href="#problem-2-c--written-2-pts">Problem 2-C (✍️ written, 2 pts)</a></h3>
+<p>Pretend you’re the parser. For each of the following proposition:</p>
+<ol>
+<li>draw the corresponding AST corresponding to the formula in concrete syntax</li>
+<li>write down a Python object (of class <code>Prop</code>) that represents the same AST. The object should be constructed using a series of constructor calls for your <code>&lt;Class1&gt;</code>, <code>&lt;Class2&gt;</code>, etc. that you defined in Problem 2-B.</li>
+</ol>
+<p>Propositions:</p>
+<ul>
+<li><code>A -&gt; B -&gt; C</code></li>
+<li><code>A \/ B \/ C</code></li>
+<li><code>A /\ B \/ C</code></li>
+<li><code>-A \/ -B &lt;-&gt; -(A /\ B)</code></li>
+</ul>
+<p>Use the following precedence and associativity rules to resolve any ambiguities:</p>
+<ul>
+<li><code>-</code> has the highest precedence and is non-associative (since it's unary).</li>
+<li><code>/\</code> has the second highest precedence and is left associative.</li>
+<li><code>\/</code> has the third highest precedence and is left associative.</li>
+<li><code>-&gt;</code> and <code>&lt;-&gt;</code> have the lowest precedence and are right associative.</li>
+</ul>
+<h3 id="problem-2-d--written-2-pts"><a class="header" href="#problem-2-d--written-2-pts">Problem 2-D (✍️ written, 2 pts)</a></h3>
+<p>Define a Python function <code>pretty_print</code> that converts a proposition to a human-readable string. In the output string, use parentheses to clearly disambiguate nested operators. In the PDF, include the function definition, as well as the output of the function when given the Python AST objects that you wrote down for Problem 2-C.</p>
+<pre><code class="language-python">def pretty_print(prop: Prop) -&gt; str:
+    # your code here
+
+# Example usage
+print(pretty_print(...))
+print(pretty_print(...))
+print(pretty_print(...))
+print(pretty_print(...))
+
+# Output:
+# Copy and paste stdout for the above print statements here
+</code></pre>
+<h3 id="problem-2-e--written-2-pts"><a class="header" href="#problem-2-e--written-2-pts">Problem 2-E (✍️ written, 2 pts)</a></h3>
+<p>Define a Python function <code>size</code> that computes the number of nodes in a proposition AST. In the PDF, include the function definition, as well as the output of the function when given the Python AST objects that you wrote down for Problem 2-C.</p>
+<pre><code class="language-python">def size(prop: Prop) -&gt; int:
+    # your code here
+
+# Example usage
+print(size(...))
+print(size(...))
+print(size(...))
+print(size(...))
+
+# Output:
+# Copy and paste stdout for the above print statements here
+</code></pre>
+<h3 id="problem-2-f--written-2-pts"><a class="header" href="#problem-2-f--written-2-pts">Problem 2-F (✍️ written, 2 pts)</a></h3>
+<p>Formalize the meaning of logical formulas by inductively defining the judgment
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊢</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>
+using inference rules.</p>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> is a proposition</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> is a boolean value (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">True</span></span></span></span></span> or <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">False</span></span></span></span></span>)</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> is an assignment (a partial function) from propositional variables to boolean values. You can write <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> using the following grammar:
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">::=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord amsrm">∅</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7054em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">↦</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span></li>
+</ul>
+<p>Intuitively, this judgment means that under assignment <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span>, proposition <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> evaluates to boolean value <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>.</p>
+<p>In designing your operational semantics:</p>
+<ul>
+<li>You should have at least one rule for each case in your abstract syntax.</li>
+<li>The meaning of each operator should be independent. That is, do not use a judgment involving <code>-&gt;</code> to define a judgment involving <code>&lt;-&gt;</code>.</li>
+<li>There are several ways to handle variables in a proposition that are not defined by the assignment.
+<ul>
+<li>You can stipulate that there is <em>no applicable rule</em> if the variable is undefined.</li>
+<li>You can explicitly return a special value (e.g., ☹️) to signal that the variable is undefined. So in judgment <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊢</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>, the value of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> can be <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">True</span></span></span></span></span>, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">False</span></span></span></span></span>, or ☹️.</li>
+</ul>
+</li>
+</ul>
+<p>In addition, in your PDF, pick one propositions from Problem 2-C, and draw the derivation tree that shows <span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊢</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">True</span></span></span></span></span></span> for some assignment <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> of your choice. That is, pick an assignment <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> of the variables in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> that make <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> evaluate to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">True</span></span></span></span></span>, and draw the derivation trees where you apply your operational semantics rules.</p>
+<h2 id="problem-3"><a class="header" href="#problem-3">Problem 3</a></h2>
+<p>A programming language often provides <em>syntactic sugars</em> — nice-to-have features that allow programmers to write more concise code but are nevertheless expressible using (a combination of) more primitive features.</p>
+<p>A prototypical example is <code>for</code> loops, which is a syntactic sugar for <code>while</code> loops that increment a counter variable. For example, the following <code>for</code> loop:</p>
+<pre><code class="language-c">for (int i = 0; i &lt; 10; i++) {
+    printf("%d\n", i);
+}
+</code></pre>
+<p>is a syntactic sugar for the following <code>while</code> loop:</p>
+<pre><code class="language-c">int i = 0;
+while (i &lt; 10) {
+    printf("%d\n", i);
+    i++;
+}
+</code></pre>
+<p>Programmers -- well, human programmers at least -- love syntactic sugars, since they can write less code. Language implementers hate syntactic sugars, because they need to write <em>more</em> code to handle those sugars which are basically duplicates of the code for handling the primitives.</p>
+<p>Luckily, a technique known as "desugaring" can make both the programmer and the language implementer happy, whereby a sugar is automatically translated into a combination of primitive features, before the primitive features are implemented. This way, the programmer can keep having their yummy sugar, but the implementer doesn't need to write any redundant code beyond the absolute necessary amount needed to handle the primitives.</p>
+<p>We call an abstract syntax that has syntactic sugars the “surface syntax”, and an abstract syntax that doesn’t have them the “core syntax”.</p>
+<p>For example, consider arithmetic expressions that we type into calculators. It’s convenient to type "-10" or "+123" using unary minus and plus, but they can be desugared into “0 - 10” and “123”. So the surface syntax of arithmetic expressions might look like this</p>
+<pre><code>expr ::= number
+       | -expr
+       | +expr
+       | expr + expr
+       | expr - expr
+</code></pre>
+<p>whereas the core syntax would look like this:</p>
+<pre><code>expr ::= number
+       | expr + expr
+       | expr - expr
+</code></pre>
+<p>The surface syntax has 5 cases, while the core syntax has only 3 cases. The translation from surface syntax to core syntax can be given by the following desugaring function:</p>
+<pre><code>desugar(number) = number
+desugar(- expr) = 0 - desugar(expr)
+desugar(+ expr) = desugar(expr)
+desugar(expr + expr) = desugar(expr) + desugar(expr)
+desugar(expr - expr) = desugar(expr) - desugar(expr)
+</code></pre>
+<p>An obvious but important property of desugaring is that it should not change the meaning (semantics) of the program.</p>
+<h3 id="problem-3-a--written-2-pts"><a class="header" href="#problem-3-a--written-2-pts">Problem 3-A (✍️ written, 2 pts)</a></h3>
+<p>The abstract syntax you designed for propositional logic in Problem 2 can be considered a surface syntax, since many operators can be expressed using a small set of primitives. Your task is to design a core syntax for propositional logic that has no more than 4 cases:</p>
+<pre><code>prop ::= True | False
+       | Var
+       | &lt;op&gt; (operator)
+</code></pre>
+<p>where <code>&lt;op&gt;</code> is any operator of your choice. The operator doesn't have to be one that's already in the surface syntax -- you can come up with a brand new operator. The operator can be unary, binary, or ternary. As a (non-)example, here's a possible core syntax:</p>
+<pre><code>prop ::= True | False
+       | Var
+       | prop /\ prop
+</code></pre>
+<p>although this is not a good choice, since <code>/\</code> doesn't have enough expressive power to represent all propositions in the surface syntax.</p>
+<p>Once you designed your operator, choose a sensible notation for it, and include the full grammar of the core syntax in your PDF. Then, intuitively describe the meaning of the operator you designed using 1-2 sentences.</p>
+<!-- 
+
+### Problem 3-B (✍️ written, 2 pts)
+Formalize the operational semantics for your core syntax by formalizing the following judgment using inference rules:
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8213em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8213em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊢</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0158em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8213em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇓</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8213em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8213em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">−</span></span></span></span></span></span></span></span></span></span></span></span>
+where, again, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> is a boolean value, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> is a proposition, and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> is an assignment of boolean values to propositional variables. We use <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel">⇓</span></span></span></span> instead of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> to distinguish the semantics of the core syntax (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel">⇓</span></span></span></span>) from that of the surface syntax (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span>).
+
+In designing your operational semantics:
+- You should have at least one rule for each case in your core syntax.
+- The meaning of each operator should be independent.
+- Your rules should be algorithmic, and the resulting relation should be deterministic.
+
+### Problem 3-C (✍️ written, 2 pts)
+Use Python's `dataclass` to represent the abstract syntax tree (AST) of propositions defined by your core syntax. Name the abstract class `Core`, and include the class definitions in your PDF:
+
+```python
+@dataclass
+class Core:
+    pass
+
+@dataclass
+class Class1(Core):
+    # fields
+
+@dataclass
+class Class2(Core):
+    # fields
+```
+
+### Problem 3-D (✍️ written, 2 pts)
+
+Define a Python function that translates the surface syntax into the core syntax.
+```python
+def desugar(p: Prop) -> Core:
+    match prop:
+        case <your code here>
+```
+The function should handle all ASTs in the surface syntax, and return an AST in the core syntax.
+
+Include the function definition in your PDF, as well as the output of the function when given the Python AST objects that you wrote down for Problem 2-C.
+
+```python
+# Example usage
+print(desugar(...))
+print(desugar(...))
+print(desugar(...))
+print(desugar(...))
+# Output:
+# Copy and paste stdout for the above print statements here
+```
+
+
+
+
+### Problem 3-E (✍️ written, 2 pts)
+Translate the semantic rules you just defined into a Python function `eval` that evaluates a proposition in the core syntax. The function should have the following signature:
+```python
+def eval(α: dict[str, bool], prop: Prop) -> Optional[bool]:
+    match prop:
+      # your code here
+```
+where <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> is a dictionary that maps propositional variables to boolean values, and `prop` is a proposition in the core syntax. The function should return the boolean value of the proposition under the assignment if all variables are defined in the assignment, or `None` if any variable is undefined.
+
+
+
+
+### Problem 3-F (✍️ written, 2 pts, ⭐️extra credit⭐️)
+Prove by induction that the desugaring function you just defined preserves the meaning of the proposition. That is, for any proposition <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> in the surface syntax, any assignment <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span>, and any value <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>, if
+
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊢</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>
+then
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊢</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">desugar</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇓</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>
+
+You can induct either on the size of the AST in surface syntax, or on the size of the derivation tree. If you need a refresher on induction, please feel free to come to office hours. -->
+<h3 id="problem-3-b--written-2-pts-extra-credit"><a class="header" href="#problem-3-b--written-2-pts-extra-credit">Problem 3-B (✍️ written, 2 pts, ⭐️extra credit⭐️)</a></h3>
+<p>Would you consider the composition operator <code>|&gt;</code> from Problem 1-B to be a syntactic sugar, and the <code>remove_compose</code> function from Problem 1-C a "desugaring" function? Give a brief argument (1-2 sentences) to justify your answer. There are no right or wrong answers. Completion = 2 points.</p>
+<h2 id="problem-4"><a class="header" href="#problem-4">Problem 4</a></h2>
+<p>Recall the abstract syntax for the CoinPython language (we will have seen this by either Thursday or next Tuesday).</p>
+<pre><code>p ::= pass
+    | raise
+    | print(msg)
+    | p; p
+    | if (*) {p} else {p}
+    | while (*) {p}
+msg ∈ M
+</code></pre>
+<p>where <code>M</code> is a finite set of strings, e.g., <code>M = {"ok", "oops"}</code>. Note that the abstract syntax for <code>if</code>, <code>;</code> (sequencing), and <code>while</code> doesn't exactly correspond to Python's concrete syntax; the goal is to make it easier to write down CoinPython programs on paper concisely, since normal Python is indentation-sensitive.</p>
+<p>Recall the judgment:</p>
+<pre><code>p =&gt; s
+</code></pre>
+<p>which intuitively means "execution of program <code>p</code> terminates normally (without exception), and the content of the console is <code>s</code>".</p>
+<p>The AST for CoinPython programs is defined in <a href="assignments/hw1/./coin.py">coin.py</a>.</p>
+<h3 id="problem-4-a--coding-5-pts"><a class="header" href="#problem-4-a--coding-5-pts">Problem 4-A (🧑‍💻 coding, 5 pts)</a></h3>
+<p>The most obvious way to determinize the relation <code>p =&gt; s</code> is to treat program <code>p</code> as input, and string <code>s</code> as output. In other words, we can write a CoinPython interpreter that executes a program <code>p</code> with some source of randomness, and collects the output <code>s</code> that would have been printed to the console.</p>
+<p>In the same file, implement such an interpreter:</p>
+<pre><code class="language-python">@dataclass
+class ProbablisticInterpreter:
+    coin: Coin
+
+    def run(self, p: Program) -&gt; Optional[str]:
+        # your code here
+</code></pre>
+<p>The return type annotation <code>Optional[str]</code> means that the function can return either a string (the fictional output that would have been printed to the console) or <code>None</code> (if the program raises an exception, e.g., due to a <code>Raise()</code>). Assume that each <code>Print(msg)</code> will just "print" the message as-is, without any trailing newline.</p>
+<p>In deciding the truth values of coin tosses (for <code>if (*)</code> and <code>while (*)</code>), the interpreter should use the <code>coin</code> object via <code>self.coin</code>, which is an instance of the <code>Coin</code> class. The only method of <code>Coin</code> that you need to be aware of is <code>flip</code>, which returns either <code>True</code> or <code>False</code>:</p>
+<pre><code class="language-python">@dataclass
+class Coin:
+    def flip(self) -&gt; bool:
+        ...
+</code></pre>
+<p>You can call the <code>flip</code> method using <code>self.coin.flip()</code>. The <code>flip</code> method simulates a coin toss, returning <code>True</code> for heads and <code>False</code> for tails.</p>
+<p>For example, for the following CoinPython program:</p>
+<pre><code>if (*) { pass } else { print("okie"); print("dokie") }
+</code></pre>
+<p>the interpreter should return either the empty string <code>""</code> (if the first coin toss is heads) or the string <code>"okiedokie"</code> (if the first coin toss is tails). You do not need to actually print the output to the console; just return it as a string.</p>
+<h3 id="problem-4-b--written-2-pts"><a class="header" href="#problem-4-b--written-2-pts">Problem 4-B (✍️ written, 2 pts)</a></h3>
+<p>For every operational semantics rule of CoinPython, informally explain how your interpreter faithfully implements that rule using 1-2 sentences.</p>
+<!-- ### Problem 4-B (🧑‍💻 coding, 5 pts)
+
+In programming language theory, an important problem is to predict the behavior of a program *before it is run*. Why? Because running a program can be costly in terms of time, money, and occasionally even human lives. For example, you don't want to find out that the aviation software on your flight that detects the speed of a plane has an overflow bug, and in particularly, you don't want to find out only after the plane has taken off, which will be too late.
+
+Let's say the aviation software was written in Python, for some heinous reason (not that you should). Then, our CoinPython is a very useful model for the aviation software, as we have discussed in class: any interesting behavior of the aviation software can be abstractly modeled as a CoinPython program with appropriate print statements that log the behavior of interest, and conditional values replaced with coin tosses.
+
+With this in mind, let's determinize the relation `p => s` in a different way that allows us to predict whether a program `p` will print a string `s` *without* actually running the program (like using the interpreter that you wrote in Problem 4-A). In other words, this time, both program `p` and string `s` are inputs to the relation, and we want to write a function that returns `True` if and only if `p => s`, and `False` otherwise.
+
+Your task is to implement the `predict` function that does just that:
+```python
+class Predictor:
+
+    def predict(self, p: Program, s: str) -> bool:
+        # your code here
+```
+
+For example, for the following CoinPython program:
+```
+if (*) { print("oops") } else { print("okie"); print("dokie") }
+```
+the predictor should return `True` for both `"oops"` and the string `"okiedokie"`, and `False` for any other string.
+
+
+Your `predict` function should return a 100% correct answer if the program doesn't contain `while` (if it does contain `while`, just try your best). In particular, don't rely on the probablistic interpreter that you wrote in Problem 4-A: don't execute the program `p` at bunch of times, sample the outputs, and check if `s` is among the outputs. If you think doing this is fine, imagine that the pilot told you the aviation software is secured by the law of large numbers:
+> Hey, I heard the programmer who wrote the aviation software tested it a million times on randomly generated inputs, and it never printed "oops". So I guess this plane is safe to fly!
+
+Right?..
+
+<details>
+<summary>Hint</summary>
+One of the tricky cases is sequencing, where you need to "guess" how to split the input string into two substrings. Since you need to be 100% correct, you have to try all possible guesses.
+</details> -->
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="homework-2"><a class="header" href="#homework-2">Homework 2</a></h1>
+<blockquote>
+<p>Written problems due: <strong>Thursday, July 10, 2025, 12:30pm (before class)</strong></p>
+<p>Coding problems due: <strong>Thursday, July 10, 2025, 11:59pm PDT</strong> on Gradescope</p>
+</blockquote>
+<h2 id="instructions-1"><a class="header" href="#instructions-1">Instructions</a></h2>
+<p>There are be 2 types of problems:</p>
+<ol>
+<li>
+<p><strong>Written problems</strong> are marked with ✍️.</p>
+<ul>
+<li>Must be done <strong>individually</strong>.</li>
+<li>Please turn in a <strong>stapled, physical copy</strong> of your solutions before the lecture start time on the due date.</li>
+<li>For each sub-problem, please provide a self-grade out of 2 points: 2 for a fully solved problem with a correct solution, 1 for a partially correct attempt with all work shown, and 0 for no attempt. If you're unsure whether your solution is correct, you can leave it as <code>?</code>, and I will grade it for you.</li>
+<li>On the first page of your solutions, please include your name (on Canvas/Gradescope), student ID, and a table containing the self-grades for each sub-problem, like this:</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Problem</th><th>Sub-problem</th><th>Self-grade (0/1/2/?)</th></tr></thead><tbody>
+<tr><td>1</td><td>A</td><td>2</td></tr>
+<tr><td>1</td><td>B</td><td>2</td></tr>
+<tr><td>1</td><td>C</td><td>1</td></tr>
+<tr><td>1</td><td>D</td><td>?</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>If you handwrite your solutions, please write clearly and legibly.</li>
+</ul>
+</li>
+<li>
+<p><strong>Coding problems</strong> are marked with 🧑‍💻.</p>
+<ul>
+<li>Must be done <strong>individually</strong>.</li>
+<li>Coding problems are autograded on Gradescope.</li>
+<li>You can submit as many times as you want.</li>
+<li>Note that you can use a maximum of 2 late days for each HW's coding problems, but not for the written problems.</li>
+</ul>
+</li>
+</ol>
+<p>Other important notes:</p>
+<ul>
+<li>
+<p>Problems (written or coding) marked with ⭐️ are extra credit problems. You can do them for fun and for extra credit, but they are completely optional.</p>
+</li>
+<li>
+<p>You're encouraged to talk about the problems with the instructor, the TA, and your classmates, but your group must write up your own solutions for the written problems, and you must individually write code for the coding problems.</p>
+</li>
+<li>
+<p>Note you won't be able to turn in corrections to homework problems, unlike quizzes.</p>
+</li>
+<li>
+<p>Use of generative AI tools and coding assistants is not allowed for this assignment. You will be able to use them for future assignments (maybe), but not for this one. If you're new to Python, it's ok ask LLMs to answer some concept questions, but please write your own code (since LLMs won't be able to help you anymore in future assignments which are harder + not in their training data).</p>
+</li>
+<li>
+<p>If you have any questions about the assignment, please post them in the <code>#hw2</code> Discord channel, or come to the office hours.</p>
+</li>
+</ul>
+<h2 id="part-1---implementing-the-lamp-interpreter"><a class="header" href="#part-1---implementing-the-lamp-interpreter">Part 1 - Implementing the Lamp Interpreter</a></h2>
+<p>This is where the fun begins in CS 162! We'll start designing and implementing a language called lamp (short for "<strong>lam</strong>bda calculus <strong>p</strong>lus a bunch of other stuff").</p>
+<p>In this HW, lamp will have simple features like arithmetic, booleans, let-bindings, and lambda calculus. The manual for lamp can be found <a href="assignments/hw2/../../assignments.html">here</a>.</p>
+<p>You should read the manual carefully before proceeding with the assignment, since it contains important information about the syntax (both concrete and abstract) and the operational semantics of the language. Most of the manual should be familiar to you from the lectures, but we did add some new features (to make it slightly more exciting), so please read the manual carefully.</p>
+<hr />
+<p>Assuming you have read the manual, let's break down the code for implementing lamp.</p>
+<p>To fully implement a language, we need a lot of components, including:</p>
+<ol>
+<li>A representation of the ASTs in the meta language (Python).</li>
+<li>A parser frontend that takes a text file containing lamp code, and produces an AST.</li>
+<li>An interpreter backend that takes the AST and evaluates it, producing a value or an error.</li>
+<li>And more (to be added in future assignments).</li>
+</ol>
+<p>Luckily, the first two components are already implemented for you, so you can focus on the interpreter backend. You can download the starter code using <a href="assignments/hw2/./hw2-starter.zip">this link</a>. The structure of the starter code is as follows:</p>
+<details>
+<summary>examples/</summary>
+<ul>
+<li><code>fib.lp</code> is an example lamp program that computes the Fibonacci numbers.</li>
+</ul>
+</details>
+<details>
+<summary>frontend/</summary>
+<ul>
+<li>
+<p><code>lang.py</code> contains the abstract syntax tree (AST) for lamp. The representation is the same as what we discussed in class (using Python's <code>dataclass</code>).</p>
+<ul>
+<li>Please read through the docstrings of the classes to understand the structure of the AST.</li>
+<li>If a class deserves additional explanation, you can find it in the docstring of the class.</li>
+<li>You should ignore all the <code>__repr__</code> and <code>__pdoc__</code> methods, since they're just for pretty-printing the AST.</li>
+</ul>
+</li>
+<li>
+<p><code>grammar.lark</code> contains the CFG for the concrete syntax of lamp.</p>
+<ul>
+<li>You do not need to understand anything in this file.</li>
+</ul>
+</li>
+<li>
+<p><code>parse.py</code> implements the parser for lamp.</p>
+<ul>
+<li>You do not need to understand anything in this file.</li>
+<li>However, I wrote some code to print out lamp expressions as strings or as ASTs. If you run the parser independently on an lamp file, it will print out the string &amp; the AST for every definition and for the main expression. To do this, run this command:
+<pre><code class="language-bash">python3 -m frontend.parse &lt; examples/fib.lp
+</code></pre>
+You should see the output like this:
+<img src="assignments/hw2/./ast.jpg" width="400px" alt="AST for fib.lp"></li>
+</ul>
+</li>
+<li>
+<p><code>pretty_ast.py</code> is a pretty-printer for lamp ASTs.</p>
+<ul>
+<li>You do not need to understand anything in this file.</li>
+<li>However, you might find it helpful to pretty-print the ASTs when you're debugging your interpreter. The function <code>pp_ast(e)</code> takes an expression <code>e</code>, and returns a (large) string that shows the AST of <code>e</code> in a human-readable format.</li>
+</ul>
+</li>
+</ul>
+</details>
+<details>
+<summary>backend/</summary>
+<ul>
+<li><code>subst.py</code> contains a skeleton of the substitution function.
+<ul>
+<li><strong>Your task</strong> will be to fill in places marked with <code># your code here</code>.</li>
+</ul>
+</li>
+<li><code>eval.py</code> contains a skeleton of the interpreter.
+<ul>
+<li><strong>Your task</strong> will be to fill in places marked with <code># your code here</code>.</li>
+<li>Since an interpreter needs to evaluate expressions into <em>values</em>, we need to represent values in Python. The representation of values is very similar to that of <code>Expr</code>: we have an empty dataclass <code>Val</code>, and subclasses <code>VNat</code>, <code>VBool</code>, and <code>VLambda</code> for natural numbers, booleans, and lambda functions, respectively. If you read the operational semantics section of the lamp manual, you will see a grammar for values, which directly maps to the following Python code:
+<pre><code class="language-python">@dataclass
+class Val:
+    pass
+
+@dataclass
+class VNat(Val):
+    n: int
+
+@dataclass
+class VBool(Val):
+    b: bool
+
+@dataclass
+class VLambda(Val):
+    b: Binder[Expr]
+</code></pre>
+</li>
+<li>The interpreter is implemented as an <code>Interpreter</code> class that has a field <code>prog</code> that contains the lamp program to be evaluated (recall that a lamp program has a list of abbreviations and a main expression).</li>
+<li>The <code>run</code> method of the <code>Interpreter</code> class evaluates the main expression of the program, which in turn runs <code>eval</code> on the main expression.</li>
+<li>The <code>eval</code> function is where you will translate the operational semantics of lamp into Python code.</li>
+</ul>
+</li>
+</ul>
+</details>
+<p>To run the interpreter, you can run the following command:</p>
+<pre><code class="language-bash">python3 -m backend.eval &lt; examples/fib.lp
+</code></pre>
+<p>You should see the output like this:</p>
+<pre><code>def Fib = \n.
+  if n == 0 then 0
+  else if n == 1 then 1
+  else Fib (n-1) + Fib (n-2)
+
+main = Fib 10
+Result: VNat(n=55)
+</code></pre>
+<h3 id="problem-0"><a class="header" href="#problem-0">Problem 0</a></h3>
+<p>Let's first set up the Python environment for this assignment.</p>
+<ol>
+<li>If you used <code>conda</code> to set up the Python environment for this class, you should do <code>conda activate cs162</code> to activate the environment.</li>
+<li>Then, run <code>python3 -m pip3 install requirements.txt</code> to install the required packages.</li>
+</ol>
+<p>Once step 2 is done, include a screenshot of the terminal output in your PDF submission, showing that the packages were installed successfully.</p>
+<p>If you have trouble installing the packages, please ask for help in the <code>#tech-support</code> channel on Discord.</p>
+<h3 id="problem-1-1"><a class="header" href="#problem-1-1">Problem 1</a></h3>
+<p>Before you put on the language implementer hat, let's have you be the programmer who uses the lamp language. For each of the following sub-problems, define a lamp abbreviation (<code>def AbbrevName = &lt;expr&gt;</code>). You can create a file called <code>stdlib.lp</code>, and put all of your definitions there. Once you're done, make sure to copy and paste the content of <code>stdlib.lp</code> into your written solutions.</p>
+<p>To validate your answers, I uploaded a reference interpreter for lamp to CSIL (TODO for Junrui: upload this by Friday). If you log into CSIL, you can access it via</p>
+<pre><code class="language-bash">~junrui/lamp &lt; FILENAME
+</code></pre>
+<p>Each item in the following list is worth 2 points as usual.</p>
+<ol>
+<li>Define an abbreviation <code>def Not = \b. &lt;your code here&gt;</code> that takes a boolean value and returns its negation. Hint: use <code>if b then .. else ..</code>.</li>
+<li>Define an abbreviation <code>def And = &lt;your code here&gt;</code> that takes two booleans and returns their conjunction.</li>
+<li>Define an abbreviation <code>def Or = &lt;your code here&gt;</code> that takes two booleans and returns their disjunction.</li>
+<li>Define an abbreviation <code>def Leq = &lt;your code here&gt;</code> that takes two natural numbers and returns whether the first number is less than or equal to the second number. Hint: use <code>if</code>, <code>==</code> and recursion.</li>
+<li>Define an abbreviation <code>def Lt = &lt;your code here&gt;</code> that takes two natural numbers and returns whether the first number is less than the second number. Use <code>Not</code> and <code>Leq</code>.</li>
+<li>Define an abbreviation <code>def Div = \m. \n. &lt;your code here&gt;</code> that takes two natural numbers and returns the result of dividing <code>m</code> by <code>n</code>. If <code>n</code> is zero, you can simply crash the program using something like <code>1+True</code>. (We'll learn how to design proper error handling next week.)</li>
+<li>Define an abbreviation <code>def Mod = \m. \n. &lt;your code here&gt;</code> that takes two natural numbers and returns the result of <code>m</code> modulo <code>n</code>. Hint: use <code>Div</code> and <code>*</code>.</li>
+<li>Define an abbreviation <code>def CollatzStep = \n. &lt;your code here&gt;</code> that takes a natural number <code>n</code> and returns the next step in the Collatz conjecture sequence. If <code>n</code> is even, return <code>Div n 2</code>, otherwise return <code>3 * n + 1</code>.</li>
+<li>Define an abbreviation <code>def Collatz = \n. &lt;your code here&gt;</code> that takes a natural number <code>n</code> and counts the number of steps it takes for the sequence starting at <code>n</code> to reach <code>1</code>. If <code>n</code> is <code>1</code> or <code>0</code>, simply return <code>0</code>.</li>
+</ol>
+<blockquote>
+<p>Hopefully, the last sub-problem can convince you that lamp is basically Turing-complete (woo-hoo), since the Collatz conjecture (that every sequence terminates in finite amount of steps) is an open problem.</p>
+<p>This is just to show you that we've already got a really powerful yet conceptually simple language to work with this early in the course! Can you imagine what exciting features we're gonna add in future HW? Stay tuned!</p>
+</blockquote>
+<h3 id="problem-2-1"><a class="header" href="#problem-2-1">Problem 2</a></h3>
+<p>I claimed in class that lambda calculus is all you need -- you don't need booleans, nat, or recursion. In this exercise, I'm going to show you some mystery lambda functions that substantiate my claims.</p>
+<h4 id="problem-2-a--written-2-pts-1"><a class="header" href="#problem-2-a--written-2-pts-1">Problem 2-A (✍️ written, 2 pts)</a></h4>
+<p>We will encode a boolean as a lambda function that takes two arguments, and returns one of them:</p>
+<pre><code>def T = \x. \y. x
+def F = \x. \y. y
+</code></pre>
+<p>That is, <code>T</code> is a function that takes two arguments and returns the first one, while <code>F</code> is a function that takes two arguments and returns the second one.</p>
+<pre><code>def MysteryIf = \cond. \thn. \els. cond thn els
+</code></pre>
+<p>I claim that <code>MysteryIf</code> implements if-then-else using pure lambda calculus: the function takes three arguments: a condition (which is an <em>encoding</em> of booleans, not a native boolean), and two arbitrary expressions, and returns one of the two expressions based on whether the condition encodes true or false.</p>
+<p>Your task is to define</p>
+<pre><code>def MysteryAnd = \b1. \b2. &lt;your code here&gt;
+def MysteryOr = \b1. \b2. &lt;your code here&gt;
+</code></pre>
+<p>which <em>encodes</em> conjunction and disjunction. You should only call <code>MysteryIf</code>, <code>T</code> and <code>F</code> in your code (don't use native booleans or native if-then-else).</p>
+<p>Once you're done, it's time to check that our encodings are correct. To do so, we define functions that</p>
+<ol>
+<li>take a native boolean and return the corresponding encoding</li>
+<li>take an encoding and return the corresponding native boolean.</li>
+</ol>
+<pre><code>def EncodeBool = \b. if b then T else F
+def DecodeBool = \enc. enc True False
+</code></pre>
+<p>Now, you should check that <code>DecodeBool (MysteryAnd (EncodeBool b1) (EncodeBool b2))</code> gives the expected answer for any choice of native booleans <code>b1</code> and <code>b2</code>. Similarly, check that <code>DecodeBool (MysteryOr (EncodeBool b1) (EncodeBool b2))</code> gives the expected answer for any choice of native booleans <code>b1</code> and <code>b2</code>. You can change the <code>main</code> expression to test one case at a time.</p>
+<p>In your PDF, include the output of <code>DecodeBool (MysteryAnd (EncodeBool b1) (EncodeBool b2))</code> and <code>DecodeBool (MysteryOr (EncodeBool b1) (EncodeBool b2))</code> for all combinations of <code>b1</code> and <code>b2</code> being <code>True</code> or <code>False</code>.</p>
+<blockquote>
+<p>This exercise shows you that any combinatorial logic circuit can be encoded in pure lambda calculus.</p>
+</blockquote>
+<h4 id="problem-2-b--written-2-pts-1"><a class="header" href="#problem-2-b--written-2-pts-1">Problem 2-B (✍️ written, 2 pts)</a></h4>
+<p>Now, let's encode natural numbers. You do not need to write any code. Simply copy and paste the following code into a test file:</p>
+<pre><code>def Z = \b. \i. b
+def S = \n. \b. \i. i n (n b i)
+def MysteryAdd = \m. m (\n. n) (\_. \r. \n. S (r n))
+def MysteryMul = \m. m (\_. Z) (\_. \r. \n. MysteryAdd n (r n))
+def EncodeNat = \n. if n == 0 then Z else S (EncodeNat (n-1))
+def DecodeNat = \n. n 0 (\_. \r. r + 1)
+</code></pre>
+<p>Then, run <code>DecodeNat (Mystery Add (EncodeNat 10) (EncodeNat 20))</code> and <code>DecodeNat (Mystery Mul (EncodeNat 10) (EncodeNat 20))</code>. You should see the expected results of <code>30</code> and <code>200</code>, respectively. In your PDF, simply include the output of evaluating these two expressions.</p>
+<blockquote>
+<p>Magic, isn't it? We'll learn how these encodings work very soon. Stay tuned!</p>
+<p>Hopefully, Problem 2-A and 2-B convinced you that all you really need is just lambda calculus.</p>
+<img src="https://i.ytimg.com/vi/m32kbFXBRR0/sddefault.jpg" width="500px" alt="magic gif">
+</blockquote>
+<h3 id="problem-3--coding-10-pts"><a class="header" href="#problem-3--coding-10-pts">Problem 3 (🧑‍💻 coding, 10 pts)</a></h3>
+<p>Finish the substitution function in <code>subst.py</code>.</p>
+<h3 id="problem-4--coding-20-pts"><a class="header" href="#problem-4--coding-20-pts">Problem 4 (🧑‍💻 coding, 20 pts)</a></h3>
+<p>Finish the interpreter in <code>eval.py</code>.</p>
+<h2 id="part-2---conceptual-questions"><a class="header" href="#part-2---conceptual-questions">Part 2 - Conceptual Questions</a></h2>
+<h3 id="problem-1--written-2-pts"><a class="header" href="#problem-1--written-2-pts">Problem 1 (✍️ written, 2 pts)</a></h3>
+<p>Draw the abstract binding tree (ABT) for the lamp expression <code>\n. \b. \i. i n (n b i)</code>.</p>
+<h3 id="problem-2--written-2-pts"><a class="header" href="#problem-2--written-2-pts">Problem 2 (✍️ written, 2 pts)</a></h3>
+<p>Draw the derivation tree for the evaluation of lamp expression <code>let x = (let x=1 in x+1) in let x = x+1 in x+1</code>. If the tree is too large, you can divide it into several parts and connect them with arrows.</p>
+<h3 id="problem-3--written-2-pts"><a class="header" href="#problem-3--written-2-pts">Problem 3 (✍️ written, 2 pts)</a></h3>
+<p>In class, I said the correct rule for application should be:</p>
+<pre><code>e1 =&gt; \x. e
+e2 =&gt; v
+( [v/x]e = e' )
+e' =&gt; v'
+---------------
+e1 e2 =&gt; v'
+</code></pre>
+<p>An alternative rule is to require <code>e1</code> to <em>be</em> a lambda function, instead of evaluating it <em>to</em> a lambda function:</p>
+<pre><code>e1 = \x. e
+e2 =&gt; v
+( [v/x]e = e' )
+e' =&gt; v'
+---------------
+e1 e2 =&gt; v'
+</code></pre>
+<p>Construct a lamp expression that evaluates successfully using the first rule, but fails to evaluate using the second rule.</p>
+<details>
+<summary>Hint</summary>
+Try using a "multi-argument" function.
+</details>
+<h3 id="problem-4--written-2-pts"><a class="header" href="#problem-4--written-2-pts">Problem 4 (✍️ written, 2 pts)</a></h3>
+<p>Design the call-by-name (CBN) version of the rule for evaluating applications. Construct the following lamb expressions (if you think no such expression exists, please explain why):</p>
+<ul>
+<li>an expression such that using the CBN rule evaluates it to a value, but the call-by-value (CBV) rule does not</li>
+<li>an expression such that using the CBV rule evaluates it to a value, but the CBN rule does not</li>
+<li>an expression such that using the CBN and the CBV rule evaluates it to different values</li>
+<li>an expression such that using either the CBN or the CBV rule evaluates it to the same value, but the CBV rule results in a smaller derivation tree (i.e., fewer total number of rules used) than the CBN rule</li>
+<li>an expression such that using either the CBN or the CBV rule evaluates it to the same value, but the CBN rule results in a smaller derivation tree than the CBV rule.</li>
+</ul>
+<h3 id="problem-5--written-2-pts"><a class="header" href="#problem-5--written-2-pts">Problem 5 (✍️ written, 2 pts)</a></h3>
+<p>We say a program is well-scoped if it has no free variables. Show that determining whether a lamp expression is well-scoped is decidable.</p>
+<details>
+<summary>Hint</summary>
+<p>Define a recursive function called <code>free_vars</code> that takes a lamp expression and returns the set of all free variables in the expression. Once you collected all free variables, check if the set is empty.</p>
+</details>
+<h3 id="problem-6--written-extra-credit-2-pts"><a class="header" href="#problem-6--written-extra-credit-2-pts">Problem 6 (✍️ written, ⭐️extra credit⭐️, 2 pts)</a></h3>
+<p>Function parameters in Python are lexically scoped. However, variables are weird. For example, consider the following Python code:</p>
+<pre><code class="language-python">if &lt;condition&gt;:
+    x = 1
+else:
+    pass
+print(x)
+</code></pre>
+<p>If the condition holds, the first branch is executed, and <code>1</code> will be printed. Otherwise, the second branch is executed, and the above code will raise <code>NameError: name 'x' is not defined</code>.</p>
+<p>We say a Python program is well-scoped if it will not raise a <code>NameError</code> when executed. Show that determining whether a Python program is well-scoped is undecidable by reducing the halting problem to it../</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="homework-3"><a class="header" href="#homework-3">Homework 3</a></h1>
+<blockquote>
+<p>Written problems due: <strong>Wednesday, July 23, 2025, 12:30pm (before class)</strong></p>
+<p>Coding problems due: <strong>Friday, July 25, 2025, 11:59pm PDT</strong> on Gradescope</p>
+</blockquote>
+<h2 id="instructions-2"><a class="header" href="#instructions-2">Instructions</a></h2>
+<p>There are be 2 types of problems:</p>
+<ol>
+<li>
+<p><strong>Written problems</strong> are marked with ✍️.</p>
+<ul>
+<li>Must be done <strong>individually</strong>.</li>
+<li>Please turn in a <strong>stapled, physical copy</strong> of your solutions before the lecture start time on the due date.</li>
+<li>For each sub-problem, please provide a self-grade out of 2 points: 2 for a fully solved problem with a correct solution, 1 for a partially correct attempt with all work shown, and 0 for no attempt. If you're unsure whether your solution is correct, you can leave it as <code>?</code>, and I will grade it for you.</li>
+<li>On the first page of your solutions, please include your name (on Canvas/Gradescope), student ID, and a table containing the self-grades for each sub-problem, like this:</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Problem</th><th>Sub-problem</th><th>Self-grade (0/1/2/?)</th></tr></thead><tbody>
+<tr><td>1</td><td>A</td><td>2</td></tr>
+<tr><td>1</td><td>B</td><td>2</td></tr>
+<tr><td>1</td><td>C</td><td>1</td></tr>
+<tr><td>1</td><td>D</td><td>?</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>If you handwrite your solutions, please write clearly and legibly.</li>
+</ul>
+</li>
+<li>
+<p><strong>Coding problems</strong> are marked with 🧑‍💻.</p>
+<ul>
+<li>Can be done <strong>individually</strong> or in <strong>pairs</strong>.</li>
+<li>Coding problems are autograded on Gradescope.</li>
+<li>You can submit as many times as you want.</li>
+<li>Note that you can use a maximum of 2 late days for each HW's coding problems, but not for the written problems.</li>
+</ul>
+</li>
+</ol>
+<p>Other important notes:</p>
+<ul>
+<li>
+<p>Problems (written or coding) marked with ⭐️ are extra credit problems. You can do them for fun and for extra credit, but they are completely optional.</p>
+</li>
+<li>
+<p>You're encouraged to talk about the problems with the instructor, the TA, and your classmates, but you must write your own solutions.</p>
+</li>
+<li>
+<p>Note you won't be able to turn in corrections to homework problems, unlike quizzes.</p>
+</li>
+<li>
+<p>Use of generative AI tools and coding assistants is not allowed for this assignment.</p>
+</li>
+<li>
+<p>If you have any questions about the assignment, please post them in the <code>#hw3</code> Discord channel, or come to the office hours.</p>
+</li>
+</ul>
+<h2 id="part-0---conceptual-problems"><a class="header" href="#part-0---conceptual-problems">Part 0 - Conceptual Problems</a></h2>
+<h3 id="problem-1--written-2-pts-1"><a class="header" href="#problem-1--written-2-pts-1">Problem 1 (✍️ written, 2 pts)</a></h3>
+<p>Finish the case of <code>e1 == e2</code> in the proof of the type abstraction lemma.</p>
+<h3 id="problem-2--written-2-pts-1"><a class="header" href="#problem-2--written-2-pts-1">Problem 2 (✍️ written, 2 pts)</a></h3>
+<p>Consider an alternative typing rule for <code>if</code> expressions:</p>
+<pre><code>Gamma |- e1 : Bool
+Gamma |- e2 : t
+---------------------------------- T-If*
+Gamma |- if e1 then e2 else e3 : t
+</code></pre>
+<p>Redo the proof of the type abstraction lemma for <code>if</code> expressions using <code>T-If*</code> rule until the proof gets stuck. Then:</p>
+<ul>
+<li>Indicate the exact place where the proof fails</li>
+<li>Give some intuition why <code>T-If*</code> would not allow the proof to go through.</li>
+<li>Construct a counterexample that shows that a type system with this new rule is unsound.</li>
+</ul>
+<h3 id="problem-3--written-2-pts-1"><a class="header" href="#problem-3--written-2-pts-1">Problem 3 (✍️ written, 2 pts)</a></h3>
+<p>Pick one typing rule (other than the original <code>T-If</code> rule) for the variable-free subset of Lamp. Modify it to make the type system unsound. Then:</p>
+<ul>
+<li>Do the proof of the type abstraction lemma for this modified rule until the proof gets stuck.</li>
+<li>Indicate the exact place where the proof fails.</li>
+<li>Give some intuition why this modified typing rule would not allow the proof to go through.</li>
+</ul>
+<h3 id="problem-4--written-2-pts-1"><a class="header" href="#problem-4--written-2-pts-1">Problem 4 (✍️ written, 2 pts)</a></h3>
+<p>Construct a Lamp expression <code>e</code> such that</p>
+<ul>
+<li><code>e</code> evaluates to a value</li>
+<li><code>e</code> is ill-typed</li>
+<li><code>e</code> does not use if-then-else.
+Essentially, this problem asks you to show that Lamp's type system is <em>incomplete</em> not only for if-then-else, but also for other constructs.</li>
+</ul>
+<h3 id="problem-5--written-2-pts-1"><a class="header" href="#problem-5--written-2-pts-1">Problem 5 (✍️ written, 2 pts)</a></h3>
+<p>Construct a Lamp expression <code>uncurry</code> that takes a function accepting "2 arguments", and returns an equivalent function that accepts "1 argument" that is a pair.</p>
+<p>For example, consider the function <code>\x. \y. x + y</code>. Then <code>uncurry (\x. \y. x + y)</code> should return a function equivalent to the following:</p>
+<pre><code class="language-lamp">\p. let (x, y) = p in x + y
+</code></pre>
+<h3 id="problem-6--written-2-pts"><a class="header" href="#problem-6--written-2-pts">Problem 6 (✍️ written, 2 pts)</a></h3>
+<p>Construct a Lamp expression <code>curry</code> that takes a function accepting "1 argument" that is a pair, and returns an equivalent function that accepts "2 arguments".</p>
+<p>For example, consider the function <code>\p. let (x, y) = p in x + y</code>. Then <code>curry (\p. let (x, y) = p in x + y)</code> should return a function equivalent to the following:</p>
+<pre><code class="language-lamp">\x. \y. x + y
+</code></pre>
+<h3 id="problem-7--written-2-pts"><a class="header" href="#problem-7--written-2-pts">Problem 7 (✍️ written, 2 pts)</a></h3>
+<p>Show that for any type <code>t1</code>, <code>t2</code>, and <code>t3</code>, your <code>curry</code> function has the type <code>((t1, t2) -&gt; t3) -&gt; (t1 -&gt; t2 -&gt; t3)</code> by drawing a type derivation tree for your <code>curry</code> function.</p>
+<h3 id="problem-8--written-2-pts"><a class="header" href="#problem-8--written-2-pts">Problem 8 (✍️ written, 2 pts)</a></h3>
+<p>For the type <code>((t1, t2) -&gt; t3) -&gt; (t1 -&gt; t2 -&gt; t3)</code>, replace</p>
+<ul>
+<li><code>,</code> with logical conjunction <code>/\</code></li>
+<li><code>-&gt;</code> with logical implication <code>-&gt;</code>.
+Write down the boolean proposition that you get. Then input this formula into an <a href="https://web.stanford.edu/class/cs103/tools/truth-table-tool/">online truth table generator</a>. What do you observe about the last column of the truth table?</li>
+</ul>
+<h3 id="problem-9--written-2-pts"><a class="header" href="#problem-9--written-2-pts">Problem 9 (✍️ written, 2 pts)</a></h3>
+<p>If we think of a type as a set containing all values of that type, then we can compute the size of a type as the number of values in that set. For example, the size of <code>Nat</code> is infinite, since there are infinitely many natural numbers. The size of <code>Bool</code> is 2, since there are exactly two boolean values: <code>True</code> and <code>False</code>.</p>
+<p>Define a Python function <code>size(t: Type) -&gt; Optional[int]</code> that computes the size of a type <code>t</code>. If the type is infinite, the function should return <code>None</code>.</p>
+<pre><code class="language-python">def size(t: Type) -&gt; Optional[int]:
+    match t:
+        case TNat():
+            return None
+        case TBool():
+            return 2
+        case TProd(ts):
+            pass
+            # your code here
+        case TFun(t1, t2):
+            pass
+            # your code here
+        case _:
+            raise ValueError(f"Unknown type: {t}")
+</code></pre>
+<p>You do not need to account for recursive types in this problem. For function types, only count the number of behaviorially distinct functions, i.e., <code>\x. x + 1</code> and <code>\x. x + 2</code> are considered different functions, but <code>\x. x + 1</code> and <code>\y. 1 + y + 0</code> are considered the same function, since they behave the same way for all inputs.</p>
+<h2 id="part-1---programming-in-lamp"><a class="header" href="#part-1---programming-in-lamp">Part 1 - Programming in Lamp</a></h2>
+<p>Carefully read the updated <a href="assignments/hw3/../../assignments.html">Lamp Reference Manual</a>. Again, a reference implementation of Lamp is available on CSIL as <code>~junrui/lamp</code> (for evaluation) and <code>~junrui/lamp-ty</code> (for typing). Please use them to test your Lamp programs.</p>
+<p>Before you jump into coding, let us explain some new shiny concrete syntax added to Lamp:</p>
+<ul>
+<li>
+<p>Every abbreviation needs to be annotated with a type. So the <code>Fib</code> function should be defined as:</p>
+<pre><code class="language-lamp">def Fib: Nat -&gt; Nat = \n. ...
+</code></pre>
+</li>
+<li>
+<p>All other type annotations are optional. But you can manually provide additional type annotations (as a form of machine-checked documentation) to any expression using the syntax <code>e: t</code>.</p>
+</li>
+<li>
+<p>We generalize pairs to n-tuples, where n can be any natural number (including 0). For example, <code>(1, 2, 3)</code> is a 3-tuple, and <code>()</code> is a 0-tuple (aka a unit). The elimination form is extended analogously to n-tuples, so you can write:</p>
+<pre><code class="language-lamp">let (x1, x2, ..., xn) = e1 in e2
+</code></pre>
+<p>There is no concrete syntax for 1-tuples, so <code>(1)</code> is treated as <code>1</code> (but your code doesn't need to have a special case for this).</p>
+</li>
+</ul>
+<!-- 
+- (Recursive) type equations are written as
+    ```lamp
+    type <TypeName> = <Type>
+    ```
+    where `<TypeName>` is the name of the type (a global variable, so needs to be capitalized), and `<Type>` is the type that the name is defined to be equal to.
+    For example, the natural number type is defined as:
+    ```lamp
+    type Nat = +{ 'zero: (), 'succ: Nat }
+    ```
+- Just like abbreviations, type equations can be mutually recursive, since type names have global scope.
+
+- The elimination form for product types is provided as a syntactic sugar:
+    ```
+    let (x1, ..., xn) = e1 in e2
+    ```
+    which is desugared by the parser into:
+    ```
+    match e1 {
+        (x1, ..., xn): e2
+    }
+    ```
+
+- The elimination form for sum types is provided as a syntactic sugar:
+    ```
+    switch e1 {
+        'l1 x1: e1,
+        'l2 x2: e2,
+        ...
+    }
+    ```
+    which is desugared by the parser into:
+    ```
+    match e1 {
+        'l1 x1: e1,
+        'l2 x2: e2,
+        ...
+    }
+    ```
+
+- 1-tuples are automatically unpacked, so
+  - `(1)` is parsed into a number, instead of a 1-tuple that contains the number.
+  - `(Nat)` is parsed into the type `Nat`, instead of a 1-tuple that contains the type `Nat`.
+  - `(x)` is parsed into the pattern variable `x`, instead of a 1-tuple pattern that contains the variable `x`.
+
+
+- In injection expressions and injection patterns where the contained expression/pattern is the unit `()`, you can use `'<label>` instead of `'<label> ()`. For example, if we define the custom Boolean type as:
+    ```lamp
+    type MyBool = +{ 'true: (), 'false: () }
+    ```
+    then we can write the injection expression as:
+    ```lamp
+    'true
+    ```
+    and define the negation function as:
+    ```lamp
+    def Not: MyBool -> MyBool = \b.
+        switch b {
+            'true: 'false,
+            'false: 'true
+        }
+    ```
+    instead of the more verbose:
+    ```lamp
+    def Not: MyBool -> MyBool = \b.
+        switch b {
+            'true (): 'false (),
+            'false (): 'true ()
+        }
+    ```
+
+- It is quite common to define a function that takes an argument and immediately pattern matches on it. In this case, you can use the following syntactic sugar:
+    ```lamp
+    def MyNot: MyBool -> MyBool = \{
+        'true: 'false,
+        'false: 'true
+    }
+    ```
+    which is desugared by the parser into:
+    ```lamp
+    def MyNot: MyBool -> MyBool = \_arg.
+        switch _arg {
+            'true: 'false,
+            'false: 'true
+        }
+    }
+    ``` -->
+<blockquote>
+<p>For all problems in Part 1 (this part) of the HW, please use the reference implementation to check if the Lamp programs you wrote are correct or not!!! You'll need to use them as test cases for Part 2 (implementing the Lamp language).</p>
+</blockquote>
+<h3 id="problem-1--written-2-pts-per-sub-problem"><a class="header" href="#problem-1--written-2-pts-per-sub-problem">Problem 1 (✍️ written, 2 pts per sub-problem)</a></h3>
+<p>Let us use <code>(Bool, Nat, Nat)</code> to represent rational numbers. The first element is a boolean that indicates whether the number is positve, and the second and third elements are the numerator and denominator, respectively. For example, <code>(True, 1, 2)</code> represents <code>1/2</code>, and <code>(False, 1, 3)</code> represents <code>-1/3</code>.</p>
+<ol>
+<li>Define a function <code>IsCanonical: (Bool, Nat, Nat) -&gt; Bool</code> that checks whether a rational number is in its canonical form. A rational number is in its canonical form if the denominator is not zero and the numerator and denominator are coprime (i.e., their greatest common divisor is 1).</li>
+<li>Define a function <code>Canonicalize: (Bool, Nat, Nat) -&gt; (Bool, Nat, Nat)</code> that takes a rational number and returns its canonical form (e.g., <code>(False, 1, 2)</code> remains the same, while <code>(True, 2, 4)</code> becomes <code>(True, 1, 2)</code>).</li>
+<li>Define a function <code>Add: (Bool, Nat, Nat) -&gt; (Bool, Nat, Nat) -&gt; (Bool, Nat, Nat)</code> that takes two rational numbers and returns their sum. The result should be in canonical form.</li>
+<li>Define a function <code>Sub: (Bool, Nat, Nat) -&gt; (Bool, Nat, Nat) -&gt; (Bool, Nat, Nat)</code> that takes two rational numbers and returns their difference. The result should be in canonical form.</li>
+<li>Define a function <code>Div: (Bool, Nat, Nat) -&gt; (Bool, Nat, Nat) -&gt; (Bool, Nat, Nat)</code> that takes two rational numbers and returns their division. The result should be in canonical form.</li>
+</ol>
+<!-- 
+
+1. Define `MaybeNat` as a sum type with the following constructors:
+   - `'none` for representing failure,
+   - `'some` for representing a successful result that contains natural number.
+2. Using the unsafe division you wrote in HW2, implement a function `SafeDiv` that takes two natural numbers and returns a `MaybeNat`. If the second number is zero, it should return `'none`, otherwise it should return `'some` with the result of the division.
+3. Using `SafeDiv`, implement a function `SafeMod` that takes two natural numbers and returns a `MaybeNat`. If the second number is zero, it should return `'none`, otherwise it should return `'some` with the result of the modulo operation. 
+4. Define `MyBool` a recursive sum type with the following constructors:
+   - `'true` for true,
+   - `'false` for false.
+5. Define a function `MyBool2Bool` that takes a `MyBool` and returns a `Bool`. The function should return `True` for `'true` and `False` for `'false`.
+6. Define funtions `MyAnd` and `MyOr` that take two `MyBool`s and return a `MyBool`. You should use pattern matching. For each function, the match should have no more than two branches. *Hint*: combine tuple patterns with sum type patterns.
+7. Define a type `MyNat` as a recursive sum type with the following constructors:
+   - `'zero` for zero,
+   - `'succ` for the successor of a natural number.
+8. Define a function `MyAdd` that takes two `MyNat`s and returns a `MyNat`. You should use pattern matching. The match should have no more than two branches.
+
+
+### Problem 2 (✍️ written, 2 pts per sub-problem)
+1.  Define the `List` type as a recursive sum type with the following constructors:
+   - `'nil` for the empty list,
+   - `'cons` for a non-empty list that contains a head element (`Nat`) and a tail (`List`).
+2. Define a function `def Incr: Nat -> List -> List` that takes a `Nat` and a `List`, and returns a new `List` where each element of the original list is incremented by the given `Nat`. 
+3. Define a function `def Len1: List -> Nat` that takes a `List` and returns the length of the list as a `Nat`. This function should be recursively, and should not call any other helper function. This function will visit each element exactly twice: once before the recursive call and once after the recursive call.
+4. Define a function `def Len2: List -> Nat` that takes a `List` and returns the length of the list. The function should visit each element exactly once. *Hint:* define `LenAcc: Nat -> List -> Nat` that takes an accumulator `Nat` and a `List`, where the accumulator is the length of the list so far. Then call `LenAcc` with an initial value of zero in `Len2`.
+5. Define a function `def Sum1: List -> Nat` that takes a `List` of `Nat`s and returns the sum of the elements as a `Nat`. This function should be recursively, and should not call any other helper function.
+6. Define a function `def Sum2: List -> Nat` that takes a `List` of `Nat`s and returns the sum of the elements as a `Nat`. The function should visit each element exactly once. *Hint:* define `SumAcc: Nat -> List -> Nat` that takes an accumulator `Nat` and a `List`, where the accumulator is the sum of the elements so far. Then call `SumAcc` with an initial value of zero in `Sum2`.
+7. Define a function `def Max1: List -> MaybeNat` that takes a `List` of `Nat`s and returns the maximum element as a `MaybeNat`. If the list is empty, it should return `'none`, otherwise it should return `'some` with the maximum element. This function should be recursively, and should not call any other helper function.
+8. Define a function `def Max2: List -> MaybeNat` that takes a `List` of `Nat`s and returns the maximum element as a `MaybeNat`. The function should visit each element exactly once. *Hint:* define `MaxAcc: Nat -> List -> Nat` that takes an accumulator `Nat` and a `List`, where the accumulator is the maximum element found so far. Then, in `Max2`, pattern match on the input list. If it is empty, return `'none`, otherwise call `MaxAcc` with the first element as the initial value of the accumulator.
+9. Define a function `def Rev1: List -> List` that takes a `List` and returns a new `List` that is the reverse of the original list. *Hint:* define a helper function `RevAcc: List -> List -> List` that takes an accumulator `List` and a `List`, where the accumulator is the reversed list so far. Then call `RevAcc` with an initial value of `'nil` in `Rev1`.
+10. Define a function `def Append: List -> List -> List` that takes two `List`s and returns a new `List` that is the concatenation of the two lists. You should use recursion + post-order traversal.
+11. Define a function `def Rev2: List -> List` that takes a `List` and returns a new `List` that is the reverse of the original list. This function should be recursively, and should not call any other helper function except for `Append`.
+
+
+### Problem 3 (✍️ written, 2 pts per sub-problem)
+1. Define a type `Tree` as a recursive sum type with the following constructors:
+   - `'leaf` for a leaf node that contains a natural number,
+   - `'node` for an internal node that contains a natural number and two subtrees.
+2. Define a function `def Search: Nat -> Tree -> MaybeNat` that takes a natural number and a `Tree`, and returns a `MaybeNat`. If the number is found in the tree, it should return `'some` with the number, otherwise it should return `'none`. You should *not* assume that the tree is a binary search tree.
+3. A [red-black tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) is a binary search tree where each node can be either red or black:
+    ```
+    rec RBTree = +{
+        'leaf: (),
+        'r: (Nat, RBTree, RBTree),
+        'b: (Nat, RBTree, RBTree)
+    }
+    ```
+    Additionally, a red-black tree should satisfy the following invariants:
+    1. There are no two red nodes in a row.
+    2. Every path from the root to a leaf has the same number of black nodes.
+    
+    To insert a number into a red-black tree, simply treat the tree as a binary search tree (so use each node to decide which subtree to go to):
+    ```
+    def Insert: Nat -> RBTree -> RBTree = \x. \t.
+      match t {
+       'leaf: 'r (x, 'leaf, 'leaf),
+       'r (y, l, r):
+           if x == y then t
+           else if Lt x y then Balance ('r (y, Insert x l, r))
+           else Balance ('r (y, l, Insert x r)),
+       'b (y, l, r):
+           if x == y then t
+           else if Lt x y then Balance ('r (y, Insert x l, r))
+           else Balance ('r (y, l, Insert x r))
+    }
+    ```
+    (You need to copy over your `Lt` function from HW2.)
+    
+    After the inserting the number, the first invariant may be violated (the second invariant will still hold). So we need to call a `Balance` function to fix the tree. The `Balance` function should take a red-black tree that may violate the first invariant, and return a new red-black tree that satisfies both invariants. The balance function is illustrated in the following diagram. There are 4 cases to consider:
+    <img src="assignments/hw3/./balance.jpg" width="800px" alt="AST for fib.lp">
+
+    Your task is to implement the `Balance` function:
+    ```
+    def Balance: RBTree -> RBTree = \{
+        <pattern 1>: <result tree>,
+        <pattern 2>: <result tree>,
+        <pattern 3>: <result tree>,
+        <pattern 4>: <result tree>,
+        t: t
+    }
+    ```
+    Each pattern should describe one of the 4 cases where the tree violates the first invariant (as illustrated in the topf half of the diagram above), and the result tree in all branches should be the red-black tree that no longer violates the first invariant (as illustrated in the bottom half of the diagram above). The last branch `t: t` simply matches any tree that does not violate the first invariant, and returns it unchanged. -->
+<h2 id="part-2---implementing-the-lamp-language"><a class="header" href="#part-2---implementing-the-lamp-language">Part 2 - Implementing the Lamp Language</a></h2>
+<p>Download the starter code from <a href="assignments/hw3/./hw3-starter.zip">here</a>.</p>
+<h3 id="problem-1--coding-10-pts"><a class="header" href="#problem-1--coding-10-pts">Problem 1 (🧑‍💻 coding, 10 pts)</a></h3>
+<p>The operational semantics of Lamp is already implemented in the <code>eval</code> function. You're highly encouraged to read the code and understand how it works. Your task is to implement the <code>subst</code> function.</p>
+<p>For <code>subst</code>, we're generalizing the <code>subst</code> function from HW2 to perform simultaneous substitution of multiple variables. The <code>sigma</code> dictionary maps variables to their replacements, and the function should traverse the AST and apply the substitutions accordingly.</p>
+<details>
+<summary>Hint</summary>
+<p>The only tricky case is <code>Binder</code>. Remember the slogen:</p>
+<blockquote>
+<p>Substitution replaces free variables.
+The <code>sigma</code> dictionary contains keys which are (free) variables to be replaced. The binder node binds some variable <code>x</code>. So when you go "under a binder", make sure to not apply the substitution to <code>x</code>, since under the binder node, <code>x</code> is no longer free. You may find <a href="https://docs.python.org/3/tutorial/datastructures.html#dictionaries">dictionary comprehension</a> useful to filter out the keys that are bound by the binder.</p>
+</blockquote>
+</details>
+<p>Finally, to run your interpreter, you can do <code>python -m backend.eval &lt; [path to a Lamp file]</code>.</p>
+<h3 id="problem-2--coding-20-pts"><a class="header" href="#problem-2--coding-20-pts">Problem 2 (🧑‍💻 coding, 20 pts)</a></h3>
+<p>Implement the bidirectional type system for Lamp. The system is specified using inference rules in the <a href="assignments/hw3/../../assignments.html">Lamp Reference Manual</a>. Your task is to finish the implementation of</p>
+<ul>
+<li>the <code>synth</code> function, which implements the type synthesis judgment</li>
+<li>the <code>check</code> function, which implements the type checking judgment.</li>
+</ul>
+<p>To run your type checker, you can do <code>python -m backend.typing &lt; [path to a Lamp file]</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="homework-4"><a class="header" href="#homework-4">Homework 4</a></h1>
+<blockquote>
+<p>Due: <strong>Sunday, Aug 3rd, 2025, 11:59pm PDT</strong> on Gradescope</p>
+</blockquote>
+<h2 id="instructions-3"><a class="header" href="#instructions-3">Instructions</a></h2>
+<blockquote>
+<p>The entirety of this homework can be done in pairs if you want to.</p>
+</blockquote>
+<p>There are be 2 types of problems:</p>
+<ol>
+<li>
+<p><strong>Written problems</strong> are marked with ✍️.</p>
+<ul>
+<li>Must be done <strong>individually</strong>.</li>
+<li>Please submit a PDF of your solutions to Gradescope.</li>
+<li>For each sub-problem, please provide a self-grade out of 2 points: 2 for a fully solved problem with a correct solution, 1 for a partially correct attempt with all work shown, and 0 for no attempt. If you're unsure whether your solution is correct, you can leave it as <code>?</code>, and I will grade it for you.</li>
+<li>On the first page of your solutions, please include your name (and your partner's), and a table containing the self-grades for each sub-problem, like this:</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Problem</th><th>Sub-problem</th><th>Self-grade (0/1/2/?)</th></tr></thead><tbody>
+<tr><td>1</td><td>A</td><td>2</td></tr>
+<tr><td>1</td><td>B</td><td>2</td></tr>
+<tr><td>1</td><td>C</td><td>1</td></tr>
+<tr><td>1</td><td>D</td><td>?</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>If you handwrite your solutions, please write clearly and legibly.</li>
+</ul>
+</li>
+<li>
+<p><strong>Coding problems</strong> are marked with 🧑‍💻.</p>
+<ul>
+<li>Coding problems are autograded on Gradescope.</li>
+<li>You can submit as many times as you want.</li>
+<li>No late days are allowed for coding problems since I need to submit your grades to GOLD.</li>
+</ul>
+</li>
+</ol>
+<p>Other important notes:</p>
+<ul>
+<li>
+<p>Problems (written or coding) marked with ⭐️ are extra credit problems. You can do them for fun and for extra credit, but they are completely optional.</p>
+</li>
+<li>
+<p>You're encouraged to talk about the problems with the instructor, the TA, and your classmates, but you must write your own solutions.</p>
+</li>
+<li>
+<p>Note you won't be able to turn in corrections to homework problems, unlike quizzes.</p>
+</li>
+<li>
+<p>Use of generative AI tools and coding assistants is not allowed for this assignment.</p>
+</li>
+<li>
+<p>If you have any questions about the assignment, please post them in the <code>#hw4</code> Discord channel, or come to the office hours.</p>
+</li>
+</ul>
+<h2 id="part-1---programming-in-lamp-1"><a class="header" href="#part-1---programming-in-lamp-1">Part 1 - Programming in Lamp</a></h2>
+<p>Download the starter code from <a href="assignments/hw4/./hw4-starter.zip">here</a>.</p>
+<p>Carefully read the updated <a href="assignments/hw4/../../assignments.html">Lamp Reference Manual</a>. Again, a reference implementation of Lamp is available on CSIL as <code>~junrui/lamp</code> (for evaluation) and <code>~junrui/lamp-ty</code> (for typing). Please use them to test your Lamp programs.</p>
+<p>Before you jump into coding, let us explain some new shiny concrete syntax added to Lamp:</p>
+<ul>
+<li>
+<p>(Recursive) type equations are written as</p>
+<pre><code class="language-lamp">type &lt;TypeName&gt; = &lt;Type&gt;
+</code></pre>
+<p>where <code>&lt;TypeName&gt;</code> is the name of the type (a global variable, so needs to be capitalized), and <code>&lt;Type&gt;</code> is the type that the name is defined to be equal to.
+For example, the natural number type is defined as:</p>
+<pre><code class="language-lamp">type Nat = +{ 'zero: (), 'succ: Nat }
+</code></pre>
+</li>
+<li>
+<p>Just like abbreviations, type equations can be mutually recursive, since type names have global scope.</p>
+</li>
+<li>
+<p>The elimination form for product types is provided as a syntactic sugar:</p>
+<pre><code>let (x1, ..., xn) = e1 in e2
+</code></pre>
+<p>which is desugared by the parser into:</p>
+<pre><code>match e1 {
+    (x1, ..., xn): e2
+}
+</code></pre>
+</li>
+<li>
+<p>The elimination form for sum types is provided as a syntactic sugar:</p>
+<pre><code>switch e1 {
+    'l1 x1: e1,
+    'l2 x2: e2,
+    ...
+}
+</code></pre>
+<p>which is desugared by the parser into:</p>
+<pre><code>match e1 {
+    'l1 x1: e1,
+    'l2 x2: e2,
+    ...
+}
+</code></pre>
+</li>
+<li>
+<p>1-tuples are automatically unpacked, so</p>
+<ul>
+<li><code>(1)</code> is parsed into a number, instead of a 1-tuple that contains the number.</li>
+<li><code>(Nat)</code> is parsed into the type <code>Nat</code>, instead of a 1-tuple that contains the type <code>Nat</code>.</li>
+<li><code>(x)</code> is parsed into the pattern variable <code>x</code>, instead of a 1-tuple pattern that contains the variable <code>x</code>.</li>
+</ul>
+</li>
+<li>
+<p>In injection expressions and injection patterns where the contained expression/pattern is the unit <code>()</code>, you can use <code>'&lt;label&gt;</code> instead of <code>'&lt;label&gt; ()</code>. For example, if we define the custom Boolean type as:</p>
+<pre><code class="language-lamp">type MyBool = +{ 'true: (), 'false: () }
+</code></pre>
+<p>then we can write the injection expression as:</p>
+<pre><code class="language-lamp">'true
+</code></pre>
+<p>and define the negation function as:</p>
+<pre><code class="language-lamp">def Not: MyBool -&gt; MyBool = \b.
+    switch b {
+        'true: 'false,
+        'false: 'true
+    }
+</code></pre>
+<p>instead of the more verbose:</p>
+<pre><code class="language-lamp">def Not: MyBool -&gt; MyBool = \b.
+    switch b {
+        'true (): 'false (),
+        'false (): 'true ()
+    }
+</code></pre>
+</li>
+<li>
+<p>It is quite common to define a function that takes an argument and immediately pattern matches on it. In this case, you can use the following syntactic sugar:</p>
+<pre><code class="language-lamp">def MyNot: MyBool -&gt; MyBool = \{
+    'true: 'false,
+    'false: 'true
+}
+</code></pre>
+<p>which is desugared by the parser into:</p>
+<pre><code class="language-lamp">def MyNot: MyBool -&gt; MyBool = \_arg.
+    switch _arg {
+        'true: 'false,
+        'false: 'true
+    }
+}
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>For all problems in Part 1 (this part) of the HW, please use the reference implementation to check if the Lamp programs you wrote are correct or not!!! You'll need to use them as test cases for Part 2 (implementing the Lamp language).</p>
+</blockquote>
+<h3 id="problem-1--written-2-pts-2"><a class="header" href="#problem-1--written-2-pts-2">Problem 1 (✍️ written, 2 pts)</a></h3>
+<ol>
+<li>Define <code>MaybeNat</code> as a sum type with the following constructors:
+<ul>
+<li><code>'none</code> for representing failure,</li>
+<li><code>'some</code> for representing a successful result that contains natural number.</li>
+</ul>
+</li>
+<li>Using the unsafe division you wrote in HW2, implement a function <code>SafeDiv</code> that takes two natural numbers and returns a <code>MaybeNat</code>. If the second number is zero, it should return <code>'none</code>, otherwise it should return <code>'some</code> with the result of the division.</li>
+<li>Using <code>SafeDiv</code>, implement a function <code>SafeMod</code> that takes two natural numbers and returns a <code>MaybeNat</code>. If the second number is zero, it should return <code>'none</code>, otherwise it should return <code>'some</code> with the result of the modulo operation.</li>
+<li>Define <code>MyBool</code> a recursive sum type with the following constructors:
+<ul>
+<li><code>'true</code> for true,</li>
+<li><code>'false</code> for false.</li>
+</ul>
+</li>
+<li>Define a function <code>MyBool2Bool</code> that takes a <code>MyBool</code> and returns a <code>Bool</code>. The function should return <code>True</code> for <code>'true</code> and <code>False</code> for <code>'false</code>.</li>
+<li>Define funtions <code>MyAnd</code> and <code>MyOr</code> that take two <code>MyBool</code>s and return a <code>MyBool</code>. You should use pattern matching. For each function, the match should have no more than two branches. <em>Hint</em>: combine tuple patterns with sum type patterns.</li>
+<li>Define a type <code>MyNat</code> as a recursive sum type with the following constructors:
+<ul>
+<li><code>'zero</code> for zero,</li>
+<li><code>'succ</code> for the successor of a natural number.</li>
+</ul>
+</li>
+<li>Define a function <code>MyAdd</code> that takes two <code>MyNat</code>s and returns a <code>MyNat</code>. You should use pattern matching. The match should have no more than two branches.</li>
+</ol>
+<h3 id="problem-2--written-2-pts-2"><a class="header" href="#problem-2--written-2-pts-2">Problem 2 (✍️ written, 2 pts)</a></h3>
+<p>Pick either this problem, or Problem 3. You do not need to do both, although you are more than welcome to.</p>
+<ol>
+<li>Define the <code>List</code> type as a recursive sum type with the following constructors:</li>
+</ol>
+<ul>
+<li><code>'nil</code> for the empty list,</li>
+<li><code>'cons</code> for a non-empty list that contains a head element (<code>Nat</code>) and a tail (<code>List</code>).</li>
+</ul>
+<ol start="2">
+<li>Define a function <code>def Incr: Nat -&gt; List -&gt; List</code> that takes a <code>Nat</code> and a <code>List</code>, and returns a new <code>List</code> where each element of the original list is incremented by the given <code>Nat</code>.</li>
+<li>Define a function <code>def Len1: List -&gt; Nat</code> that takes a <code>List</code> and returns the length of the list as a <code>Nat</code>. This function should be recursively, and should not call any other helper function. This function will visit each element exactly twice: once before the recursive call and once after the recursive call.</li>
+<li>Define a function <code>def Len2: List -&gt; Nat</code> that takes a <code>List</code> and returns the length of the list. The function should visit each element exactly once. <em>Hint:</em> define <code>LenAcc: Nat -&gt; List -&gt; Nat</code> that takes an accumulator <code>Nat</code> and a <code>List</code>, where the accumulator is the length of the list so far. Then call <code>LenAcc</code> with an initial value of zero in <code>Len2</code>.</li>
+<li>Define a function <code>def Sum1: List -&gt; Nat</code> that takes a <code>List</code> of <code>Nat</code>s and returns the sum of the elements as a <code>Nat</code>. This function should be recursively, and should not call any other helper function.</li>
+<li>Define a function <code>def Sum2: List -&gt; Nat</code> that takes a <code>List</code> of <code>Nat</code>s and returns the sum of the elements as a <code>Nat</code>. The function should visit each element exactly once. <em>Hint:</em> define <code>SumAcc: Nat -&gt; List -&gt; Nat</code> that takes an accumulator <code>Nat</code> and a <code>List</code>, where the accumulator is the sum of the elements so far. Then call <code>SumAcc</code> with an initial value of zero in <code>Sum2</code>.</li>
+<li>Define a function <code>def Max1: List -&gt; MaybeNat</code> that takes a <code>List</code> of <code>Nat</code>s and returns the maximum element as a <code>MaybeNat</code>. If the list is empty, it should return <code>'none</code>, otherwise it should return <code>'some</code> with the maximum element. This function should be recursively, and should not call any other helper function.</li>
+<li>Define a function <code>def Max2: List -&gt; MaybeNat</code> that takes a <code>List</code> of <code>Nat</code>s and returns the maximum element as a <code>MaybeNat</code>. The function should visit each element exactly once. <em>Hint:</em> define <code>MaxAcc: Nat -&gt; List -&gt; Nat</code> that takes an accumulator <code>Nat</code> and a <code>List</code>, where the accumulator is the maximum element found so far. Then, in <code>Max2</code>, pattern match on the input list. If it is empty, return <code>'none</code>, otherwise call <code>MaxAcc</code> with the first element as the initial value of the accumulator.</li>
+<li>Define a function <code>def Rev1: List -&gt; List</code> that takes a <code>List</code> and returns a new <code>List</code> that is the reverse of the original list. <em>Hint:</em> define a helper function <code>RevAcc: List -&gt; List -&gt; List</code> that takes an accumulator <code>List</code> and a <code>List</code>, where the accumulator is the reversed list so far. Then call <code>RevAcc</code> with an initial value of <code>'nil</code> in <code>Rev1</code>.</li>
+<li>Define a function <code>def Append: List -&gt; List -&gt; List</code> that takes two <code>List</code>s and returns a new <code>List</code> that is the concatenation of the two lists. You should use recursion + post-order traversal.</li>
+<li>Define a function <code>def Rev2: List -&gt; List</code> that takes a <code>List</code> and returns a new <code>List</code> that is the reverse of the original list. This function should be recursively, and should not call any other helper function except for <code>Append</code>.</li>
+</ol>
+<h3 id="problem-3--written-2-pts-2"><a class="header" href="#problem-3--written-2-pts-2">Problem 3 (✍️ written, 2 pts)</a></h3>
+<p>Pick either this problem, or Problem 2. You do not need to do both, although you are more than welcome to.</p>
+<ol>
+<li>
+<p>Define a type <code>Tree</code> as a recursive sum type with the following constructors:</p>
+<ul>
+<li><code>'leaf</code> for a leaf node that contains a natural number,</li>
+<li><code>'node</code> for an internal node that contains a natural number and two subtrees.</li>
+</ul>
+</li>
+<li>
+<p>Define a function <code>def Search: Nat -&gt; Tree -&gt; MaybeNat</code> that takes a natural number and a <code>Tree</code>, and returns a <code>MaybeNat</code>. If the number is found in the tree, it should return <code>'some</code> with the number, otherwise it should return <code>'none</code>. You should <em>not</em> assume that the tree is a binary search tree.</p>
+</li>
+<li>
+<p>A <a href="https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">red-black tree</a> is a binary search tree where each node can be either red or black (if you never learned red-black trees in your data structures course, you can watch a quick YouTube video like <a href="https://www.youtube.com/watch?v=qvZGUFHWChY">this one</a>). In Lamp, we can represent a red-black tree as a recursive sum type with the following constructors:</p>
+<pre><code>rec RBTree = +{
+    'leaf: (),
+    'r: (Nat, RBTree, RBTree),
+    'b: (Nat, RBTree, RBTree)
+}
+</code></pre>
+<p>Additionally, a red-black tree should satisfy the following invariants:</p>
+<ol>
+<li>There are no two red nodes in a row.</li>
+<li>Every path from the root to a leaf has the same number of black nodes.</li>
+</ol>
+<p>To insert a number into a red-black tree, simply treat the tree as a binary search tree (so use each node to decide which subtree to go to):</p>
+<pre><code>def Insert: Nat -&gt; RBTree -&gt; RBTree = \x. \t.
+  match t {
+   'leaf: 'r (x, 'leaf, 'leaf),
+   'r (y, l, r):
+       if x == y then t
+       else if Lt x y then Balance ('r (y, Insert x l, r))
+       else Balance ('r (y, l, Insert x r)),
+   'b (y, l, r):
+       if x == y then t
+       else if Lt x y then Balance ('r (y, Insert x l, r))
+       else Balance ('r (y, l, Insert x r))
+}
+</code></pre>
+<p>(You need to copy over your <code>Lt</code> function from HW2.)</p>
+<p>After the inserting the number, the first invariant may be violated (the second invariant will still hold). So we need to call a <code>Balance</code> function to fix the tree. The <code>Balance</code> function should take a red-black tree that may violate the first invariant, and return a new red-black tree that satisfies both invariants. The balance function is illustrated in the following diagram. There are 4 cases to consider:</p>
+ <img src="assignments/hw4/./balance.jpg" width="800px" alt="AST for fib.lp">
+<p>Your task is to implement the <code>Balance</code> function:</p>
+<pre><code>def Balance: RBTree -&gt; RBTree = \{
+    &lt;pattern 1&gt;: &lt;result tree&gt;,
+    &lt;pattern 2&gt;: &lt;result tree&gt;,
+    &lt;pattern 3&gt;: &lt;result tree&gt;,
+    &lt;pattern 4&gt;: &lt;result tree&gt;,
+    t: t
+}
+</code></pre>
+<p>Each pattern should describe one of the 4 cases where the tree violates the first invariant (as illustrated in the topf half of the diagram above), and the result tree in all branches should be the red-black tree that no longer violates the first invariant (as illustrated in the bottom half of the diagram above). The last branch <code>t: t</code> simply matches any tree that does not violate the first invariant, and returns it unchanged.</p>
+</li>
+</ol>
+<h2 id="part-2---implementing-the-lamp-language-1"><a class="header" href="#part-2---implementing-the-lamp-language-1">Part 2 - Implementing the Lamp Language</a></h2>
+<p>Download the starter code from <a href="assignments/hw4/./hw4-starter.zip">here</a>.</p>
+<h3 id="problem-1--coding-10-pts-1"><a class="header" href="#problem-1--coding-10-pts-1">Problem 1 (🧑‍💻 coding, 10 pts)</a></h3>
+<p>The operational semantics of Lamp is already implemented in the <code>eval</code> function. You're highly encouraged to read the code and understand how it works. Your task is to implement the <code>subst</code> function.</p>
+<details>
+<summary>Hint</summary>
+<p>The only tricky case is when you substitute in a pattern-match branch. Remember the slogen:</p>
+<blockquote>
+<p>Substitution replaces free variables.
+The <code>sigma</code> dictionary contains keys which are (free) variables to be replaced. The pattern of a branch may contain variables, which bind all references in the expression of that branch.</p>
+</blockquote>
+</details>
+<p>Finally, to run your interpreter, you can do <code>python -m backend.eval &lt; [path to a Lamp file]</code>.</p>
+<h3 id="problem-2--coding-50-pts"><a class="header" href="#problem-2--coding-50-pts">Problem 2 (🧑‍💻 coding, 50 pts)</a></h3>
+<p>Implement the bidirectional type system for Lamp. The system is specified using inference rules in the <a href="assignments/hw4/../../assignments.html">Lamp Reference Manual</a>. Your task is to finish the implementation of</p>
+<ul>
+<li>the <code>synth</code> function, which implements the type synthesis judgment</li>
+<li>the <code>check</code> function, which implements the type checking judgment.</li>
+</ul>
+<p>Note that we've slightly adjusted the bidirectional type system for operations related to base types (i.e., Nat and Bool), so you may need to update your implementation from HW3.</p>
+<p>You will also need to <strong>design</strong> and <strong>implement</strong> type checking for pattern matching.</p>
+<ol>
+<li>As a baseline, you should implement the <code>helper</code> function in the <code>match_</code> function, which checks whether a type matches a pattern, and returns a mapping from (pattern) variables to types. You should <strong>derive</strong> the implementation of this function by "looking at" the operational semantics of pattern matching "through a pair of foggy glasses". The operational semantics of pattern matching is defined formally in the language reference manual using the judgment <code>v ⋈ p -&gt; σ</code>, and implemented in the <code>match_</code> function in eval.py. Ideally, you should design an analogous judgment <code>t ⋈ p -&gt; Σ</code> for checking whether a type matches a pattern using a set of inference rules, and then implement your rules in Python.</li>
+<li>You should also check that patterns in all branches collectively <em>exhaust</em> the type of the matched expression. In other words, your type checker should ensure that it can never happen that a pattern match fails because none of the branches match the value. This is a very challenging problem, and you should try your best to solve it, and the autograder will award points for partially correct solutions. As a hint, think of both types and patterns as describing certain sets of values. The exhaustiveness check amounts to checking that the union of the sets described by the patterns is a superset of the set described by the type of the matched expression.</li>
+</ol>
+<p>To run your type checker, you can do <code>python -m backend.typing &lt; [path to a Lamp file]</code>.</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="reflections"><a class="header" href="#reflections">Reflections</a></h1>
+<p>Here, I will share a couple of Youtube videos each week on some aspect of programming languages -- either directly related to what we talked about that week, or some broader topic that might be interesting/important but unfortunately doesn't fit into the short time we have in class.</p>
+<p>Out of 6 weeks, you pick 2 weeks to watch the videos and write a short (2-3 paragraphs) reflection on what you learned from the video, what surprised you, what you agreed/disagreed with, how does it change the way you think about programming languages, how does it relate to your own experience, etc.</p>
+<p>Completion = full credit. No need to be a great writer. Just share your thoughts in a way that others can understand, be honest and be thoughtful. You're encouraged to share your reflections with the class and comment on other students' reflections, if you feel comfortable doing so.</p>
+<p>Again, don't use LLMs. If you do, it'll defeat the purpose of reflections; I and other students will also waste time reading and commenting on some random string of emotionless symbols that doesn't come from you. If you're tempted to use LLMs, that likely means the week's topic doesn't interest you. In that case, you can skip it and do it in another week when the topic does genuinely interest you, since you only need to choose 2 weeks out of 6 anyway.</p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="week-1-software-correctness"><a class="header" href="#week-1-software-correctness">Week 1: Software Correctness</a></h1>
+<p>Do you remember any of these bugs / exploits (if you were around at the time)?</p>
+<iframe width="854" height="480" src="https://www.youtube.com/embed/Iq_r7IcNmUk?si=dpDgxD5C-GFMoGEt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="language-adoption"><a class="header" href="#language-adoption">Language Adoption</a></h1>
+<iframe width="854" height="480" src="https://www.youtube.com/embed/YPAaUFGrlEE?si=azgrJUXczdzUO1bt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="static-typing"><a class="header" href="#static-typing">Static Typing</a></h1>
+<iframe width="854" height="480" src="https://www.youtube-nocookie.com/embed/Tml94je2edk?si=ftWg4LmiLl18x-Xr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="feminism-in-pl"><a class="header" href="#feminism-in-pl">Feminism in PL</a></h1>
+<p>Please click on the image to view the video on YouTube.</p>
+<p><a href="https://www.youtube.com/watch?v=6ED36HvQSvk"><img src="reflections/../res/onward.jpg" alt="vid" /></a></p>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="proposition-as-types"><a class="header" href="#proposition-as-types">Proposition as Types</a></h1>
+<iframe width="854" height="480" src="https://www.youtube.com/embed/IOiZatlZtGU?si=C-kqHJ4oLmAc0qbk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div style="break-before: page; page-break-before: always;"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="future-of-pl"><a class="header" href="#future-of-pl">Future of PL</a></h1>
+<p>Pick one video to watch:</p>
+<iframe width="854" height="480" src="https://www.youtube.com/embed/72y2EC5fkcE?si=d78tPoEVD85Pj9CZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="854" height="480" src="https://www.youtube.com/embed/UkDSL0U9ndQ?si=cNKPH4apJfErT5p8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="854" height="480" src="https://www.youtube.com/embed/43XaZEn2aLc?si=jk1TS95mQ10B58fJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </div>
+    </body>
+</html>

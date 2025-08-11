@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Calendar 📅 - CS 162 - Programming Languages</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CS 162 - Programming Languages</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="calendar-"><a class="header" href="#calendar-">Calendar 📅</a></h1>
+<h2 id="weekly-pattern"><a class="header" href="#weekly-pattern">Weekly Pattern</a></h2>
+<div class="table-wrapper"><table><thead><tr><th></th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr></thead><tbody>
+<tr><td><strong>Class</strong></td><td>No class 🏖️😎</td><td>Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514)</td><td>Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514)</td><td>Lecture 🧑‍🏫 <br> (12:30-1:50pm, <br> Phleps 2514)</td><td>Section 🗣️ <br> (11am-12:20pm, <br> Phelps 1440)</td></tr>
+<tr><td><strong>OH</strong></td><td>Jiaming <br> (2-4pm, CSIL)</td><td>Junrui <br> (2-3pm, Phelps 2510)</td><td>Junrui <br> (2-3pm, Phelps 2510)</td><td>Junrui <br> (2-3pm, Phelps 2510)</td><td>Junrui <br> (1-2pm, <a href="https://ucsb-cs8.github.io/w20/info/mentorPhotos/trailer-map.png">Building 936 aka "TA trailer"</a>)</td></tr>
+</tbody></table>
+</div>
+<h2 id="schedule"><a class="header" href="#schedule">Schedule</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: right">Date</th><th>Topic</th><th>Out</th><th>Due</th></tr></thead><tbody>
+<tr><td style="text-align: right"><strong>Week 1</strong></td><td><strong>How to design a programming language?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">06/24</td><td><a href="./lecture-notes/0624.html">Intro, Syntax I</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right">06/25</td><td><a href="./lecture-notes/0625.html">Syntax II, Inference Rules</a></td><td><a href="./assignments/hw1">HW 1</a></td><td></td></tr>
+<tr><td style="text-align: right">06/26</td><td><a href="./lecture-notes/0626.html">Operational Semantics</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right">06/27</td><td>Section: Python Tutorial</td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 2</strong></td><td><strong>What makes a programming language?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/01</td><td><a href="./lecture-notes/0701.html">Operational Semantics Practicum</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/02</td><td><a href="./lecture-notes/0702.html">Variables</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/03</td><td><a href="./lecture-notes/0703.html">Lambda Calculus</a></td><td><a href="./assignments/hw2">HW 2</a></td><td>HW 1</td></tr>
+<tr><td style="text-align: right">07/04</td><td><em>No class (Independence Day)</em></td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 3</strong></td><td><strong>How to abstract <em>data</em>?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/08</td><td><a href="./lecture-notes/0708.html">Call-by</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/09</td><td><a href="./lecture-notes/0709.html">Rice's Theorem, Soundness &amp; Completeness</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/10</td><td><a href="./lecture-notes/0710.html">Types</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 4</strong></td><td><strong>How to abstract <em>computation</em>?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/14</td><td>-</td><td></td><td>HW 2</td></tr>
+<tr><td style="text-align: right">07/15</td><td><em>Quiz 1</em></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/16</td><td><a href="./lecture-notes/0716.html">Type Soundness</a></td><td><a href="./assignments/hw3">HW 3</a></td><td></td></tr>
+<tr><td style="text-align: right">07/17</td><td><a href="./lecture-notes/0717.html">Bidirectional Typing</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>Week 5</strong></td><td><strong>How to change the world?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/22</td><td><a href="./lecture-notes/0722.html">Sum Types</a></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/23</td><td><a href="./lecture-notes/0723.html">Pattern Matching</a></td><td></td><td>HW 3 (written)</td></tr>
+<tr><td style="text-align: right">07/24</td><td><em>Quiz 2</em></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/25</td><td>Section</td><td><a href="./assignments/hw4">HW 4</a></td><td>HW 3 (coding)</td></tr>
+<tr><td style="text-align: right"><strong>Week 6</strong></td><td><strong>What is the future of programming like?</strong></td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/29</td><td>(1-1 quiz correction appointments)</td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/30</td><td>(1-1 quiz correction appointments)</td><td></td><td></td></tr>
+<tr><td style="text-align: right">07/31</td><td>(1-1 quiz correction appointments)</td><td></td><td></td></tr>
+<tr><td style="text-align: right"><strong>08/03</strong></td><td><strong>(End of summer session A)</strong></td><td></td><td>HW 4</td></tr>
+</tbody></table>
+</div><!-- |      07/29 | Curry-Howard correspondence                 |      |      |
+|      07/30 | Codata, objects, subtyping, infinity        |      |      |
+|      07/31 | It's lambda calculus all the way down!      |      |      | -->
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="syllabus.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="lectures.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="syllabus.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="lectures.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

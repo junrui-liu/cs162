@@ -1,0 +1,690 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>HW1 - CS 162 - Programming Languages</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CS 162 - Programming Languages</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="homework-1"><a class="header" href="#homework-1">Homework 1</a></h1>
+<blockquote>
+<p>Written problems due: <strong>Thursday, July 3, 2025, 12:30pm (before class)</strong></p>
+<p>Coding problems due: <strong>Thursday, July 3, 2025, 11:59pm PDT</strong> on Gradescope</p>
+</blockquote>
+<h2 id="instructions"><a class="header" href="#instructions">Instructions</a></h2>
+<p>There are be 2 types of problems:</p>
+<ol>
+<li>
+<p><strong>Written problems</strong> are marked with ✍️.</p>
+<ul>
+<li>Must be done <strong>individually</strong>.</li>
+<li>Please turn in a <strong>stapled, physical copy</strong> of your solutions before the lecture start time on the due date.</li>
+<li>For each sub-problem, please provide a self-grade out of 2 points: 2 for a fully solved problem with a correct solution, 1 for a partially correct attempt with all work shown, and 0 for no attempt. If you're unsure whether your solution is correct, you can leave it as <code>?</code>, and I will grade it for you.</li>
+<li>On the first page of your solutions, please include your name (on Canvas/Gradescope), student ID, and a table containing the self-grades for each sub-problem, like this:</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Problem</th><th>Sub-problem</th><th>Self-grade (0/1/2/?)</th></tr></thead><tbody>
+<tr><td>1</td><td>A</td><td>2</td></tr>
+<tr><td>1</td><td>B</td><td>2</td></tr>
+<tr><td>1</td><td>C</td><td>1</td></tr>
+<tr><td>1</td><td>D</td><td>?</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>If you handwrite your solutions, please write clearly and legibly.</li>
+</ul>
+</li>
+<li>
+<p><strong>Coding problems</strong> are marked with 🧑‍💻.</p>
+<ul>
+<li>Must be done <strong>individually</strong>.</li>
+<li>Coding problems are autograded on Gradescope.</li>
+<li>You can submit as many times as you want.</li>
+<li>Note that you can use a maximum of 2 late days for each HW's coding problems, but not for the written problems.</li>
+</ul>
+</li>
+</ol>
+<p>Other important notes:</p>
+<ul>
+<li>
+<p>Problems (written or coding) marked with ⭐️ are extra credit problems. You can do them for fun and for extra credit, but they are completely optional.</p>
+</li>
+<li>
+<p>You're encouraged to talk about the problems with the instructor, the TA, and your classmates, but your group must write up your own solutions for the written problems, and you must individually write code for the coding problems.</p>
+</li>
+<li>
+<p>Note you won't be able to turn in corrections to homework problems, unlike quizzes.</p>
+</li>
+<li>
+<p>Use of generative AI tools and coding assistants is not allowed for this assignment. You will be able to use them for future assignments (maybe), but not for this one. If you're new to Python, it's ok ask LLMs to answer some concept questions, but please write your own code (since LLMs won't be able to help you anymore in future assignments which are harder + not in their training data).</p>
+</li>
+<li>
+<p>If you have any questions about the assignment, please post them in the <code>#hw1</code> Discord channel, or come to the office hours.</p>
+</li>
+</ul>
+<h2 id="problem-0--written-2-pts"><a class="header" href="#problem-0--written-2-pts">Problem 0 (✍️ written, 2 pts)</a></h2>
+<p>Install Python 3.12 or later. You're highly encouraged to use <a href="https://www.anaconda.com/docs/getting-started/miniconda/main">Anaconda or Miniconda</a> to manage your Python environment.</p>
+<ul>
+<li>Once you have Anaconda, <code>conda</code> will be available in your terminal. You can create a new environment with the command <code>conda create -n cs162 python=3.12</code>.</li>
+<li>To activate the environment, run <code>conda activate cs162</code>. Note that you need to run this command every time you open a new terminal window.</li>
+<li>In your PDF, attach a screenshot/stdout of the welcome message that you receive after running <code>python3</code>. For example, you should see something like this:</li>
+</ul>
+<pre><code class="language-bash">» python3
+Python 3.9.12 (main, Jun  1 2022, 06:34:44)
+[Clang 12.0.0 ] :: Anaconda, Inc. on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+</code></pre>
+<p>If you use VSCode, please also attach a screenshot of the portion of the VScode window that shows Copilot is disabled (at least for Python). There's a copilot icon in the bottom right corner that you can click to disable Copilot. Thank you so much.</p>
+<p>Tips:</p>
+<ul>
+<li>If you're on Windows, we highly recommend you use the <a href="https://learn.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux (WSL)</a> as the development environment.</li>
+<li>All packages installed with <code>pip</code> for this class will stay in the <code>cs162</code> environment, so you don't have to worry about conflicts with your system Python installation.</li>
+<li>If you have trouble installing Python, please ask for help in the <code>#tech-support</code> channel on Discord.</li>
+</ul>
+<h2 id="problem-1"><a class="header" href="#problem-1">Problem 1</a></h2>
+<h3 id="problem-1-a--coding-5-points"><a class="header" href="#problem-1-a--coding-5-points">Problem 1-A (🧑‍💻 coding, 5 points)</a></h3>
+<p>Read about <a href="https://benhoyt.com/writings/python-pattern-matching/">pattern matching in Python</a>. Then, using pattern matching, define a recursive function <code>compress</code> that removes <em>consecutive</em> duplicate elements from a list:</p>
+<pre><code class="language-python">def compress(xs: list) -&gt; list:
+    match xs:
+        case []:
+            pass
+            # your code here
+        case [hd, *tl]:
+            pass
+            # your code here
+</code></pre>
+<p>Note that the pattern <code>[hd, *tl]</code> matches a list with at least one element, where <code>hd</code> is the first element and <code>tl</code> is the rest of the list. The <code>*</code> operator allows <code>tl</code> to match any number of elements, including zero.
+Define your function in <a href="./compress.py">compress.py</a>.</p>
+<details>
+<summary>Hint</summary>
+Use post-order traversal: first recursively compress the tail of the list, and then combine the head with the compressed tail using some post-processing logic.
+</details>
+<h3 id="problem-1-b--coding-5-pts"><a class="header" href="#problem-1-b--coding-5-pts">Problem 1-B (🧑‍💻 coding, 5 pts)</a></h3>
+<p>Consider the language of calculator expressions, augmented with the only variable <code>x</code>, and a composition operator <code>|&gt;</code>:</p>
+<pre><code>expr ::= number
+       | expr + expr
+       | expr - expr
+       | expr * expr
+       | expr |&gt; expr
+       | x
+</code></pre>
+<p>Intuitively, the only variable <code>x</code> stands for the "user input". The composition operator <code>|&gt;</code> takes the value of the left-hand side expression, and feeds it into the "user input" of the right-hand side expression.</p>
+<p>For example, the expression <code>1 + 2 * x |&gt; x + 5</code> means:</p>
+<ul>
+<li>Ask the user for a number <code>n</code> for <code>x</code>. Let's say the user inputs <code>3</code>.</li>
+<li>Evaluate the left-hand side expression <code>1 + 2 * x</code> with <code>x = 3</code>, which evaluates to <code>1 + 2 * 3 = 7</code>.</li>
+<li>Feed the value <code>7</code> as input to the right-hand side expression <code>x + 5</code>, which evaluates to <code>7 + 5 = 12</code>.</li>
+</ul>
+<p>The AST is defined in <a href="./calc.py">calc.py</a>. We use <code>@dataclass</code> to represent the AST:</p>
+<pre><code class="language-python">@dataclass(frozen=True)
+class Expr:
+    pass
+
+@dataclass(frozen=True)
+class Num(Expr):
+    value: int
+
+@dataclass(frozen=True)
+class Add(Expr):
+    e1: Expr
+    e2: Expr
+</code></pre>
+<p>Note that <code>@dataclass(frozen=True)</code> makes the class immutable, which is a good practice for ASTs, since we don't want to accidentally modify them after they are created.</p>
+<p>Your task is to implement the <code>eval</code> function (in <a href="./calc.py">calc.py</a>) that evaluates the input expression given an "user input" for <code>x</code>, using the following signature:</p>
+<pre><code class="language-python">def eval(x: int, e: Expr) -&gt; int:
+    match e:
+        case Num(value):
+            pass
+            # your code here
+        case Add(e1, e2):
+            pass
+            # your code here
+        case Sub(e1, e2):
+            pass
+            # your code here
+        case Mul(e1, e2):
+            pass
+            # your code here
+        case Compose(e1, e2):
+            pass
+            # your code here
+        case X():
+            pass
+            # your code here
+</code></pre>
+<p>Note that type annotations like <code>: int</code>, <code>: Expr</code>, and <code>-&gt; int</code> are completely optional in Python; they're just there to provide hints to the reader and to your VSCode Python plugin.</p>
+<h3 id="problem-1-c--coding-5-pts"><a class="header" href="#problem-1-c--coding-5-pts">Problem 1-C (🧑‍💻 coding, 5 pts)</a></h3>
+<p>In <a href="./calc.py">calc.py</a>, define a function <code>remove_compose</code> that takes an expression and returns an equivalent expression that does not use the composition operator <code>|&gt;</code>.</p>
+<pre><code class="language-python">def remove_compose(expr: Expr) -&gt; Expr:
+    # your code here
+</code></pre>
+<details>
+<summary>Hint</summary>
+1. Use pattern matching.
+2. Define a helper function that *substitutes* all `X()` with another expression. Call this helper function in the `Compose` case.
+</details>
+<h3 id="problem-1-d--coding-10-pts"><a class="header" href="#problem-1-d--coding-10-pts">Problem 1-D (🧑‍💻 coding, 10 pts)</a></h3>
+<p>Compilers routinely perform optimizations on programs to make them faster, smaller, etc. They do so before the program is run, so the optimizations need to be correct regardless of what the user inputs in the future.</p>
+<p>In <a href="./calc.py">calc.py</a>, implement the <code>simplify</code> function that will optimize arithmetic expressions. In particular:</p>
+<ul>
+<li>Operations on constant expressions should be simplified, e.g. <code>1 + (1 * 3)</code> is simplified to <code>4</code>.</li>
+<li>Addition and multiplication identities should be simplified, e.g. <code>1 * (x + 0 + (5 * 0))</code> is simplified to <code>x</code>. Specifically, you need to handle addition by 0, multiplication by 0, and multiplication by 1.</li>
+<li>All other combinations of addition and multiplication should be left as-is. For example, you do not need to distribute multiplication (e.g., you should leave <code>2 * (x + 1)</code> as-is), nor do you need to combine multiple additions of a term into scaling the term by a constant (e.g., you should leave expressions such as <code>x + (2 * x)</code> as-is).</li>
+<li>All simplifications should be applied <em>as much as possible</em>.</li>
+<li>You may assume that all composition operators have already been removed from the expression.</li>
+</ul>
+<details>
+<summary>Hint</summary>
+<p>Use simultaneous pattern matching and wildcard to make your code cleaner:</p>
+<pre><code class="language-python">match &lt;x&gt;, &lt;y&gt;:
+    case &lt;pattern1&gt;, &lt;pattern2&gt;:
+        # your code here
+    case ...:
+        # your code here
+    case _:
+        # _ is a wildcard that matches anything, so it's like a default "catch-all" case
+        # this branch is executed only if none of the preceding patterns match
+        
+        # your code here
+</code></pre>
+<p>For example, in the <code>Add</code> case, you might want to do something like this:</p>
+<pre><code class="language-python">...
+case Add(e1, e2):
+    match simplify(e1), simplify(e2):
+        case ...:
+            # your code here
+</code></pre>
+</details>
+<h2 id="problem-2"><a class="header" href="#problem-2">Problem 2</a></h2>
+<p>In this problem, you will be a language designer, and design the syntax and semantics of propositional logic, which you first learned in <a href="https://sites.cs.ucsb.edu/~cappello/lectures/logic/1.1.pptx">CS 40</a>.</p>
+<h3 id="problem-2-a--written-2-pts"><a class="header" href="#problem-2-a--written-2-pts">Problem 2-A (✍️ written, 2 pts)</a></h3>
+<p>Formalize the abstract syntax of propositional logic propositions using context-free grammar (CFG). Your grammar should support <code>-</code> (unary negation), <code>/\</code> (binary conjunction), <code>\/</code> (binary or), <code>-&gt;</code> (binary implication), <code>&lt;-&gt;</code> (iff), along with boolean constants (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">True</span></span></span></span></span> and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">False</span></span></span></span></span>) and propositional variables (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">Q</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span></span></span></span>).</p>
+<h3 id="problem-2-b--written-2-pts"><a class="header" href="#problem-2-b--written-2-pts">Problem 2-B (✍️ written, 2 pts)</a></h3>
+<p>Use Python's <code>dataclass</code> to represent the abstract syntax tree (AST) of propositions defined by your grammar. Name the abstract class <code>Prop</code>, and include the class definitions in your PDF:</p>
+<pre><code class="language-python">@dataclass(frozen=True)
+class Prop:
+    pass
+
+@dataclass(frozen=True)
+class &lt;Class1&gt;(Prop):
+    """Explanation of how you obtained Class1 from a CFG production rule."""
+    # fields
+
+@dataclass(frozen=True)
+class &lt;Class2&gt;(Prop):
+    """Explanation of how you obtained Class2 from a CFG production rule."""
+    # fields
+
+...
+</code></pre>
+<p>For each class, informally explain how you translated the CFG production rule into that class definition using 1 sentence in the docstring (enclosed in <code>"""</code>).</p>
+<h3 id="problem-2-c--written-2-pts"><a class="header" href="#problem-2-c--written-2-pts">Problem 2-C (✍️ written, 2 pts)</a></h3>
+<p>Pretend you’re the parser. For each of the following proposition:</p>
+<ol>
+<li>draw the corresponding AST corresponding to the formula in concrete syntax</li>
+<li>write down a Python object (of class <code>Prop</code>) that represents the same AST. The object should be constructed using a series of constructor calls for your <code>&lt;Class1&gt;</code>, <code>&lt;Class2&gt;</code>, etc. that you defined in Problem 2-B.</li>
+</ol>
+<p>Propositions:</p>
+<ul>
+<li><code>A -&gt; B -&gt; C</code></li>
+<li><code>A \/ B \/ C</code></li>
+<li><code>A /\ B \/ C</code></li>
+<li><code>-A \/ -B &lt;-&gt; -(A /\ B)</code></li>
+</ul>
+<p>Use the following precedence and associativity rules to resolve any ambiguities:</p>
+<ul>
+<li><code>-</code> has the highest precedence and is non-associative (since it's unary).</li>
+<li><code>/\</code> has the second highest precedence and is left associative.</li>
+<li><code>\/</code> has the third highest precedence and is left associative.</li>
+<li><code>-&gt;</code> and <code>&lt;-&gt;</code> have the lowest precedence and are right associative.</li>
+</ul>
+<h3 id="problem-2-d--written-2-pts"><a class="header" href="#problem-2-d--written-2-pts">Problem 2-D (✍️ written, 2 pts)</a></h3>
+<p>Define a Python function <code>pretty_print</code> that converts a proposition to a human-readable string. In the output string, use parentheses to clearly disambiguate nested operators. In the PDF, include the function definition, as well as the output of the function when given the Python AST objects that you wrote down for Problem 2-C.</p>
+<pre><code class="language-python">def pretty_print(prop: Prop) -&gt; str:
+    # your code here
+
+# Example usage
+print(pretty_print(...))
+print(pretty_print(...))
+print(pretty_print(...))
+print(pretty_print(...))
+
+# Output:
+# Copy and paste stdout for the above print statements here
+</code></pre>
+<h3 id="problem-2-e--written-2-pts"><a class="header" href="#problem-2-e--written-2-pts">Problem 2-E (✍️ written, 2 pts)</a></h3>
+<p>Define a Python function <code>size</code> that computes the number of nodes in a proposition AST. In the PDF, include the function definition, as well as the output of the function when given the Python AST objects that you wrote down for Problem 2-C.</p>
+<pre><code class="language-python">def size(prop: Prop) -&gt; int:
+    # your code here
+
+# Example usage
+print(size(...))
+print(size(...))
+print(size(...))
+print(size(...))
+
+# Output:
+# Copy and paste stdout for the above print statements here
+</code></pre>
+<h3 id="problem-2-f--written-2-pts"><a class="header" href="#problem-2-f--written-2-pts">Problem 2-F (✍️ written, 2 pts)</a></h3>
+<p>Formalize the meaning of logical formulas by inductively defining the judgment
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊢</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>
+using inference rules.</p>
+<ul>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> is a proposition</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> is a boolean value (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">True</span></span></span></span></span> or <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">False</span></span></span></span></span>)</li>
+<li><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> is an assignment (a partial function) from propositional variables to boolean values. You can write <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> using the following grammar:
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">::=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord amsrm">∅</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7054em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">↦</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span></li>
+</ul>
+<p>Intuitively, this judgment means that under assignment <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span>, proposition <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> evaluates to boolean value <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>.</p>
+<p>In designing your operational semantics:</p>
+<ul>
+<li>You should have at least one rule for each case in your abstract syntax.</li>
+<li>The meaning of each operator should be independent. That is, do not use a judgment involving <code>-&gt;</code> to define a judgment involving <code>&lt;-&gt;</code>.</li>
+<li>There are several ways to handle variables in a proposition that are not defined by the assignment.
+<ul>
+<li>You can stipulate that there is <em>no applicable rule</em> if the variable is undefined.</li>
+<li>You can explicitly return a special value (e.g., ☹️) to signal that the variable is undefined. So in judgment <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊢</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>, the value of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> can be <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">True</span></span></span></span></span>, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">False</span></span></span></span></span>, or ☹️.</li>
+</ul>
+</li>
+</ul>
+<p>In addition, in your PDF, pick one propositions from Problem 2-C, and draw the derivation tree that shows <span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊢</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">True</span></span></span></span></span></span> for some assignment <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> of your choice. That is, pick an assignment <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> of the variables in <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> that make <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> evaluate to <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord textsf">True</span></span></span></span></span>, and draw the derivation trees where you apply your operational semantics rules.</p>
+<h2 id="problem-3"><a class="header" href="#problem-3">Problem 3</a></h2>
+<p>A programming language often provides <em>syntactic sugars</em> — nice-to-have features that allow programmers to write more concise code but are nevertheless expressible using (a combination of) more primitive features.</p>
+<p>A prototypical example is <code>for</code> loops, which is a syntactic sugar for <code>while</code> loops that increment a counter variable. For example, the following <code>for</code> loop:</p>
+<pre><code class="language-c">for (int i = 0; i &lt; 10; i++) {
+    printf("%d\n", i);
+}
+</code></pre>
+<p>is a syntactic sugar for the following <code>while</code> loop:</p>
+<pre><code class="language-c">int i = 0;
+while (i &lt; 10) {
+    printf("%d\n", i);
+    i++;
+}
+</code></pre>
+<p>Programmers -- well, human programmers at least -- love syntactic sugars, since they can write less code. Language implementers hate syntactic sugars, because they need to write <em>more</em> code to handle those sugars which are basically duplicates of the code for handling the primitives.</p>
+<p>Luckily, a technique known as "desugaring" can make both the programmer and the language implementer happy, whereby a sugar is automatically translated into a combination of primitive features, before the primitive features are implemented. This way, the programmer can keep having their yummy sugar, but the implementer doesn't need to write any redundant code beyond the absolute necessary amount needed to handle the primitives.</p>
+<p>We call an abstract syntax that has syntactic sugars the “surface syntax”, and an abstract syntax that doesn’t have them the “core syntax”.</p>
+<p>For example, consider arithmetic expressions that we type into calculators. It’s convenient to type "-10" or "+123" using unary minus and plus, but they can be desugared into “0 - 10” and “123”. So the surface syntax of arithmetic expressions might look like this</p>
+<pre><code>expr ::= number
+       | -expr
+       | +expr
+       | expr + expr
+       | expr - expr
+</code></pre>
+<p>whereas the core syntax would look like this:</p>
+<pre><code>expr ::= number
+       | expr + expr
+       | expr - expr
+</code></pre>
+<p>The surface syntax has 5 cases, while the core syntax has only 3 cases. The translation from surface syntax to core syntax can be given by the following desugaring function:</p>
+<pre><code>desugar(number) = number
+desugar(- expr) = 0 - desugar(expr)
+desugar(+ expr) = desugar(expr)
+desugar(expr + expr) = desugar(expr) + desugar(expr)
+desugar(expr - expr) = desugar(expr) - desugar(expr)
+</code></pre>
+<p>An obvious but important property of desugaring is that it should not change the meaning (semantics) of the program.</p>
+<h3 id="problem-3-a--written-2-pts"><a class="header" href="#problem-3-a--written-2-pts">Problem 3-A (✍️ written, 2 pts)</a></h3>
+<p>The abstract syntax you designed for propositional logic in Problem 2 can be considered a surface syntax, since many operators can be expressed using a small set of primitives. Your task is to design a core syntax for propositional logic that has no more than 4 cases:</p>
+<pre><code>prop ::= True | False
+       | Var
+       | &lt;op&gt; (operator)
+</code></pre>
+<p>where <code>&lt;op&gt;</code> is any operator of your choice. The operator doesn't have to be one that's already in the surface syntax -- you can come up with a brand new operator. The operator can be unary, binary, or ternary. As a (non-)example, here's a possible core syntax:</p>
+<pre><code>prop ::= True | False
+       | Var
+       | prop /\ prop
+</code></pre>
+<p>although this is not a good choice, since <code>/\</code> doesn't have enough expressive power to represent all propositions in the surface syntax.</p>
+<p>Once you designed your operator, choose a sensible notation for it, and include the full grammar of the core syntax in your PDF. Then, intuitively describe the meaning of the operator you designed using 1-2 sentences.</p>
+<!-- 
+
+### Problem 3-B (✍️ written, 2 pts)
+Formalize the operational semantics for your core syntax by formalizing the following judgment using inference rules:
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8213em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8213em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊢</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0158em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8213em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇓</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8213em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8213em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">−</span></span></span></span></span></span></span></span></span></span></span></span>
+where, again, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span> is a boolean value, <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> is a proposition, and <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> is an assignment of boolean values to propositional variables. We use <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel">⇓</span></span></span></span> instead of <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span> to distinguish the semantics of the core syntax (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mrel">⇓</span></span></span></span>) from that of the surface syntax (<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">⇒</span></span></span></span>).
+
+In designing your operational semantics:
+- You should have at least one rule for each case in your core syntax.
+- The meaning of each operator should be independent.
+- Your rules should be algorithmic, and the resulting relation should be deterministic.
+
+### Problem 3-C (✍️ written, 2 pts)
+Use Python's `dataclass` to represent the abstract syntax tree (AST) of propositions defined by your core syntax. Name the abstract class `Core`, and include the class definitions in your PDF:
+
+```python
+@dataclass
+class Core:
+    pass
+
+@dataclass
+class Class1(Core):
+    # fields
+
+@dataclass
+class Class2(Core):
+    # fields
+```
+
+### Problem 3-D (✍️ written, 2 pts)
+
+Define a Python function that translates the surface syntax into the core syntax.
+```python
+def desugar(p: Prop) -> Core:
+    match prop:
+        case <your code here>
+```
+The function should handle all ASTs in the surface syntax, and return an AST in the core syntax.
+
+Include the function definition in your PDF, as well as the output of the function when given the Python AST objects that you wrote down for Problem 2-C.
+
+```python
+# Example usage
+print(desugar(...))
+print(desugar(...))
+print(desugar(...))
+print(desugar(...))
+# Output:
+# Copy and paste stdout for the above print statements here
+```
+
+
+
+
+### Problem 3-E (✍️ written, 2 pts)
+Translate the semantic rules you just defined into a Python function `eval` that evaluates a proposition in the core syntax. The function should have the following signature:
+```python
+def eval(α: dict[str, bool], prop: Prop) -> Optional[bool]:
+    match prop:
+      # your code here
+```
+where <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span> is a dictionary that maps propositional variables to boolean values, and `prop` is a proposition in the core syntax. The function should return the boolean value of the proposition under the assignment if all variables are defined in the assignment, or `None` if any variable is undefined.
+
+
+
+
+### Problem 3-F (✍️ written, 2 pts, ⭐️extra credit⭐️)
+Prove by induction that the desugaring function you just defined preserves the meaning of the proposition. That is, for any proposition <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span></span></span></span> in the surface syntax, any assignment <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span>, and any value <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span>, if
+
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊢</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>
+then
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊢</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">desugar</span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇓</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span></span></span></span></span>
+
+You can induct either on the size of the AST in surface syntax, or on the size of the derivation tree. If you need a refresher on induction, please feel free to come to office hours. -->
+<h3 id="problem-3-b--written-2-pts-extra-credit"><a class="header" href="#problem-3-b--written-2-pts-extra-credit">Problem 3-B (✍️ written, 2 pts, ⭐️extra credit⭐️)</a></h3>
+<p>Would you consider the composition operator <code>|&gt;</code> from Problem 1-B to be a syntactic sugar, and the <code>remove_compose</code> function from Problem 1-C a "desugaring" function? Give a brief argument (1-2 sentences) to justify your answer. There are no right or wrong answers. Completion = 2 points.</p>
+<h2 id="problem-4"><a class="header" href="#problem-4">Problem 4</a></h2>
+<p>Recall the abstract syntax for the CoinPython language (we will have seen this by either Thursday or next Tuesday).</p>
+<pre><code>p ::= pass
+    | raise
+    | print(msg)
+    | p; p
+    | if (*) {p} else {p}
+    | while (*) {p}
+msg ∈ M
+</code></pre>
+<p>where <code>M</code> is a finite set of strings, e.g., <code>M = {"ok", "oops"}</code>. Note that the abstract syntax for <code>if</code>, <code>;</code> (sequencing), and <code>while</code> doesn't exactly correspond to Python's concrete syntax; the goal is to make it easier to write down CoinPython programs on paper concisely, since normal Python is indentation-sensitive.</p>
+<p>Recall the judgment:</p>
+<pre><code>p =&gt; s
+</code></pre>
+<p>which intuitively means "execution of program <code>p</code> terminates normally (without exception), and the content of the console is <code>s</code>".</p>
+<p>The AST for CoinPython programs is defined in <a href="./coin.py">coin.py</a>.</p>
+<h3 id="problem-4-a--coding-5-pts"><a class="header" href="#problem-4-a--coding-5-pts">Problem 4-A (🧑‍💻 coding, 5 pts)</a></h3>
+<p>The most obvious way to determinize the relation <code>p =&gt; s</code> is to treat program <code>p</code> as input, and string <code>s</code> as output. In other words, we can write a CoinPython interpreter that executes a program <code>p</code> with some source of randomness, and collects the output <code>s</code> that would have been printed to the console.</p>
+<p>In the same file, implement such an interpreter:</p>
+<pre><code class="language-python">@dataclass
+class ProbablisticInterpreter:
+    coin: Coin
+
+    def run(self, p: Program) -&gt; Optional[str]:
+        # your code here
+</code></pre>
+<p>The return type annotation <code>Optional[str]</code> means that the function can return either a string (the fictional output that would have been printed to the console) or <code>None</code> (if the program raises an exception, e.g., due to a <code>Raise()</code>). Assume that each <code>Print(msg)</code> will just "print" the message as-is, without any trailing newline.</p>
+<p>In deciding the truth values of coin tosses (for <code>if (*)</code> and <code>while (*)</code>), the interpreter should use the <code>coin</code> object via <code>self.coin</code>, which is an instance of the <code>Coin</code> class. The only method of <code>Coin</code> that you need to be aware of is <code>flip</code>, which returns either <code>True</code> or <code>False</code>:</p>
+<pre><code class="language-python">@dataclass
+class Coin:
+    def flip(self) -&gt; bool:
+        ...
+</code></pre>
+<p>You can call the <code>flip</code> method using <code>self.coin.flip()</code>. The <code>flip</code> method simulates a coin toss, returning <code>True</code> for heads and <code>False</code> for tails.</p>
+<p>For example, for the following CoinPython program:</p>
+<pre><code>if (*) { pass } else { print("okie"); print("dokie") }
+</code></pre>
+<p>the interpreter should return either the empty string <code>""</code> (if the first coin toss is heads) or the string <code>"okiedokie"</code> (if the first coin toss is tails). You do not need to actually print the output to the console; just return it as a string.</p>
+<h3 id="problem-4-b--written-2-pts"><a class="header" href="#problem-4-b--written-2-pts">Problem 4-B (✍️ written, 2 pts)</a></h3>
+<p>For every operational semantics rule of CoinPython, informally explain how your interpreter faithfully implements that rule using 1-2 sentences.</p>
+<!-- ### Problem 4-B (🧑‍💻 coding, 5 pts)
+
+In programming language theory, an important problem is to predict the behavior of a program *before it is run*. Why? Because running a program can be costly in terms of time, money, and occasionally even human lives. For example, you don't want to find out that the aviation software on your flight that detects the speed of a plane has an overflow bug, and in particularly, you don't want to find out only after the plane has taken off, which will be too late.
+
+Let's say the aviation software was written in Python, for some heinous reason (not that you should). Then, our CoinPython is a very useful model for the aviation software, as we have discussed in class: any interesting behavior of the aviation software can be abstractly modeled as a CoinPython program with appropriate print statements that log the behavior of interest, and conditional values replaced with coin tosses.
+
+With this in mind, let's determinize the relation `p => s` in a different way that allows us to predict whether a program `p` will print a string `s` *without* actually running the program (like using the interpreter that you wrote in Problem 4-A). In other words, this time, both program `p` and string `s` are inputs to the relation, and we want to write a function that returns `True` if and only if `p => s`, and `False` otherwise.
+
+Your task is to implement the `predict` function that does just that:
+```python
+class Predictor:
+
+    def predict(self, p: Program, s: str) -> bool:
+        # your code here
+```
+
+For example, for the following CoinPython program:
+```
+if (*) { print("oops") } else { print("okie"); print("dokie") }
+```
+the predictor should return `True` for both `"oops"` and the string `"okiedokie"`, and `False` for any other string.
+
+
+Your `predict` function should return a 100% correct answer if the program doesn't contain `while` (if it does contain `while`, just try your best). In particular, don't rely on the probablistic interpreter that you wrote in Problem 4-A: don't execute the program `p` at bunch of times, sample the outputs, and check if `s` is among the outputs. If you think doing this is fine, imagine that the pilot told you the aviation software is secured by the law of large numbers:
+> Hey, I heard the programmer who wrote the aviation software tested it a million times on randomly generated inputs, and it never printed "oops". So I guess this plane is safe to fly!
+
+Right?..
+
+<details>
+<summary>Hint</summary>
+One of the tricky cases is sequencing, where you need to "guess" how to split the input string into two substrings. Since you need to be 100% correct, you have to try all possible guesses.
+</details> -->
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../assignments.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../assignments/hw2/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../assignments.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../assignments/hw2/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

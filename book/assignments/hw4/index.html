@@ -1,0 +1,487 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>HW4 - CS 162 - Programming Languages</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CS 162 - Programming Languages</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css">
+<h1 id="homework-4"><a class="header" href="#homework-4">Homework 4</a></h1>
+<blockquote>
+<p>Due: <strong>Sunday, Aug 3rd, 2025, 11:59pm PDT</strong> on Gradescope</p>
+</blockquote>
+<h2 id="instructions"><a class="header" href="#instructions">Instructions</a></h2>
+<blockquote>
+<p>The entirety of this homework can be done in pairs if you want to.</p>
+</blockquote>
+<p>There are be 2 types of problems:</p>
+<ol>
+<li>
+<p><strong>Written problems</strong> are marked with ✍️.</p>
+<ul>
+<li>Must be done <strong>individually</strong>.</li>
+<li>Please submit a PDF of your solutions to Gradescope.</li>
+<li>For each sub-problem, please provide a self-grade out of 2 points: 2 for a fully solved problem with a correct solution, 1 for a partially correct attempt with all work shown, and 0 for no attempt. If you're unsure whether your solution is correct, you can leave it as <code>?</code>, and I will grade it for you.</li>
+<li>On the first page of your solutions, please include your name (and your partner's), and a table containing the self-grades for each sub-problem, like this:</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Problem</th><th>Sub-problem</th><th>Self-grade (0/1/2/?)</th></tr></thead><tbody>
+<tr><td>1</td><td>A</td><td>2</td></tr>
+<tr><td>1</td><td>B</td><td>2</td></tr>
+<tr><td>1</td><td>C</td><td>1</td></tr>
+<tr><td>1</td><td>D</td><td>?</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>If you handwrite your solutions, please write clearly and legibly.</li>
+</ul>
+</li>
+<li>
+<p><strong>Coding problems</strong> are marked with 🧑‍💻.</p>
+<ul>
+<li>Coding problems are autograded on Gradescope.</li>
+<li>You can submit as many times as you want.</li>
+<li>No late days are allowed for coding problems since I need to submit your grades to GOLD.</li>
+</ul>
+</li>
+</ol>
+<p>Other important notes:</p>
+<ul>
+<li>
+<p>Problems (written or coding) marked with ⭐️ are extra credit problems. You can do them for fun and for extra credit, but they are completely optional.</p>
+</li>
+<li>
+<p>You're encouraged to talk about the problems with the instructor, the TA, and your classmates, but you must write your own solutions.</p>
+</li>
+<li>
+<p>Note you won't be able to turn in corrections to homework problems, unlike quizzes.</p>
+</li>
+<li>
+<p>Use of generative AI tools and coding assistants is not allowed for this assignment.</p>
+</li>
+<li>
+<p>If you have any questions about the assignment, please post them in the <code>#hw4</code> Discord channel, or come to the office hours.</p>
+</li>
+</ul>
+<h2 id="part-1---programming-in-lamp"><a class="header" href="#part-1---programming-in-lamp">Part 1 - Programming in Lamp</a></h2>
+<p>Download the starter code from <a href="./hw4-starter.zip">here</a>.</p>
+<p>Carefully read the updated <a href="../../assignments.html">Lamp Reference Manual</a>. Again, a reference implementation of Lamp is available on CSIL as <code>~junrui/lamp</code> (for evaluation) and <code>~junrui/lamp-ty</code> (for typing). Please use them to test your Lamp programs.</p>
+<p>Before you jump into coding, let us explain some new shiny concrete syntax added to Lamp:</p>
+<ul>
+<li>
+<p>(Recursive) type equations are written as</p>
+<pre><code class="language-lamp">type &lt;TypeName&gt; = &lt;Type&gt;
+</code></pre>
+<p>where <code>&lt;TypeName&gt;</code> is the name of the type (a global variable, so needs to be capitalized), and <code>&lt;Type&gt;</code> is the type that the name is defined to be equal to.
+For example, the natural number type is defined as:</p>
+<pre><code class="language-lamp">type Nat = +{ 'zero: (), 'succ: Nat }
+</code></pre>
+</li>
+<li>
+<p>Just like abbreviations, type equations can be mutually recursive, since type names have global scope.</p>
+</li>
+<li>
+<p>The elimination form for product types is provided as a syntactic sugar:</p>
+<pre><code>let (x1, ..., xn) = e1 in e2
+</code></pre>
+<p>which is desugared by the parser into:</p>
+<pre><code>match e1 {
+    (x1, ..., xn): e2
+}
+</code></pre>
+</li>
+<li>
+<p>The elimination form for sum types is provided as a syntactic sugar:</p>
+<pre><code>switch e1 {
+    'l1 x1: e1,
+    'l2 x2: e2,
+    ...
+}
+</code></pre>
+<p>which is desugared by the parser into:</p>
+<pre><code>match e1 {
+    'l1 x1: e1,
+    'l2 x2: e2,
+    ...
+}
+</code></pre>
+</li>
+<li>
+<p>1-tuples are automatically unpacked, so</p>
+<ul>
+<li><code>(1)</code> is parsed into a number, instead of a 1-tuple that contains the number.</li>
+<li><code>(Nat)</code> is parsed into the type <code>Nat</code>, instead of a 1-tuple that contains the type <code>Nat</code>.</li>
+<li><code>(x)</code> is parsed into the pattern variable <code>x</code>, instead of a 1-tuple pattern that contains the variable <code>x</code>.</li>
+</ul>
+</li>
+<li>
+<p>In injection expressions and injection patterns where the contained expression/pattern is the unit <code>()</code>, you can use <code>'&lt;label&gt;</code> instead of <code>'&lt;label&gt; ()</code>. For example, if we define the custom Boolean type as:</p>
+<pre><code class="language-lamp">type MyBool = +{ 'true: (), 'false: () }
+</code></pre>
+<p>then we can write the injection expression as:</p>
+<pre><code class="language-lamp">'true
+</code></pre>
+<p>and define the negation function as:</p>
+<pre><code class="language-lamp">def Not: MyBool -&gt; MyBool = \b.
+    switch b {
+        'true: 'false,
+        'false: 'true
+    }
+</code></pre>
+<p>instead of the more verbose:</p>
+<pre><code class="language-lamp">def Not: MyBool -&gt; MyBool = \b.
+    switch b {
+        'true (): 'false (),
+        'false (): 'true ()
+    }
+</code></pre>
+</li>
+<li>
+<p>It is quite common to define a function that takes an argument and immediately pattern matches on it. In this case, you can use the following syntactic sugar:</p>
+<pre><code class="language-lamp">def MyNot: MyBool -&gt; MyBool = \{
+    'true: 'false,
+    'false: 'true
+}
+</code></pre>
+<p>which is desugared by the parser into:</p>
+<pre><code class="language-lamp">def MyNot: MyBool -&gt; MyBool = \_arg.
+    switch _arg {
+        'true: 'false,
+        'false: 'true
+    }
+}
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<p>For all problems in Part 1 (this part) of the HW, please use the reference implementation to check if the Lamp programs you wrote are correct or not!!! You'll need to use them as test cases for Part 2 (implementing the Lamp language).</p>
+</blockquote>
+<h3 id="problem-1--written-2-pts"><a class="header" href="#problem-1--written-2-pts">Problem 1 (✍️ written, 2 pts)</a></h3>
+<ol>
+<li>Define <code>MaybeNat</code> as a sum type with the following constructors:
+<ul>
+<li><code>'none</code> for representing failure,</li>
+<li><code>'some</code> for representing a successful result that contains natural number.</li>
+</ul>
+</li>
+<li>Using the unsafe division you wrote in HW2, implement a function <code>SafeDiv</code> that takes two natural numbers and returns a <code>MaybeNat</code>. If the second number is zero, it should return <code>'none</code>, otherwise it should return <code>'some</code> with the result of the division.</li>
+<li>Using <code>SafeDiv</code>, implement a function <code>SafeMod</code> that takes two natural numbers and returns a <code>MaybeNat</code>. If the second number is zero, it should return <code>'none</code>, otherwise it should return <code>'some</code> with the result of the modulo operation.</li>
+<li>Define <code>MyBool</code> a recursive sum type with the following constructors:
+<ul>
+<li><code>'true</code> for true,</li>
+<li><code>'false</code> for false.</li>
+</ul>
+</li>
+<li>Define a function <code>MyBool2Bool</code> that takes a <code>MyBool</code> and returns a <code>Bool</code>. The function should return <code>True</code> for <code>'true</code> and <code>False</code> for <code>'false</code>.</li>
+<li>Define funtions <code>MyAnd</code> and <code>MyOr</code> that take two <code>MyBool</code>s and return a <code>MyBool</code>. You should use pattern matching. For each function, the match should have no more than two branches. <em>Hint</em>: combine tuple patterns with sum type patterns.</li>
+<li>Define a type <code>MyNat</code> as a recursive sum type with the following constructors:
+<ul>
+<li><code>'zero</code> for zero,</li>
+<li><code>'succ</code> for the successor of a natural number.</li>
+</ul>
+</li>
+<li>Define a function <code>MyAdd</code> that takes two <code>MyNat</code>s and returns a <code>MyNat</code>. You should use pattern matching. The match should have no more than two branches.</li>
+</ol>
+<h3 id="problem-2--written-2-pts"><a class="header" href="#problem-2--written-2-pts">Problem 2 (✍️ written, 2 pts)</a></h3>
+<p>Pick either this problem, or Problem 3. You do not need to do both, although you are more than welcome to.</p>
+<ol>
+<li>Define the <code>List</code> type as a recursive sum type with the following constructors:</li>
+</ol>
+<ul>
+<li><code>'nil</code> for the empty list,</li>
+<li><code>'cons</code> for a non-empty list that contains a head element (<code>Nat</code>) and a tail (<code>List</code>).</li>
+</ul>
+<ol start="2">
+<li>Define a function <code>def Incr: Nat -&gt; List -&gt; List</code> that takes a <code>Nat</code> and a <code>List</code>, and returns a new <code>List</code> where each element of the original list is incremented by the given <code>Nat</code>.</li>
+<li>Define a function <code>def Len1: List -&gt; Nat</code> that takes a <code>List</code> and returns the length of the list as a <code>Nat</code>. This function should be recursively, and should not call any other helper function. This function will visit each element exactly twice: once before the recursive call and once after the recursive call.</li>
+<li>Define a function <code>def Len2: List -&gt; Nat</code> that takes a <code>List</code> and returns the length of the list. The function should visit each element exactly once. <em>Hint:</em> define <code>LenAcc: Nat -&gt; List -&gt; Nat</code> that takes an accumulator <code>Nat</code> and a <code>List</code>, where the accumulator is the length of the list so far. Then call <code>LenAcc</code> with an initial value of zero in <code>Len2</code>.</li>
+<li>Define a function <code>def Sum1: List -&gt; Nat</code> that takes a <code>List</code> of <code>Nat</code>s and returns the sum of the elements as a <code>Nat</code>. This function should be recursively, and should not call any other helper function.</li>
+<li>Define a function <code>def Sum2: List -&gt; Nat</code> that takes a <code>List</code> of <code>Nat</code>s and returns the sum of the elements as a <code>Nat</code>. The function should visit each element exactly once. <em>Hint:</em> define <code>SumAcc: Nat -&gt; List -&gt; Nat</code> that takes an accumulator <code>Nat</code> and a <code>List</code>, where the accumulator is the sum of the elements so far. Then call <code>SumAcc</code> with an initial value of zero in <code>Sum2</code>.</li>
+<li>Define a function <code>def Max1: List -&gt; MaybeNat</code> that takes a <code>List</code> of <code>Nat</code>s and returns the maximum element as a <code>MaybeNat</code>. If the list is empty, it should return <code>'none</code>, otherwise it should return <code>'some</code> with the maximum element. This function should be recursively, and should not call any other helper function.</li>
+<li>Define a function <code>def Max2: List -&gt; MaybeNat</code> that takes a <code>List</code> of <code>Nat</code>s and returns the maximum element as a <code>MaybeNat</code>. The function should visit each element exactly once. <em>Hint:</em> define <code>MaxAcc: Nat -&gt; List -&gt; Nat</code> that takes an accumulator <code>Nat</code> and a <code>List</code>, where the accumulator is the maximum element found so far. Then, in <code>Max2</code>, pattern match on the input list. If it is empty, return <code>'none</code>, otherwise call <code>MaxAcc</code> with the first element as the initial value of the accumulator.</li>
+<li>Define a function <code>def Rev1: List -&gt; List</code> that takes a <code>List</code> and returns a new <code>List</code> that is the reverse of the original list. <em>Hint:</em> define a helper function <code>RevAcc: List -&gt; List -&gt; List</code> that takes an accumulator <code>List</code> and a <code>List</code>, where the accumulator is the reversed list so far. Then call <code>RevAcc</code> with an initial value of <code>'nil</code> in <code>Rev1</code>.</li>
+<li>Define a function <code>def Append: List -&gt; List -&gt; List</code> that takes two <code>List</code>s and returns a new <code>List</code> that is the concatenation of the two lists. You should use recursion + post-order traversal.</li>
+<li>Define a function <code>def Rev2: List -&gt; List</code> that takes a <code>List</code> and returns a new <code>List</code> that is the reverse of the original list. This function should be recursively, and should not call any other helper function except for <code>Append</code>.</li>
+</ol>
+<h3 id="problem-3--written-2-pts"><a class="header" href="#problem-3--written-2-pts">Problem 3 (✍️ written, 2 pts)</a></h3>
+<p>Pick either this problem, or Problem 2. You do not need to do both, although you are more than welcome to.</p>
+<ol>
+<li>
+<p>Define a type <code>Tree</code> as a recursive sum type with the following constructors:</p>
+<ul>
+<li><code>'leaf</code> for a leaf node that contains a natural number,</li>
+<li><code>'node</code> for an internal node that contains a natural number and two subtrees.</li>
+</ul>
+</li>
+<li>
+<p>Define a function <code>def Search: Nat -&gt; Tree -&gt; MaybeNat</code> that takes a natural number and a <code>Tree</code>, and returns a <code>MaybeNat</code>. If the number is found in the tree, it should return <code>'some</code> with the number, otherwise it should return <code>'none</code>. You should <em>not</em> assume that the tree is a binary search tree.</p>
+</li>
+<li>
+<p>A <a href="https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">red-black tree</a> is a binary search tree where each node can be either red or black (if you never learned red-black trees in your data structures course, you can watch a quick YouTube video like <a href="https://www.youtube.com/watch?v=qvZGUFHWChY">this one</a>). In Lamp, we can represent a red-black tree as a recursive sum type with the following constructors:</p>
+<pre><code>rec RBTree = +{
+    'leaf: (),
+    'r: (Nat, RBTree, RBTree),
+    'b: (Nat, RBTree, RBTree)
+}
+</code></pre>
+<p>Additionally, a red-black tree should satisfy the following invariants:</p>
+<ol>
+<li>There are no two red nodes in a row.</li>
+<li>Every path from the root to a leaf has the same number of black nodes.</li>
+</ol>
+<p>To insert a number into a red-black tree, simply treat the tree as a binary search tree (so use each node to decide which subtree to go to):</p>
+<pre><code>def Insert: Nat -&gt; RBTree -&gt; RBTree = \x. \t.
+  match t {
+   'leaf: 'r (x, 'leaf, 'leaf),
+   'r (y, l, r):
+       if x == y then t
+       else if Lt x y then Balance ('r (y, Insert x l, r))
+       else Balance ('r (y, l, Insert x r)),
+   'b (y, l, r):
+       if x == y then t
+       else if Lt x y then Balance ('r (y, Insert x l, r))
+       else Balance ('r (y, l, Insert x r))
+}
+</code></pre>
+<p>(You need to copy over your <code>Lt</code> function from HW2.)</p>
+<p>After the inserting the number, the first invariant may be violated (the second invariant will still hold). So we need to call a <code>Balance</code> function to fix the tree. The <code>Balance</code> function should take a red-black tree that may violate the first invariant, and return a new red-black tree that satisfies both invariants. The balance function is illustrated in the following diagram. There are 4 cases to consider:</p>
+ <img src="./balance.jpg" width="800px" alt="AST for fib.lp">
+<p>Your task is to implement the <code>Balance</code> function:</p>
+<pre><code>def Balance: RBTree -&gt; RBTree = \{
+    &lt;pattern 1&gt;: &lt;result tree&gt;,
+    &lt;pattern 2&gt;: &lt;result tree&gt;,
+    &lt;pattern 3&gt;: &lt;result tree&gt;,
+    &lt;pattern 4&gt;: &lt;result tree&gt;,
+    t: t
+}
+</code></pre>
+<p>Each pattern should describe one of the 4 cases where the tree violates the first invariant (as illustrated in the topf half of the diagram above), and the result tree in all branches should be the red-black tree that no longer violates the first invariant (as illustrated in the bottom half of the diagram above). The last branch <code>t: t</code> simply matches any tree that does not violate the first invariant, and returns it unchanged.</p>
+</li>
+</ol>
+<h2 id="part-2---implementing-the-lamp-language"><a class="header" href="#part-2---implementing-the-lamp-language">Part 2 - Implementing the Lamp Language</a></h2>
+<p>Download the starter code from <a href="./hw4-starter.zip">here</a>.</p>
+<h3 id="problem-1--coding-10-pts"><a class="header" href="#problem-1--coding-10-pts">Problem 1 (🧑‍💻 coding, 10 pts)</a></h3>
+<p>The operational semantics of Lamp is already implemented in the <code>eval</code> function. You're highly encouraged to read the code and understand how it works. Your task is to implement the <code>subst</code> function.</p>
+<details>
+<summary>Hint</summary>
+<p>The only tricky case is when you substitute in a pattern-match branch. Remember the slogen:</p>
+<blockquote>
+<p>Substitution replaces free variables.
+The <code>sigma</code> dictionary contains keys which are (free) variables to be replaced. The pattern of a branch may contain variables, which bind all references in the expression of that branch.</p>
+</blockquote>
+</details>
+<p>Finally, to run your interpreter, you can do <code>python -m backend.eval &lt; [path to a Lamp file]</code>.</p>
+<h3 id="problem-2--coding-50-pts"><a class="header" href="#problem-2--coding-50-pts">Problem 2 (🧑‍💻 coding, 50 pts)</a></h3>
+<p>Implement the bidirectional type system for Lamp. The system is specified using inference rules in the <a href="../../assignments.html">Lamp Reference Manual</a>. Your task is to finish the implementation of</p>
+<ul>
+<li>the <code>synth</code> function, which implements the type synthesis judgment</li>
+<li>the <code>check</code> function, which implements the type checking judgment.</li>
+</ul>
+<p>Note that we've slightly adjusted the bidirectional type system for operations related to base types (i.e., Nat and Bool), so you may need to update your implementation from HW3.</p>
+<p>You will also need to <strong>design</strong> and <strong>implement</strong> type checking for pattern matching.</p>
+<ol>
+<li>As a baseline, you should implement the <code>helper</code> function in the <code>match_</code> function, which checks whether a type matches a pattern, and returns a mapping from (pattern) variables to types. You should <strong>derive</strong> the implementation of this function by "looking at" the operational semantics of pattern matching "through a pair of foggy glasses". The operational semantics of pattern matching is defined formally in the language reference manual using the judgment <code>v ⋈ p -&gt; σ</code>, and implemented in the <code>match_</code> function in eval.py. Ideally, you should design an analogous judgment <code>t ⋈ p -&gt; Σ</code> for checking whether a type matches a pattern using a set of inference rules, and then implement your rules in Python.</li>
+<li>You should also check that patterns in all branches collectively <em>exhaust</em> the type of the matched expression. In other words, your type checker should ensure that it can never happen that a pattern match fails because none of the branches match the value. This is a very challenging problem, and you should try your best to solve it, and the autograder will award points for partially correct solutions. As a hint, think of both types and patterns as describing certain sets of values. The exhaustiveness check amounts to checking that the union of the sets described by the patterns is a superset of the set described by the type of the matched expression.</li>
+</ol>
+<p>To run your type checker, you can do <code>python -m backend.typing &lt; [path to a Lamp file]</code>.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../assignments/hw3/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../../reflections.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../assignments/hw3/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../../reflections.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
