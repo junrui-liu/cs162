@@ -20,7 +20,7 @@
 |      06/26 | [Operational Semantics](./lecture-notes/0626.md)                    |                           |                |
 |      06/27 | Section: Python Tutorial                                            |                           |                |
 | **Week 2** | **What makes a programming language?**                              |                           |                |
-|      07/01 | [Operational Semantics Practicum](./lecture-notes/0701.md)          |                           |                |
+|      07/01 | [Inference Rules Workshop](./lecture-notes/0701.md)                 |                           |                |
 |      07/02 | [Variables](./lecture-notes/0702.md)                                |                           |                |
 |      07/03 | [Lambda Calculus](./lecture-notes/0703.md)                          | [HW 2](./assignments/hw2) | HW 1           |
 |      07/04 | *No class (Independence Day)*                                       |                           |                |
